@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Track.create(title: "Hello World", artist: "MJ", release: "First")
+Track.create(title: "Cup", artist: "Khruangbin", release: "Second")
+Track.create(title: "Fun", artist: "Toto", release: "Third")
