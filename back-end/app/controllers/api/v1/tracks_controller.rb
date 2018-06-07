@@ -2,11 +2,21 @@ class Api::V1::TracksController < ApplicationController
   before_action :set_track, only: [:show]
 
   def index
+
     render json: Track.all
   end
 
   def show
     render json: @track
+  end
+
+  def collection
+
+    @collection = Collection.new
+    byebug
+
+    # puts("collection: #{@collection.collection}")
+
   end
 
   private
