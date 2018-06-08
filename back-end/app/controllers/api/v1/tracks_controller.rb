@@ -13,7 +13,8 @@ class Api::V1::TracksController < ApplicationController
   def collection
 
     @collection = Collection.new
-    byebug
+    render json: @collection
+    # byebug
 
     # puts("collection: #{@collection.collection}")
 
