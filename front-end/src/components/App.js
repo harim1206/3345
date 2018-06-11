@@ -5,6 +5,7 @@ class App extends Component {
   state={
     pagination: {},
     releases: [],
+    shuffledReleases: [],
     currentTrackURL: ""
   }
 
@@ -12,7 +13,7 @@ class App extends Component {
     let randomRelease = this.state.releases[Math.floor(Math.random()*this.state.releases.length)]
 
 
-    
+
     // grab random release's url
     let randomURL = randomRelease.basic_information.resource_url
 
@@ -23,10 +24,11 @@ class App extends Component {
       let randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
       this.setState({
         currentTrackURL: randomVideo.uri
-      },()=>console.log(`this.state after random URL, `,this.state))
+      },()=>{
+        console.log(`this.state after random URL, `,this.state)
+      })
     })
   }
-
 
   componentDidMount(){
     const url = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
@@ -36,9 +38,21 @@ class App extends Component {
     .then(data => {
       this.setState({
         pagination: data.pagination,
-        releases: data.releases
-      }, ()=>console.log(this.state))
+        releases: data.releases,
+        shuffledReleases: this.shuffle(data.releases)
+      }, ()=>{
+        console.log(this.state)
+      })
     })
+  }
+
+  // function to shuffle an array
+  shuffle = (a) => {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
   render() {

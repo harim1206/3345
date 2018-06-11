@@ -1,5 +1,14 @@
 body {
+  max-width: 1200 px;
+  min-width: 640 px;
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.video-component-wrapper{
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
 }

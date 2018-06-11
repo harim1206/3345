@@ -5,7 +5,7 @@ class Video extends Component {
 
   render(){
     return (
-      <div>
+      <div class="video-component-wrapper">
         <button onClick={this.props.onClick}> click </button>
         <ReactPlayer url={this.props.currentTrackURL} controls="true" playing="true"/>
       </div>
