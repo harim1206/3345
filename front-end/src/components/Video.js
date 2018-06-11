@@ -3,11 +3,11 @@ import ReactPlayer from 'react-player'
 
 class Video extends Component {
 
+
   render(){
     return (
-      <div class="video-component-wrapper">
-        <button onClick={this.props.onClick}> click </button>
-        <ReactPlayer url={this.props.currentTrackURL} controls="true" playing="true"/>
+      <div className="video-component-wrapper">
+        <ReactPlayer url={this.props.currentReleaseURL} controls={true} playing={true} onEnded={this.props.onEnded}/>
       </div>
     )
   }

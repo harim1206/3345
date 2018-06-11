@@ -1,33 +1,15 @@
 import React, { Component } from 'react';
 import Video from './Video.js'
+import Playlist from './Playlist.js'
 
 class App extends Component {
   state={
     pagination: {},
     releases: [],
     shuffledReleases: [],
-    currentTrackURL: ""
-  }
-
-  onClick = () => {
-    let randomRelease = this.state.releases[Math.floor(Math.random()*this.state.releases.length)]
-
-
-
-    // grab random release's url
-    let randomURL = randomRelease.basic_information.resource_url
-
-
-    fetch(randomURL)
-    .then(res=>res.json())
-    .then(data=>{
-      let randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
-      this.setState({
-        currentTrackURL: randomVideo.uri
-      },()=>{
-        console.log(`this.state after random URL, `,this.state)
-      })
-    })
+    currentRelease: {},
+    nextRelease:{},
+    currentReleaseURL: ""
   }
 
   componentDidMount(){
@@ -36,35 +18,87 @@ class App extends Component {
     fetch(url)
     .then(res => res.json())
     .then(data => {
+
+      const shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       this.setState({
         pagination: data.pagination,
         releases: data.releases,
-        shuffledReleases: this.shuffle(data.releases)
-      }, ()=>{
-        console.log(this.state)
+        shuffledReleases: shuffledReleases,
+        currentRelease: shuffledReleases[0],
+        nextRelease: shuffledReleases[1]
+      } , ()=>{
+        this.fetchReleaseURL(this.state.currentRelease)
       })
     })
+
   }
 
-  // function to shuffle an array
-  shuffle = (a) => {
+  // returns a shuffled array
+  shuffleArr = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
   }
+
+  onClick = (release, id) => {
+
+    this.setState({
+      currentRelease: release,
+      nextRelease: this.state.shuffledReleases[id+1]
+    },()=>console.log(`state onClick: `,this.state))
+
+    this.fetchReleaseURL(release)
+  }
+
+  onEnded = () =>{
+    const nextReleaseId = this.state.shuffledReleases.indexOf(this.state.nextRelease)
+
+    this.setState({
+      currentRelease: this.state.nextRelease,
+      nextRelease: this.state.shuffledReleases[nextReleaseId+1]
+
+    }, ()=>{
+      this.fetchReleaseURL(this.state.currentRelease)
+    })
+
+
+  }
+
+  fetchReleaseURL = (release) => {
+    let resourceURL = release.basic_information.resource_url
+
+    fetch(resourceURL)
+    .then(res=>res.json())
+    .then(data=>{
+      let randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
+      this.setState({
+        currentReleaseURL: randomVideo.uri
+      },()=>{
+        console.log(`this.state after URL fetch, `,this.state)
+      })
+    })
+
+  }
+
 
   render() {
     return (
       <div className="App">
         <Video
           onClick={this.onClick}
-          currentTrackURL={this.state.currentTrackURL}
+          onEnded={this.onEnded}
+          currentReleaseURL={this.state.currentReleaseURL}
+        />
+        <Playlist
+          shuffledReleases={this.state.shuffledReleases}
+          onClick={this.onClick}
         />
       </div>
     );
   }
 }
+
 
 export default App;
