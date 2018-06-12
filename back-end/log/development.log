@@ -592,3 +592,98 @@ puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
 puma (3.11.4) lib/puma/server.rb:446:in `process_client'
 puma (3.11.4) lib/puma/server.rb:306:in `block in run'
 puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-06-12 15:35:00 -0400
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb (21.3ms)
+Completed 200 OK in 36ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-12 15:35:06 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (24.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (6.23ms)
+Completed 200 OK in 189ms (Views: 88.5ms | ActiveRecord: 95.6ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:36:06 -0400
+Processing by Api::V1::TracksController#collection as HTML
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (35.6ms)
+Completed 200 OK in 1190ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:40:21 -0400
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (46.12ms)
+Completed 200 OK in 1035ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:46:07 -0400
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (55.7ms)
+Completed 200 OK in 1270ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:49:34 -0400
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (132.91ms)
+Completed 200 OK in 1193ms (Views: 133.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:49:40 -0400
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (40.68ms)
+Completed 200 OK in 1118ms (Views: 62.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 15:54:09 -0400
+  [1m[35m (27.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (38.83ms)
+Completed 200 OK in 1259ms (Views: 54.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/collection" for 127.0.0.1 at 2018-06-12 16:07:48 -0400
+Processing by Api::V1::TracksController#collection as */*
+You are setting a key that conflicts with a built-in method Hashie::Mash#first defined in Enumerable. This can cause unexpected behavior when accessing the key as a property. You can still access the key via the #[] method.
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Collection (188.03ms)
+Completed 200 OK in 1327ms (Views: 189.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/notes" for 127.0.0.1 at 2018-06-12 17:24:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/notes"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'

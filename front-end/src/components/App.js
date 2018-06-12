@@ -30,11 +30,13 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const url = 'https://api.discogs.com/users/leon_/collection/folders/0/releases?per_page=200&page=1&f=json'
+    const url = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
+    // const url = 'http://localhost:3000/api/v1/collection'
 
-    fetch(url)
+    fetch(url, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
+      debugger
 
       let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       const parsedData = this.parseJSONtoData(shuffledReleases)
