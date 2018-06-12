@@ -15,12 +15,20 @@ class Release extends Component{
 
     // debugger
     return(
-      <li onClick = {()=>this.props.onClick(this.props.releaseData, this.props.id)}>
-        {display}
-      </li>
+      <tr>
+        <td>{artist}</td>
+        <td>{title}</td>
+        <td>{label}</td>
+        <td>{catno}</td>
+      </tr>
     )
   }
 
 }
 
 export default Release
+
+
+// <li onClick = {()=>this.props.onClick(this.props.releaseData, this.props.id)}>
+// {display}
+// </li>
