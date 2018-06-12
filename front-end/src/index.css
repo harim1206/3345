@@ -7,8 +7,29 @@ body {
   font-family: sans-serif;
 }
 
+
+
 .video-component-wrapper{
   margin-top: 200px;
+  /* height: 40px; */
   display: flex;
   justify-content: center;
+}
+
+.video-component-wrapper iframe{
+  /* height: 40px; */
+}
+
+.playlist-wrapper{
+
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+.playlist-wrapper ul{
+  /* border: black 1px solid; */
+  height: 300px;
+  width: 640px;
+
 }

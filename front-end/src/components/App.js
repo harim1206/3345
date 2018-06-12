@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const url = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
+    const url = 'https://api.discogs.com/users/mysticrider/collection/folders/0/releases?per_page=200&page=1&f=json'
 
     fetch(url)
     .then(res => res.json())
