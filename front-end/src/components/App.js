@@ -12,6 +12,23 @@ class App extends Component {
     currentReleaseURL: ""
   }
 
+  // takes in raw fetch json data and returns clean data for state
+  parseJSONtoData = (releases) => {
+    return releases.map((release)=>{
+      let data = release.basic_information
+      return(
+        {
+          id: releases.indexOf(release),
+          artist : data.artists[0].name,
+          title : data.title,
+          label : data.labels[0].name,
+          catno : data.labels[0].catno,
+          resource_url: data.resource_url
+        }
+      )
+    })
+  }
+
   componentDidMount(){
     const url = 'https://api.discogs.com/users/leon_/collection/folders/0/releases?per_page=200&page=1&f=json'
 
@@ -19,14 +36,17 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
 
-      const shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
+      let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
+      const parsedData = this.parseJSONtoData(shuffledReleases)
+
       this.setState({
         pagination: data.pagination,
         releases: data.releases,
-        shuffledReleases: shuffledReleases,
-        currentRelease: shuffledReleases[0],
-        nextRelease: shuffledReleases[1]
+        shuffledReleases: parsedData,
+        currentRelease: parsedData[0],
+        nextRelease: parsedData[1]
       } , ()=>{
+        console.log(`this.state:`, this.state)
         this.fetchReleaseURL(this.state.currentRelease)
       })
     })
@@ -42,7 +62,9 @@ class App extends Component {
     return a;
   }
 
+  // Play video on click of the release
   onClick = (release, id) => {
+    // debugger
 
     this.setState({
       currentRelease: release,
@@ -52,6 +74,17 @@ class App extends Component {
     this.fetchReleaseURL(release)
   }
 
+  // on table column header sort
+  onSort = (sortKey) =>{
+    let data = this.state.shuffledReleases
+
+    sortKey === 'id' ? data.sort((a,b) => a[sortKey] - b[sortKey]) : data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+
+    this.setState({shuffledReleases: data})
+
+  }
+
+  // play next video once it finishes
   onEnded = () =>{
     const nextReleaseId = this.state.shuffledReleases.indexOf(this.state.nextRelease)
 
@@ -67,17 +100,22 @@ class App extends Component {
   }
 
   fetchReleaseURL = (release) => {
-    let resourceURL = release.basic_information.resource_url
 
-    fetch(resourceURL)
+    fetch(release.resource_url)
     .then(res=>res.json())
     .then(data=>{
-      let randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
+
+      let randomVideo = {uri:""}
+      if(data.videos.length>0){
+        randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
+      }
+
       this.setState({
-        currentReleaseURL: randomVideo.uri
-      },()=>{
-        console.log(`this.state after URL fetch, `,this.state)
+          currentReleaseURL: randomVideo.uri
+        },()=>{
+          console.log(`this.state after URL fetch, `,this.state)
       })
+
     })
 
   }
@@ -94,6 +132,7 @@ class App extends Component {
         <Playlist
           shuffledReleases={this.state.shuffledReleases}
           onClick={this.onClick}
+          onSort={this.onSort}
         />
       </div>
     );

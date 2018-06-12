@@ -31,29 +31,35 @@ class Playlist extends Component{
     // </BootstrapTable>
 
     // Mapping props data to Release components
-    const shuffledReleases = this.props.shuffledReleases.map((releaseData)=>{
+    const shuffledReleases = this.props.shuffledReleases.map((release)=>{
       return (
-
-
         <Release
-          id = {this.props.shuffledReleases.indexOf(releaseData)}
-          releaseData = {releaseData}
+          id = {this.props.shuffledReleases.indexOf(release)}
+          release = {release}
           onClick = {this.props.onClick}
         />
-
       )
     })
+
+    const columnHeaders = ['Id','Artist','Title','Label','Catno'].map((cat)=>{
+      console.log(`cat: `, cat)
+      return(
+        <th onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
+      )
+    })
+    console.log(`col headers: `,columnHeaders)
 
     return(
       <div className="playlist-wrapper">
         <table className="playlist-table">
-          <tr>
-            <th>Artist</th>
-            <th>Title</th>
-            <th>Label</th>
-            <th>Catno</th>
-          </tr>
-          {shuffledReleases}
+          <thead>
+            <tr>
+              {columnHeaders}
+            </tr>
+          </thead>
+          <tbody>
+            {shuffledReleases}
+          </tbody>
         </table>
       </div>
     )
