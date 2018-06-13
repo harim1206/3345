@@ -20,14 +20,14 @@ body {
   /* height: 40px; */
 }
 
-.playlist-wrapper{
+.library-wrapper{
 
   display: flex;
   justify-content: center;
   overflow: auto;
 }
 
-.playlist-wrapper ul{
+.library-wrapper ul{
   /* border: black 1px solid; */
   height: 300px;
   width: 640px;

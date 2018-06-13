@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Video from './Video.js'
-import Playlist from './Playlist.js'
+import Library from './Library.js'
+import PlaylistContainer from '../container/PlaylistContainer.js'
 
 class App extends Component {
   state={
@@ -9,7 +10,8 @@ class App extends Component {
     shuffledReleases: [],
     currentRelease: {},
     nextRelease:{},
-    currentReleaseURL: ""
+    currentReleaseURL: "",
+    newPlaylistInput: ""
   }
 
   // takes in raw fetch json data and returns clean data for state
@@ -36,7 +38,7 @@ class App extends Component {
     fetch(url, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      debugger
+      // debugger
 
       let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       const parsedData = this.parseJSONtoData(shuffledReleases)
@@ -66,8 +68,6 @@ class App extends Component {
 
   // Play video on click of the release
   onClick = (release, id) => {
-    // debugger
-
     this.setState({
       currentRelease: release,
       nextRelease: this.state.shuffledReleases[id+1]
@@ -122,6 +122,21 @@ class App extends Component {
 
   }
 
+  // on new playlist submit
+  onNewPlaylistSubmit = (e) =>{
+    e.preventDefault()
+    console.log(`hello: `,this.state.newPlaylistInput)
+
+    debugger
+  }
+
+  onNewPlaylistInputchange = (e) =>{
+    this.setState({
+      newPlaylistInput: e.target.value
+    })
+
+  }
+
 
   render() {
     return (
@@ -131,7 +146,12 @@ class App extends Component {
           onEnded={this.onEnded}
           currentReleaseURL={this.state.currentReleaseURL}
         />
-        <Playlist
+        <PlaylistContainer
+          onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
+          onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
+          newPlaylistInput = {this.state.newPlaylistInput}
+        />
+        <Library
           shuffledReleases={this.state.shuffledReleases}
           onClick={this.onClick}
           onSort={this.onSort}
