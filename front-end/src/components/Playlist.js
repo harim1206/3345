@@ -7,7 +7,7 @@ class Playlist extends Component{
   render(){
 
     return(
-      <div>
+      <div onClick={this.props.onPlaylistClick}>
         {this.props.playlist.name}
       </div>
 

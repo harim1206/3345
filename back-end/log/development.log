@@ -2046,3 +2046,217 @@ Processing by Api::V1::PlaylistsController#index as */*
 Completed 200 OK in 10ms (Views: 6.4ms | ActiveRecord: 3.0ms)
 
 
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 16:53:34 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.37ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 16:53:45 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.41ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 16:58:28 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (16.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.47ms)
+Completed 200 OK in 24ms (Views: 6.8ms | ActiveRecord: 16.3ms)
+
+
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (13.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateReleases (20180613212933)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (204.6ms)[0m  [1m[35mCREATE TABLE "releases" ("id" bigserial primary key, "resource_url" character varying, "playlist_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180613212933_create_releases.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180613212933"]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mRelease Load (6.7ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:40:15 -0400
+  [1m[35m (15.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (7.89ms)
+Completed 200 OK in 74ms (Views: 52.3ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:40:54 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (20.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (8.15ms)
+Completed 200 OK in 49ms (Views: 24.6ms | ActiveRecord: 20.5ms)
+
+
+Started POST "/api/v1/releases" for 127.0.0.1 at 2018-06-13 17:41:04 -0400
+Processing by Api::V1::ReleasesController#create as */*
+  Parameters: {"playlist_id"=>"3", "resource_url"=>"https://api.discogs.com/releases/98922", "release"=>{"resource_url"=>"https://api.discogs.com/releases/98922", "playlist_id"=>"3"}}
+Unpermitted parameters: :playlist_id, :release
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[36mRelease Create (7.3ms)[0m  [1m[32mINSERT INTO "releases" ("resource_url", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["resource_url", "https://api.discogs.com/releases/98922"], ["created_at", "2018-06-13 21:41:04.658477"], ["updated_at", "2018-06-13 21:41:04.658477"]]
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+[active_model_serializers] Rendered ReleaseSerializer with ActiveModelSerializers::Adapter::JsonApi (1.61ms)
+Completed 200 OK in 57ms (Views: 7.7ms | ActiveRecord: 26.2ms)
+
+
+  [1m[36mRelease Load (4.2ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mRelease Load (0.9ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" ORDER BY "releases"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRelease Load (0.8ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" ORDER BY "releases"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRelease Load (0.8ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" ORDER BY "releases"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:45:04 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.59ms)
+Completed 200 OK in 35ms (Views: 21.3ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/api/v1/releases" for 127.0.0.1 at 2018-06-13 17:45:22 -0400
+Processing by Api::V1::ReleasesController#create as */*
+  Parameters: {"playlist_id"=>"3", "resource_url"=>"https://api.discogs.com/releases/4670297", "release"=>{"resource_url"=>"https://api.discogs.com/releases/4670297", "playlist_id"=>"3"}}
+Unpermitted parameter: :release
+  [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[36mRelease Create (4.5ms)[0m  [1m[32mINSERT INTO "releases" ("resource_url", "playlist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["resource_url", "https://api.discogs.com/releases/4670297"], ["playlist_id", 3], ["created_at", "2018-06-13 21:45:22.641371"], ["updated_at", "2018-06-13 21:45:22.641371"]]
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+[active_model_serializers] Rendered ReleaseSerializer with ActiveModelSerializers::Adapter::JsonApi (1.43ms)
+Completed 200 OK in 53ms (Views: 7.4ms | ActiveRecord: 22.0ms)
+
+
+  [1m[36mPlaylist Load (1.1ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mRelease Load (1.4ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mRelease Load (0.6ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" ORDER BY "releases"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:47:20 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (12.61ms)
+Completed 200 OK in 163ms (Views: 68.0ms | ActiveRecord: 75.5ms)
+
+
+Started POST "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:47:26 -0400
+Processing by Api::V1::PlaylistsController#create as */*
+  Parameters: {"name"=>"house", "playlist"=>{"name"=>"house"}}
+Unpermitted parameter: :playlist
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[36mPlaylist Create (1.1ms)[0m  [1m[32mINSERT INTO "playlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "house"], ["created_at", "2018-06-13 21:47:26.734824"], ["updated_at", "2018-06-13 21:47:26.734824"]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (1.87ms)
+Completed 200 OK in 11ms (Views: 2.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:47:47 -0400
+Processing by Api::V1::PlaylistsController#create as */*
+  Parameters: {"name"=>"house", "playlist"=>{"name"=>"house"}}
+Unpermitted parameter: :playlist
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[36mPlaylist Create (17.9ms)[0m  [1m[32mINSERT INTO "playlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "house"], ["created_at", "2018-06-13 21:47:47.893600"], ["updated_at", "2018-06-13 21:47:47.893600"]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (1.01ms)
+Completed 200 OK in 26ms (Views: 1.7ms | ActiveRecord: 18.7ms)
+
+
+Started POST "/api/v1/releases" for 127.0.0.1 at 2018-06-13 17:48:02 -0400
+Processing by Api::V1::ReleasesController#create as */*
+  Parameters: {"playlist_id"=>"3", "resource_url"=>"https://api.discogs.com/releases/6369230", "release"=>{"resource_url"=>"https://api.discogs.com/releases/6369230", "playlist_id"=>"3"}}
+Unpermitted parameter: :release
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[36mRelease Create (0.5ms)[0m  [1m[32mINSERT INTO "releases" ("resource_url", "playlist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["resource_url", "https://api.discogs.com/releases/6369230"], ["playlist_id", 3], ["created_at", "2018-06-13 21:48:02.745148"], ["updated_at", "2018-06-13 21:48:02.745148"]]
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/releases_controller.rb:9
+[active_model_serializers] Rendered ReleaseSerializer with ActiveModelSerializers::Adapter::JsonApi (1.39ms)
+Completed 200 OK in 28ms (Views: 6.0ms | ActiveRecord: 10.9ms)
+
+
+  [1m[36mPlaylist Load (2.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mPlaylist Load (0.9ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPlaylist Load (2.2ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mRelease Load (0.6ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" WHERE "releases"."playlist_id" = $1 LIMIT $2[0m  [["playlist_id", 3], ["LIMIT", 11]]
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mRelease Load (0.4ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" WHERE "releases"."playlist_id" = $1 LIMIT $2[0m  [["playlist_id", 3], ["LIMIT", 11]]
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mRelease Load (0.4ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" WHERE "releases"."playlist_id" = $1 ORDER BY "releases"."id" ASC LIMIT $2[0m  [["playlist_id", 3], ["LIMIT", 1]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:49:28 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.77ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:52:06 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (7.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.76ms)
+Completed 200 OK in 15ms (Views: 7.3ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:52:28 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (4.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (5.06ms)
+Completed 200 OK in 13ms (Views: 8.1ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:52:55 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.09ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-13 17:53:10 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.7ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+
+

@@ -12,7 +12,7 @@ class Release extends Component{
       return (
         <option
           data-playlistId={playlist.id}
-          value={playlist.name}
+          value={playlist.id}
         >
           {playlist.name}
         </option>

@@ -7,7 +7,7 @@ class PlaylistContainer extends Component{
     console.log(`this.props.playlists: `, (typeof this.props.playlists))
 
     const playlists = this.props.playlists.map((playlist)=>{
-      return <Playlist playlist={playlist}/>
+      return <Playlist playlist={playlist} onPlaylistClick={this.props.onPlaylistClick}/>
     })
 
     return(

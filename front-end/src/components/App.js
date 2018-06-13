@@ -141,7 +141,7 @@ class App extends Component {
     let postData = {
       name: this.state.newPlaylistInput
     }
-    debugger
+    // debugger
 
     fetch('http://localhost:3000/api/v1/playlists', {
       method: 'post',
@@ -168,31 +168,33 @@ class App extends Component {
 
   }
 
+  onPlaylistclick = () =>{
+    debugger
+  }
+
   // on playlist select menu change, add track to playlist
   onReleasePlaylistChange = (release, event) =>{
-    const playlistId = event.target.options[event.target.selectedIndex].getAttribute('data-playlistId')
-    debugger
 
-    postData = {
-      playlist_id: playlistId
+    let postData = {
+      playlist_id: event.target.value,
       resource_url: release.resource_url
     }
 
-    // fetch('http://localhost:3000/api/v1/releases', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(postData)
-    // })
-    // .then(res =>res.json())
-    // .then(data =>{
-    //   console.log("data: ", data)
-    //   debugger
-    //   this.setState({
-    //     playlist: this.state.playlists.push(this.state.newPlaylistInput)
-    //   })
-    // })
+
+
+    fetch('http://localhost:3000/api/v1/releases', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+    .then(res =>res.json())
+    .then(data =>{
+
+      debugger
+
+    })
   }
 
   render() {
@@ -207,6 +209,7 @@ class App extends Component {
           <PlaylistContainer
             onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
             onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
+            onPlaylistClick = {this.onPlaylistClick}
             newPlaylistInput = {this.state.newPlaylistInput}
             playlists = {this.state.playlists}
           />
