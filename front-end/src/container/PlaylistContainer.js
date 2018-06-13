@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-// import Playlist from '../components/Playlist.js'
+import Playlist from '../components/Playlist.js'
 
 class PlaylistContainer extends Component{
 
   render(){
+    console.log(`this.props.playlists: `, (typeof this.props.playlists))
+
+    const playlists = this.props.playlists.map((playlist)=>{
+      return <Playlist playlist={playlist}/>
+    })
+
     return(
       <div>
-        playlist container
+        new playlist
         <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>
           <input
             type="text"
@@ -16,6 +22,7 @@ class PlaylistContainer extends Component{
           <input type="submit"/>
         </form>
 
+        {playlists}
       </div>
     )
   }

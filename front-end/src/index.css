@@ -1,6 +1,5 @@
 body {
-  max-width: 1200 px;
-  min-width: 640 px;
+  min-width: 1000px;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -10,7 +9,7 @@ body {
 
 
 .video-component-wrapper{
-  margin-top: 200px;
+  margin-top: 50px;
   /* height: 40px; */
   display: flex;
   justify-content: center;
@@ -20,10 +19,15 @@ body {
   /* height: 40px; */
 }
 
-.library-wrapper{
+.main-container{
+  display: grid;
+  width: 80%;
+  margin: 25px auto 0 auto;
+  grid-template-columns: 25% auto;
 
-  display: flex;
-  justify-content: center;
+}
+
+.library-wrapper{
   overflow: auto;
 }
 

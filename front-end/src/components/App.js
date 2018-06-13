@@ -11,7 +11,8 @@ class App extends Component {
     currentRelease: {},
     nextRelease:{},
     currentReleaseURL: "",
-    newPlaylistInput: ""
+    newPlaylistInput: "",
+    playlists: []
   }
 
   // takes in raw fetch json data and returns clean data for state
@@ -32,14 +33,11 @@ class App extends Component {
   }
 
   componentDidMount(){
-    const url = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
-    // const url = 'http://localhost:3000/api/v1/collection'
+    const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
 
-    fetch(url, {mode: 'cors'})
+    fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      // debugger
-
       let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       const parsedData = this.parseJSONtoData(shuffledReleases)
 
@@ -53,6 +51,20 @@ class App extends Component {
         console.log(`this.state:`, this.state)
         this.fetchReleaseURL(this.state.currentRelease)
       })
+    })
+
+    const playlistUrl = '//localhost:3000/api/v1/playlists'
+    fetch(playlistUrl)
+    .then(res => res.json())
+    .then(data => {
+
+      const playlists = data.data.map((obj)=>{
+        return {id: obj.id, name: obj.attributes.name}
+      })
+
+      this.setState({
+        playlists: playlists
+      },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
     })
 
   }
@@ -108,14 +120,14 @@ class App extends Component {
     .then(data=>{
 
       let randomVideo = {uri:""}
-      if(data.videos.length>0){
+      if(data.videos){
         randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
       }
 
       this.setState({
           currentReleaseURL: randomVideo.uri
         },()=>{
-          console.log(`this.state after URL fetch, `,this.state)
+          // console.log(`this.state after URL fetch, `,this.state)
       })
 
     })
@@ -125,11 +137,30 @@ class App extends Component {
   // on new playlist submit
   onNewPlaylistSubmit = (e) =>{
     e.preventDefault()
-    console.log(`hello: `,this.state.newPlaylistInput)
 
+    let postData = {
+      name: this.state.newPlaylistInput
+    }
     debugger
+
+    fetch('http://localhost:3000/api/v1/playlists', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+    .then(res =>res.json())
+    .then(data =>{
+      this.setState({
+        playlist: this.state.playlists.push(this.state.newPlaylistInput)
+      })
+    })
+
+
   }
 
+  // new playlist input change
   onNewPlaylistInputchange = (e) =>{
     this.setState({
       newPlaylistInput: e.target.value
@@ -137,6 +168,32 @@ class App extends Component {
 
   }
 
+  // on playlist select menu change, add track to playlist
+  onReleasePlaylistChange = (release, event) =>{
+    const playlistId = event.target.options[event.target.selectedIndex].getAttribute('data-playlistId')
+    debugger
+
+    postData = {
+      playlist_id: playlistId
+      resource_url: release.resource_url
+    }
+
+    // fetch('http://localhost:3000/api/v1/releases', {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(postData)
+    // })
+    // .then(res =>res.json())
+    // .then(data =>{
+    //   console.log("data: ", data)
+    //   debugger
+    //   this.setState({
+    //     playlist: this.state.playlists.push(this.state.newPlaylistInput)
+    //   })
+    // })
+  }
 
   render() {
     return (
@@ -146,16 +203,21 @@ class App extends Component {
           onEnded={this.onEnded}
           currentReleaseURL={this.state.currentReleaseURL}
         />
-        <PlaylistContainer
-          onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
-          onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
-          newPlaylistInput = {this.state.newPlaylistInput}
-        />
-        <Library
-          shuffledReleases={this.state.shuffledReleases}
-          onClick={this.onClick}
-          onSort={this.onSort}
-        />
+        <div className="main-container">
+          <PlaylistContainer
+            onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
+            onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
+            newPlaylistInput = {this.state.newPlaylistInput}
+            playlists = {this.state.playlists}
+          />
+          <Library
+            shuffledReleases={this.state.shuffledReleases}
+            playlists={this.state.playlists}
+            onClick={this.onClick}
+            onSort={this.onSort}
+            onReleasePlaylistChange={this.onReleasePlaylistChange}
+          />
+        </div>
       </div>
     );
   }

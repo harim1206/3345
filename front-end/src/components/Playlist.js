@@ -8,6 +8,7 @@ class Playlist extends Component{
 
     return(
       <div>
+        {this.props.playlist.name}
       </div>
 
     )
