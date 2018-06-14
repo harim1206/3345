@@ -5,12 +5,17 @@ import PlaylistContainer from '../container/PlaylistContainer.js'
 
 class App extends Component {
   state={
+    // All Releases
     pagination: {},
     releases: [],
     shuffledReleases: [],
+    // Current Release
     currentRelease: {},
     nextRelease:{},
     currentReleaseURL: "",
+    currentReleaseTracks: [],
+    currentReleaseVideos:[],
+    // Playlists
     newPlaylistInput: "",
     playlists: []
   }
@@ -19,6 +24,38 @@ class App extends Component {
   parseJSONtoData = (releases) => {
     return releases.map((release)=>{
       let data = release.basic_information
+
+      // let tracks = []
+      // let videos = []
+      // fetch(data.resource_url)
+      // .then(res => res.json())
+      // .then(data => {
+      //   debugger
+      //   let tracksData = data.tracklist.map((track)=>{
+      //     return ({
+      //       duration: track.duration,
+      //       position: track.position,
+      //       title: track.title
+      //     })
+      //   })
+      //   tracks = [...tracks, tracksData]
+      //
+      //   if(data.videos){
+      //     // debugger
+      //     let videosData = data.videos.map((video)=>{
+      //       return({
+      //         description: video.description,
+      //         title: video.title,
+      //         uri: video.uri,
+      //         duration: video.duration
+      //       })
+      //     })
+      //
+      //     videos = [...videos, videosData]
+      //   }
+      // })
+      // debugger
+
       return(
         {
           id: releases.indexOf(release),
@@ -26,20 +63,21 @@ class App extends Component {
           title : data.title,
           label : data.labels[0].name,
           catno : data.labels[0].catno,
-          resource_url: data.resource_url
+          resource_url: data.resource_url,
         }
       )
     })
   }
 
   componentDidMount(){
-    const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=200&page=1&f=json'
+    const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
 
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
       let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       const parsedData = this.parseJSONtoData(shuffledReleases)
+      // debugger
 
       this.setState({
         pagination: data.pagination,
@@ -80,10 +118,47 @@ class App extends Component {
 
   // Play video on click of the release
   onClick = (release, id) => {
-    this.setState({
-      currentRelease: release,
-      nextRelease: this.state.shuffledReleases[id+1]
-    },()=>console.log(`state onClick: `,this.state))
+
+    let tracks = []
+    let videos = []
+
+    fetch(release.resource_url)
+    .then(res => res.json())
+    .then(data => {
+      let tracksData = data.tracklist.map((track)=>{
+        return ({
+          duration: track.duration,
+          position: track.position,
+          title: track.title
+        })
+      })
+      tracks = [...tracks, tracksData]
+
+      if(data.videos){
+        let videosData = data.videos.map((video)=>{
+          return({
+            description: video.description,
+            title: video.title,
+            uri: video.uri,
+            duration: video.duration
+          })
+        })
+
+        videos = [...videos, videosData]
+      }
+
+      this.setState({
+        currentRelease: release,
+        nextRelease: this.state.shuffledReleases[id+1],
+        currentReleaseTracks: tracks,
+        currentReleaseVideos: videos
+      },()=>console.log(`state onClick: `,this.state))
+    })
+
+    // this.setState({
+    //   currentRelease: release,
+    //   nextRelease: this.state.shuffledReleases[id+1]
+    // },()=>console.log(`state onClick: `,this.state))
 
     this.fetchReleaseURL(release)
   }
@@ -141,7 +216,6 @@ class App extends Component {
     let postData = {
       name: this.state.newPlaylistInput
     }
-    // debugger
 
     fetch('http://localhost:3000/api/v1/playlists', {
       method: 'post',
