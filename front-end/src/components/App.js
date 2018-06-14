@@ -152,8 +152,12 @@ class App extends Component {
     })
     .then(res =>res.json())
     .then(data =>{
+      const playlist = {id: data.data.id, name: data.data.attributes.name}
+
       this.setState({
-        playlist: this.state.playlists.push(this.state.newPlaylistInput)
+        playlists: [...this.state.playlists, playlist]
+      },()=>{
+        console.log(`this.state after new playlist submission: `,this.state.playlists)
       })
     })
 
