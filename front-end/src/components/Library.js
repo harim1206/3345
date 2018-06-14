@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Release from './Release'
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+// import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 class Library extends Component{
 
   render(){
     // Mapping props data to Release components
     const shuffledReleases = this.props.shuffledReleases.map((release)=>{
+
       return (
         <Release
           id = {this.props.shuffledReleases.indexOf(release)}
           release = {release}
+          currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
           playlists = {this.props.playlists}
           onClick = {this.props.onClick}
           onReleasePlaylistChange = {this.props.onReleasePlaylistChange}

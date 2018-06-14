@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
+// import TrackContainer from '../container/TrackContainer.js'
 
 
 class Release extends Component{
-  state={
-    playlist: ""
-  }
+
   render(){
     const release = this.props.release
 
     const playlistSelectOptions = this.props.playlists.map((playlist)=>{
-      return (
-        <option
-          data-playlistId={playlist.id}
-          value={playlist.id}
-        >
-          {playlist.name}
-        </option>
-      )
+      return <option value={playlist.id}>{playlist.name}</option>
     })
+
+    // let trackContainer
+    // if(this.props.currentReleaseTracks.length > 0){
+    //   trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}/>
+    // }
+
 
     return(
       <tr onClick={()=>this.props.onClick(release, release.id)}>
@@ -36,5 +34,6 @@ class Release extends Component{
   }
 
 }
+
 
 export default Release

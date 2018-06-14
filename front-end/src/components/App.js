@@ -70,12 +70,13 @@ class App extends Component {
   }
 
   componentDidMount(){
+    // debugger
     const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
 
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
+      let shuffledReleases = this.shuffleArr(data.releases).slice(0,2)
       const parsedData = this.parseJSONtoData(shuffledReleases)
       // debugger
 
@@ -125,6 +126,13 @@ class App extends Component {
     fetch(release.resource_url)
     .then(res => res.json())
     .then(data => {
+
+      let randomVideo = {uri:""}
+      if(data.videos){
+        randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
+      }
+
+
       let tracksData = data.tracklist.map((track)=>{
         return ({
           duration: track.duration,
@@ -151,7 +159,8 @@ class App extends Component {
         currentRelease: release,
         nextRelease: this.state.shuffledReleases[id+1],
         currentReleaseTracks: tracks,
-        currentReleaseVideos: videos
+        currentReleaseVideos: videos,
+        currentReleaseURL: randomVideo.uri
       },()=>console.log(`state onClick: `,this.state))
     })
 
@@ -159,8 +168,6 @@ class App extends Component {
     //   currentRelease: release,
     //   nextRelease: this.state.shuffledReleases[id+1]
     // },()=>console.log(`state onClick: `,this.state))
-
-    this.fetchReleaseURL(release)
   }
 
   // on table column header sort
@@ -294,6 +301,8 @@ class App extends Component {
           />
           <Library
             shuffledReleases={this.state.shuffledReleases}
+            currentRelease={this.state.currentRelease}
+            currentReleaseTracks={this.state.currentReleaseTracks}
             playlists={this.state.playlists}
             onClick={this.onClick}
             onSort={this.onSort}
