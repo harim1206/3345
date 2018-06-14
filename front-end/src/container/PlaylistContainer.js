@@ -4,8 +4,7 @@ import Playlist from '../components/Playlist.js'
 class PlaylistContainer extends Component{
 
   render(){
-    console.log(`this.props.playlists: `, (typeof this.props.playlists))
-
+    
     const playlists = this.props.playlists.map((playlist)=>{
       return <Playlist playlist={playlist} onPlaylistClick={this.props.onPlaylistClick}/>
     })

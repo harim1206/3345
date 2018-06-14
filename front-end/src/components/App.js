@@ -168,7 +168,8 @@ class App extends Component {
 
   }
 
-  onPlaylistclick = () =>{
+  onPlaylistClick = (e) =>{
+    console.log('hello')
     debugger
   }
 
