@@ -11,11 +11,14 @@ class Release extends Component{
       return <option value={playlist.id}>{playlist.name}</option>
     })
 
-
     let trackContainer
-    if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0][0].id){
+    if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0].id){
 
-      trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}/>
+      // debugger
+      trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}
+      currentReleaseVideos = {this.props.currentReleaseVideos}
+      playlists = {this.props.playlists}
+      onReleasePlaylistChange = {this.props.onReleasePlaylistChange}/>
     }
 
 
@@ -28,9 +31,9 @@ class Release extends Component{
           <td>{release.label}</td>
           <td>{release.catno}</td>
           <td>
-          <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(release, event)}>
-          {playlistSelectOptions}
-          </select>
+            <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(release, event)}>
+            {playlistSelectOptions}
+            </select>
           </td>
         </tr>
 

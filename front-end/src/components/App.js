@@ -75,7 +75,7 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let shuffledReleases = this.shuffleArr(data.releases).slice(0,2)
+      let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
       const parsedData = this.parseJSONtoData(shuffledReleases)
 
       this.setState({
@@ -138,7 +138,7 @@ class App extends Component {
           title: track.title
         })
       })
-      tracks = [...tracks, tracksData]
+      tracks = tracksData
 
       if(data.videos){
         let videosData = data.videos.map((video)=>{
@@ -150,8 +150,26 @@ class App extends Component {
           })
         })
 
-        videos = [...videos, videosData]
+        videos = videosData
       }
+
+      // debugger
+      //
+      // for each track in tracks
+      //   for each video in videos
+      //     if(videoTitle.includes(tracktitle))
+
+      //
+      // videos.forEach((video)=>{
+      //
+      //   tracks.forEach((track)=>{
+      //     console.log(`video: `,video)
+      //     debugger
+      //     // if(video.title.includes(track))
+      //
+      //   })
+      // })
+
 
       this.setState({
         currentRelease: release,
@@ -301,6 +319,7 @@ class App extends Component {
             shuffledReleases={this.state.shuffledReleases}
             currentRelease={this.state.currentRelease}
             currentReleaseTracks={this.state.currentReleaseTracks}
+            currentReleaseVideos={this.state.currentReleaseVideos}
             playlists={this.state.playlists}
             onClick={this.onClick}
             onSort={this.onSort}

@@ -4,7 +4,7 @@ class TrackContainer extends Component{
 
   render(){
 
-    const tracks = this.props.currentReleaseTracks[0].map((track)=>{
+    const tracks = this.props.currentReleaseTracks.map((track)=>{
       return (
         <tr>
           <td></td>
@@ -16,8 +16,30 @@ class TrackContainer extends Component{
 
       )
     })
+    
+    const playlistSelectOptions = this.props.playlists.map((playlist)=>{
+      return <option value={playlist.id}>{playlist.name}</option>
+    })
 
-    debugger
+    const youtubes = this.props.currentReleaseVideos.map((video)=>{
+      return (
+        <tr>
+          <td></td>
+          <td></td>
+          <td>{video.title}</td>
+          <td>{video.uri}</td>
+          <td>{video.duration}</td>
+          <td>
+            <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(event)}>
+              {playlistSelectOptions}
+            </select>
+          </td>
+        </tr>
+
+      )
+    })
+
+
 
     const columnHeaders = ['title','position','duration'].map((cat)=>{
       return(
@@ -35,6 +57,15 @@ class TrackContainer extends Component{
           <td>Duration</td>
         </tr>
         {tracks}
+        <tr>
+          <td></td>
+          <td></td>
+          <td>YouTube</td>
+          <td>URL</td>
+          <td>Duration</td>
+          <td></td>
+        </tr>
+        {youtubes}
       </React.Fragment>
     )
   }

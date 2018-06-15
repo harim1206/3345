@@ -13,6 +13,7 @@ class Library extends Component{
           id = {this.props.shuffledReleases.indexOf(release)}
           release = {release}
           currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
+          currentReleaseVideos = {this.props.currentRelease ? this.props.currentReleaseVideos : undefined}
           playlists = {this.props.playlists}
           onClick = {this.props.onClick}
           onReleasePlaylistChange = {this.props.onReleasePlaylistChange}
