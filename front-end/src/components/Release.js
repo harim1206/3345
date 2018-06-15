@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import TrackContainer from '../container/TrackContainer.js'
+import TrackContainer from '../container/TrackContainer.js'
 
 
 class Release extends Component{
@@ -11,25 +11,33 @@ class Release extends Component{
       return <option value={playlist.id}>{playlist.name}</option>
     })
 
-    // let trackContainer
-    // if(this.props.currentReleaseTracks.length > 0){
-    //   trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}/>
-    // }
+
+    let trackContainer
+    if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0][0].id){
+
+      trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}/>
+    }
 
 
     return(
-      <tr onClick={()=>this.props.onClick(release, release.id)}>
-        <td>{release.id}</td>
-        <td>{release.artist}</td>
-        <td>{release.title}</td>
-        <td>{release.label}</td>
-        <td>{release.catno}</td>
-        <td>
+      <React.Fragment>
+        <tr onClick={()=>this.props.onClick(release, release.id)}>
+          <td>{release.id}</td>
+          <td>{release.artist}</td>
+          <td>{release.title}</td>
+          <td>{release.label}</td>
+          <td>{release.catno}</td>
+          <td>
           <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(release, event)}>
-            {playlistSelectOptions}
+          {playlistSelectOptions}
           </select>
-        </td>
-      </tr>
+          </td>
+        </tr>
+
+        {trackContainer}
+
+      </React.Fragment>
+
     )
   }
 

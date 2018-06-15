@@ -3,11 +3,16 @@ import React, {Component} from 'react'
 class Track extends Component{
 
   render(){
+    const track = this.props.track
+    // debugger
+
 
     return(
-      <div>
-        track
-      </div>
+      <tr>
+        <td>{track.title}</td>
+        <td>{track.position}</td>
+        <td>{track.duration}</td>
+      </tr>
     )
   }
 

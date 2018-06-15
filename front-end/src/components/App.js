@@ -70,7 +70,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // debugger
     const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
 
     fetch(collectionUrl, {mode: 'cors'})
@@ -78,7 +77,6 @@ class App extends Component {
     .then(data => {
       let shuffledReleases = this.shuffleArr(data.releases).slice(0,2)
       const parsedData = this.parseJSONtoData(shuffledReleases)
-      // debugger
 
       this.setState({
         pagination: data.pagination,
@@ -132,9 +130,9 @@ class App extends Component {
         randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
       }
 
-
       let tracksData = data.tracklist.map((track)=>{
         return ({
+          id: id,
           duration: track.duration,
           position: track.position,
           title: track.title
