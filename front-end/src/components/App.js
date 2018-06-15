@@ -153,23 +153,6 @@ class App extends Component {
         videos = videosData
       }
 
-      // debugger
-      //
-      // for each track in tracks
-      //   for each video in videos
-      //     if(videoTitle.includes(tracktitle))
-
-      //
-      // videos.forEach((video)=>{
-      //
-      //   tracks.forEach((track)=>{
-      //     console.log(`video: `,video)
-      //     debugger
-      //     // if(video.title.includes(track))
-      //
-      //   })
-      // })
-
 
       this.setState({
         currentRelease: release,
@@ -179,11 +162,12 @@ class App extends Component {
         currentReleaseURL: randomVideo.uri
       },()=>console.log(`state onClick: `,this.state))
     })
+  }
 
-    // this.setState({
-    //   currentRelease: release,
-    //   nextRelease: this.state.shuffledReleases[id+1]
-    // },()=>console.log(`state onClick: `,this.state))
+  onYoutubeClick = (video, event) =>{
+    this.setState({
+      currentReleaseURL: video.uri
+    })
   }
 
   // on table column header sort
@@ -269,17 +253,12 @@ class App extends Component {
 
   }
 
-  onPlaylistClick = (e) =>{
-    console.log('hello')
-    debugger
-  }
-
   // on playlist select menu change, add track to playlist
-  onReleasePlaylistChange = (release, event) =>{
-
+  onTrackPlaylistChange = (video, release, event) =>{
+    debugger
     let postData = {
       playlist_id: event.target.value,
-      resource_url: release.resource_url
+      resource_url: video.resource_url
     }
 
 
@@ -323,7 +302,8 @@ class App extends Component {
             playlists={this.state.playlists}
             onClick={this.onClick}
             onSort={this.onSort}
-            onReleasePlaylistChange={this.onReleasePlaylistChange}
+            onTrackPlaylistChange={this.onTrackPlaylistChange}
+            onYoutubeClick={this.onYoutubeClick}
           />
         </div>
       </div>

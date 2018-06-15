@@ -12,16 +12,18 @@ class Library extends Component{
         <Release
           id = {this.props.shuffledReleases.indexOf(release)}
           release = {release}
+          currentRelease = {this.props.currentRelease}
           currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
           currentReleaseVideos = {this.props.currentRelease ? this.props.currentReleaseVideos : undefined}
           playlists = {this.props.playlists}
           onClick = {this.props.onClick}
-          onReleasePlaylistChange = {this.props.onReleasePlaylistChange}
+          onTrackPlaylistChange = {this.props.onTrackPlaylistChange}
+          onYoutubeClick = {this.props.onYoutubeClick}
         />
       )
     })
 
-    const columnHeaders = ['Id','Artist','Title','Label','Catno','Playlist'].map((cat)=>{
+    const columnHeaders = ['Id','Artist','Title','Label','Catno',''].map((cat)=>{
       return(
         <th onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
       )

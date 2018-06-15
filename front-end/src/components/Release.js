@@ -7,18 +7,21 @@ class Release extends Component{
   render(){
     const release = this.props.release
 
-    const playlistSelectOptions = this.props.playlists.map((playlist)=>{
-      return <option value={playlist.id}>{playlist.name}</option>
-    })
+    // const playlistSelectOptions = this.props.playlists.map((playlist)=>{
+    //   return <option value={playlist.id}>{playlist.name}</option>
+    // })
 
     let trackContainer
     if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0].id){
 
-      // debugger
-      trackContainer = <TrackContainer currentReleaseTracks = {this.props.currentReleaseTracks}
+      trackContainer = <TrackContainer
+      currentRelease = {this.props.currentRelease}
+      currentReleaseTracks = {this.props.currentReleaseTracks}
       currentReleaseVideos = {this.props.currentReleaseVideos}
       playlists = {this.props.playlists}
-      onReleasePlaylistChange = {this.props.onReleasePlaylistChange}/>
+      onTrackPlaylistChange = {this.props.onTrackPlaylistChange}
+      onYoutubeClick = {this.props.onYoutubeClick}
+      />
     }
 
 
@@ -30,11 +33,6 @@ class Release extends Component{
           <td>{release.title}</td>
           <td>{release.label}</td>
           <td>{release.catno}</td>
-          <td>
-            <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(release, event)}>
-            {playlistSelectOptions}
-            </select>
-          </td>
         </tr>
 
         {trackContainer}
@@ -48,3 +46,12 @@ class Release extends Component{
 
 
 export default Release
+
+
+
+
+// <td>
+// <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(release, event)}>
+// {playlistSelectOptions}
+// </select>
+// </td>

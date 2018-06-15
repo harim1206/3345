@@ -2,6 +2,13 @@ import React, {Component} from 'react'
 
 class TrackContainer extends Component{
 
+  columnHeaders = (columnTitles) =>{
+    return(
+      columnTitles.map((title)=><td className='track-column-header'>{title}</td>
+      )
+    )
+  }
+
   render(){
 
     const tracks = this.props.currentReleaseTracks.map((track)=>{
@@ -16,21 +23,21 @@ class TrackContainer extends Component{
 
       )
     })
-    
+
     const playlistSelectOptions = this.props.playlists.map((playlist)=>{
       return <option value={playlist.id}>{playlist.name}</option>
     })
 
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
       return (
-        <tr>
+        <tr onClick={(event)=>this.props.onYoutubeClick(video, event)}>
           <td></td>
           <td></td>
           <td>{video.title}</td>
-          <td>{video.uri}</td>
+          <td><a href={video.uri}> link </a></td>
           <td>{video.duration}</td>
           <td>
-            <select name="text" onChange={(event)=>this.props.onReleasePlaylistChange(event)}>
+            <select name="text" onChange={(event)=>this.props.onTrackPlaylistChange(video, this.props.currentRelease, event)}>
               {playlistSelectOptions}
             </select>
           </td>
@@ -39,37 +46,19 @@ class TrackContainer extends Component{
       )
     })
 
-
-
-    const columnHeaders = ['title','position','duration'].map((cat)=>{
-      return(
-        <th onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
-      )
-    })
-
     return(
       <React.Fragment>
         <tr>
-          <td></td>
-          <td></td>
-          <td>Title</td>
-          <td>Position</td>
-          <td>Duration</td>
+          {this.columnHeaders(['','','Title','Position','Duration',''])}
         </tr>
         {tracks}
         <tr>
-          <td></td>
-          <td></td>
-          <td>YouTube</td>
-          <td>URL</td>
-          <td>Duration</td>
-          <td></td>
+          {this.columnHeaders(['','','YouTube','URL','Duration','Playlist'])}
         </tr>
         {youtubes}
       </React.Fragment>
     )
   }
-
 
 }
 

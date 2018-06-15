@@ -37,3 +37,8 @@ body {
   width: 640px;
 
 }
+
+
+.track-column-header{
+  font-weight: bold;
+}
