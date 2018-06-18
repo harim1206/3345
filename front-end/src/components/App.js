@@ -3,6 +3,8 @@ import Video from './Video.js'
 import Library from './Library.js'
 import PlaylistContainer from '../container/PlaylistContainer.js'
 
+import { shuffleArr } from '../helpers/helper.js'
+
 class App extends Component {
   state={
     // All Releases
@@ -75,7 +77,8 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let shuffledReleases = this.shuffleArr(data.releases).slice(0,50)
+      let shuffledReleases = shuffleArr(data.releases).slice(0,50)
+      debugger
       const parsedData = this.parseJSONtoData(shuffledReleases)
 
       this.setState({
@@ -107,13 +110,13 @@ class App extends Component {
   }
 
   // returns a shuffled array
-  shuffleArr = (a) => {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
+  // shuffleArr = (a) => {
+  //   for (let i = a.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [a[i], a[j]] = [a[j], a[i]];
+  //   }
+  //   return a;
+  // }
 
   // Play video on click of the release
   onClick = (release, id) => {
@@ -253,17 +256,39 @@ class App extends Component {
 
   }
 
+  // Toggle playlist on click
+  onPlaylistClick = (playlist) => {
+    debugger
+
+    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+      debugger
+    })
+
+  }
+
   // on playlist select menu change, add track to playlist
   onTrackPlaylistChange = (video, release, event) =>{
-    debugger
+
     let postData = {
-      playlist_id: event.target.value,
-      resource_url: video.resource_url
+      artist: release.artist,
+      release: release.title,
+      label: release.label,
+      catno: release.catno,
+      resource_url: release.resource_url,
+      library_id: release.id,
+      title: "",
+      url: video.uri,
+      description: video.description,
+      duration: video.duration,
+      playlist_id: event.target.value
     }
 
 
-
-    fetch('http://localhost:3000/api/v1/releases', {
+    fetch('http://localhost:3000/api/v1/tracks', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -273,9 +298,8 @@ class App extends Component {
     .then(res =>res.json())
     .then(data =>{
 
-      debugger
-
     })
+
   }
 
   render() {

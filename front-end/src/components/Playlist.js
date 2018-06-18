@@ -6,10 +6,10 @@ class Playlist extends Component{
 
 
   render(){
-    
+
 
     return(
-      <div onClick={this.props.onPlaylistClick}>
+      <div onClick={()=>this.props.onPlaylistClick(this.props.playlist)}>
         {this.props.playlist.name}
       </div>
 

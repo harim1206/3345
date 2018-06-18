@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_212933) do
+ActiveRecord::Schema.define(version: 2018_06_18_134230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2018_06_13_212933) do
     t.string "release"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
+    t.string "description"
+    t.string "duration"
+    t.string "label"
+    t.string "catno"
+    t.integer "library_id"
+    t.integer "playlist_id"
+    t.string "resource_url"
   end
 
 end

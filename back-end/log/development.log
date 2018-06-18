@@ -2355,3 +2355,1181 @@ Completed 200 OK in 109ms (Views: 7.6ms | ActiveRecord: 68.9ms)
   [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "releases" WHERE "releases"."playlist_id" = $1[0m  [["playlist_id", 3]]
   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
   [1m[36mRelease Load (24.5ms)[0m  [1m[34mSELECT  "releases".* FROM "releases" WHERE "releases"."playlist_id" = $1 ORDER BY "releases"."id" ASC LIMIT $2 OFFSET $3[0m  [["playlist_id", 3], ["LIMIT", 1], ["OFFSET", 2]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 09:08:14 -0400
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (18.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (6.95ms)
+Completed 200 OK in 79ms (Views: 31.1ms | ActiveRecord: 38.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 09:12:42 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.66ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 1.1ms)
+
+
+  [1m[35m (6.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (11.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (97.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "description" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:4
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "duration" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:5
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "tracks" ADD "label" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:6
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "tracks" ADD "catno" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (55.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (37.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mTrack Load (3.6ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" ORDER BY "tracks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (15.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 1]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTrack Load (2.4ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 09:48:08 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (4.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.55ms)
+Completed 200 OK in 125ms (Views: 70.0ms | ActiveRecord: 43.9ms)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (33.9ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "catno"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "label"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "duration"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "description"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "url"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (9.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[35mALTER TABLE "tracks" ADD "url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "description" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:4
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "duration" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:5
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "label" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:6
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "catno" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:7
+  [1m[35m (13.3ms)[0m  [1m[35mALTER TABLE "tracks" ADD "id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:8
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "tracks" ADD "url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "description" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "duration" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "label" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:6
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "catno" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:7
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "library_id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" ORDER BY "playlists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.0ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "playlist_id"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "library_id"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "catno"[0m
+  ↳ bin/rails:9
+  [1m[35m (6.2ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "label"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "duration"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "description"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "url"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "description" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "duration" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:5
+  [1m[35m (6.7ms)[0m  [1m[35mALTER TABLE "tracks" ADD "label" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:6
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "catno" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:7
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" ADD "library_id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:8
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "playlist_id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "playlist_id"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "library_id"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "catno"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "label"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "duration"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "description"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" DROP COLUMN "url"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.8ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started POST "/api/v1/releases" for 127.0.0.1 at 2018-06-18 10:02:54 -0400
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.0) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.0) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:03:11 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.0) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.0) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnsToTracks (20180618134230)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "tracks" ADD "url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "description" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tracks" ADD "duration" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "label" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:6
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "tracks" ADD "catno" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:7
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "tracks" ADD "library_id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:8
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "playlist_id" integer[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "resource_url" character varying[0m
+  ↳ db/migrate/20180618134230_add_columns_to_tracks.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180618134230"]]
+  ↳ bin/rails:9
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:04:06 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (2.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.1ms)
+Completed 200 OK in 133ms (Views: 105.9ms | ActiveRecord: 15.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:04:27 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Quadrant", "release"=>"Infinition / Hyperprism", "label"=>"Basic Channel", "catno"=>"BC-QD", "library_id"=>6, "title"=>"", "url"=>"https://www.youtube.com/watch?v=SDBWilXDU7M", "description"=>"Quadrant - Infinition", "duration"=>636, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Quadrant", "release"=>"Infinition / Hyperprism", "url"=>"https://www.youtube.com/watch?v=SDBWilXDU7M", "description"=>"Quadrant - Infinition", "duration"=>636, "label"=>"Basic Channel", "catno"=>"BC-QD", "library_id"=>6, "playlist_id"=>"28"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (22.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Quadrant"], ["release", "Infinition / Hyperprism"], ["created_at", "2018-06-18 14:04:27.356713"], ["updated_at", "2018-06-18 14:04:27.356713"], ["url", "https://www.youtube.com/watch?v=SDBWilXDU7M"], ["description", "Quadrant - Infinition"], ["duration", "636"], ["label", "Basic Channel"], ["catno", "BC-QD"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (1.39ms)
+Completed 200 OK in 147ms (Views: 7.7ms | ActiveRecord: 62.2ms)
+
+
+  [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" ORDER BY "tracks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:09:47 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.42ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:10:09 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"Workparty Three", "label"=>"Keinemusik", "catno"=>"KM015", "library_id"=>7, "title"=>"", "url"=>"https://www.youtube.com/watch?v=8BXco8bf8xM", "description"=>"&ME - Everless (Original Mix)", "duration"=>448, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"Workparty Three", "url"=>"https://www.youtube.com/watch?v=8BXco8bf8xM", "description"=>"&ME - Everless (Original Mix)", "duration"=>448, "label"=>"Keinemusik", "catno"=>"KM015", "library_id"=>7, "playlist_id"=>"28"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (5.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "Workparty Three"], ["created_at", "2018-06-18 14:10:09.790879"], ["updated_at", "2018-06-18 14:10:09.790879"], ["url", "https://www.youtube.com/watch?v=8BXco8bf8xM"], ["description", "&ME - Everless (Original Mix)"], ["duration", "448"], ["label", "Keinemusik"], ["catno", "KM015"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (1.98ms)
+Completed 200 OK in 51ms (Views: 3.5ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:10:54 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.1ms)
+Completed 200 OK in 10ms (Views: 7.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-06-18 10:10:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:11:44 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.29ms)
+Completed 200 OK in 54ms (Views: 21.6ms | ActiveRecord: 15.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:11:52 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"The Persuader", "release"=>"Vårblommor", "label"=>"Tardis Records (2)", "catno"=>"TAR005", "library_id"=>5, "title"=>"", "url"=>"https://www.youtube.com/watch?v=TrMp-lQSRb4", "description"=>"The Persuader - Vitsippa", "duration"=>384, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"The Persuader", "release"=>"Vårblommor", "url"=>"https://www.youtube.com/watch?v=TrMp-lQSRb4", "description"=>"The Persuader - Vitsippa", "duration"=>384, "label"=>"Tardis Records (2)", "catno"=>"TAR005", "library_id"=>5, "playlist_id"=>"28"}}
+Unpermitted parameters: :library_id, :track
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:13:01 -0400
+Completed 500 Internal Server Error in 73712ms (ActiveRecord: 82.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:13:06 -0400
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/api/v1/tracks_controller.rb:11:in `create'
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"The Persuader", "release"=>"Vårblommor", "label"=>"Tardis Records (2)", "catno"=>"TAR005", "library_id"=>5, "title"=>"", "url"=>"https://www.youtube.com/watch?v=ZvsqRsqBJK8", "description"=>"The Persuader - Blåklocka", "duration"=>385, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"The Persuader", "release"=>"Vårblommor", "url"=>"https://www.youtube.com/watch?v=ZvsqRsqBJK8", "description"=>"The Persuader - Blåklocka", "duration"=>385, "label"=>"Tardis Records (2)", "catno"=>"TAR005", "library_id"=>5, "playlist_id"=>"28"}}
+Completed 500 Internal Server Error in 1290ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/api/v1/tracks_controller.rb:11:in `create'
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (191.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (27.38ms)
+Completed 200 OK in 1231ms (Views: 1035.9ms | ActiveRecord: 191.0ms)
+
+
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTrack Load (13.0ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" ORDER BY "tracks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:14:18 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (5.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (86.53ms)
+Completed 200 OK in 677ms (Views: 575.4ms | ActiveRecord: 36.8ms)
+
+
+  [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (17.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tracks"[0m
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:15:06 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"DJ Muscle", "label"=>"W.T. Records", "catno"=>"WT 14", "library_id"=>6, "title"=>"", "url"=>"https://www.youtube.com/watch?v=ocj8Ed4QjpI", "description"=>"Caltrop - Lenny", "duration"=>379, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"DJ Muscle", "url"=>"https://www.youtube.com/watch?v=ocj8Ed4QjpI", "description"=>"Caltrop - Lenny", "duration"=>379, "label"=>"W.T. Records", "catno"=>"WT 14", "library_id"=>6, "playlist_id"=>"28"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[36mTrack Create (19.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "DJ Muscle"], ["created_at", "2018-06-18 14:15:18.169206"], ["updated_at", "2018-06-18 14:15:18.169206"], ["url", "https://www.youtube.com/watch?v=ocj8Ed4QjpI"], ["description", "Caltrop - Lenny"], ["duration", "379"], ["label", "W.T. Records"], ["catno", "WT 14"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (0.85ms)
+Completed 200 OK in 11941ms (Views: 1.7ms | ActiveRecord: 24.5ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:15:33 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.36ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/tracks/6" for 127.0.0.1 at 2018-06-18 10:15:42 -0400
+Processing by Api::V1::TracksController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:31
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (9.25ms)
+Completed 200 OK in 314570ms (Views: 62.6ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:21:01 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (8.66ms)
+Completed 500 Internal Server Error in 193ms (ActiveRecord: 14.7ms)
+
+
+  
+NoMethodError (undefined method `all' for #<Track:0x007ffa39be1460>):
+  
+app/controllers/api/v1/tracks_controller.rb:6:in `index'
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:21:12 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mPlaylist Load (1.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (221.68ms)
+Completed 200 OK in 350ms (Views: 316.6ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:22:08 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (30.71ms)
+Completed 200 OK in 78ms (Views: 60.4ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:22:28 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (7.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.18ms)
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:23:32 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Yoruba Singers", "release"=>"Black Pepper ", "label"=>"Left Ear Records", "catno"=>"LER 1006", "library_id"=>11, "title"=>"", "url"=>"https://www.youtube.com/watch?v=as4b_tT7Adg", "description"=>"Yoruba Singers - Black Pepper (1984)", "duration"=>322, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Yoruba Singers", "release"=>"Black Pepper ", "url"=>"https://www.youtube.com/watch?v=as4b_tT7Adg", "description"=>"Yoruba Singers - Black Pepper (1984)", "duration"=>322, "label"=>"Left Ear Records", "catno"=>"LER 1006", "library_id"=>11, "playlist_id"=>"28"}}
+Unpermitted parameters: :library_id, :track
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:24:11 -0400
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:24:11 -0400
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:24:11 -0400
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:24:11 -0400
+  [1m[35m (6.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[36mTrack Create (1.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Yoruba Singers"], ["release", "Black Pepper "], ["created_at", "2018-06-18 14:24:11.323313"], ["updated_at", "2018-06-18 14:24:11.323313"], ["url", "https://www.youtube.com/watch?v=as4b_tT7Adg"], ["description", "Yoruba Singers - Black Pepper (1984)"], ["duration", "322"], ["label", "Left Ear Records"], ["catno", "LER 1006"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers]   [1m[36mPlaylist Load (10.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:12
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (15.22ms)
+Completed 200 OK in 38809ms (Views: 6.7ms | ActiveRecord: 26.8ms)
+
+
+Processing by Api::V1::PlaylistsController#index as */*
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (11.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.58ms)
+Completed 200 OK in 19ms (Views: 6.9ms | ActiveRecord: 11.8ms)
+
+
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (30.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (1.92ms)
+Completed 200 OK in 37ms (Views: 6.2ms | ActiveRecord: 30.9ms)
+
+
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.72ms)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mPlaylist Load (39.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.43ms)
+Completed 200 OK in 51ms (Views: 6.2ms | ActiveRecord: 39.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:24:23 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Street Corner Symphony", "release"=>"Street Corner Symphony", "label"=>"Open", "catno"=>"OPENT-012", "resource_url"=>"https://api.discogs.com/releases/54356", "library_id"=>8, "title"=>"", "url"=>"https://www.youtube.com/watch?v=G05q1XP0WpQ", "description"=>"Street Corner Symphony  1995", "duration"=>597, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Street Corner Symphony", "release"=>"Street Corner Symphony", "url"=>"https://www.youtube.com/watch?v=G05q1XP0WpQ", "description"=>"Street Corner Symphony  1995", "duration"=>597, "label"=>"Open", "catno"=>"OPENT-012", "library_id"=>8, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/54356"}}
+Unpermitted parameters: :resource_url, :library_id, :track
+  [1m[35m (11.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[36mTrack Create (7.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Street Corner Symphony"], ["release", "Street Corner Symphony"], ["created_at", "2018-06-18 14:24:28.645965"], ["updated_at", "2018-06-18 14:24:28.645965"], ["url", "https://www.youtube.com/watch?v=G05q1XP0WpQ"], ["description", "Street Corner Symphony  1995"], ["duration", "597"], ["label", "Open"], ["catno", "OPENT-012"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers]   [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:12
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (4.91ms)
+Completed 200 OK in 4770ms (Views: 5.5ms | ActiveRecord: 20.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:24:59 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Street Corner Symphony", "release"=>"Street Corner Symphony", "label"=>"Open", "catno"=>"OPENT-012", "resource_url"=>"https://api.discogs.com/releases/54356", "library_id"=>8, "title"=>"", "url"=>"https://www.youtube.com/watch?v=dZDnC17uWmA", "description"=>"Street Corner Symphony - Street Corner Symphony [Open, 1995]", "duration"=>849, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Street Corner Symphony", "release"=>"Street Corner Symphony", "url"=>"https://www.youtube.com/watch?v=dZDnC17uWmA", "description"=>"Street Corner Symphony - Street Corner Symphony [Open, 1995]", "duration"=>849, "label"=>"Open", "catno"=>"OPENT-012", "library_id"=>8, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/54356"}}
+Unpermitted parameters: :resource_url, :library_id, :track
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[36mTrack Create (14.2ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Street Corner Symphony"], ["release", "Street Corner Symphony"], ["created_at", "2018-06-18 14:25:08.329350"], ["updated_at", "2018-06-18 14:25:08.329350"], ["url", "https://www.youtube.com/watch?v=dZDnC17uWmA"], ["description", "Street Corner Symphony - Street Corner Symphony [Open, 1995]"], ["duration", "849"], ["label", "Open"], ["catno", "OPENT-012"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:12
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.41ms)
+Completed 200 OK in 8972ms (Views: 7.1ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:25:27 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (3.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (2.59ms)
+Completed 200 OK in 48ms (Views: 19.3ms | ActiveRecord: 21.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:26:26 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Baaz", "release"=>"Swimmer", "label"=>"Slices Of Life", "catno"=>"SOL 5", "resource_url"=>"https://api.discogs.com/releases/4606878", "library_id"=>6, "title"=>"", "url"=>"https://www.youtube.com/watch?v=hRR94OClSMY", "description"=>"Baaz - Can't Take It Away", "duration"=>489, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Baaz", "release"=>"Swimmer", "url"=>"https://www.youtube.com/watch?v=hRR94OClSMY", "description"=>"Baaz - Can't Take It Away", "duration"=>489, "label"=>"Slices Of Life", "catno"=>"SOL 5", "library_id"=>6, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/4606878"}}
+Unpermitted parameters: :resource_url, :library_id, :track
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (32.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["title", ""], ["artist", "Baaz"], ["release", "Swimmer"], ["created_at", "2018-06-18 14:26:26.531655"], ["updated_at", "2018-06-18 14:26:26.531655"], ["url", "https://www.youtube.com/watch?v=hRR94OClSMY"], ["description", "Baaz - Can't Take It Away"], ["duration", "489"], ["label", "Slices Of Life"], ["catno", "SOL 5"], ["playlist_id", 28]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (16.12ms)
+Completed 200 OK in 135ms (Views: 24.9ms | ActiveRecord: 45.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:27:19 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (46.47ms)
+Completed 200 OK in 123ms (Views: 90.8ms | ActiveRecord: 11.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:27:25 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jayda G", "release"=>"Jaydaisms", "label"=>"Freakout Cult", "catno"=>"CULT 02", "resource_url"=>"https://api.discogs.com/releases/8169015", "library_id"=>7, "title"=>"", "url"=>"https://www.youtube.com/watch?v=wWN5FBdxTb0", "description"=>"Jayda G - Sound of Fuca", "duration"=>326, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Jayda G", "release"=>"Jaydaisms", "url"=>"https://www.youtube.com/watch?v=wWN5FBdxTb0", "description"=>"Jayda G - Sound of Fuca", "duration"=>326, "label"=>"Freakout Cult", "catno"=>"CULT 02", "library_id"=>7, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/8169015"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (9.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", ""], ["artist", "Jayda G"], ["release", "Jaydaisms"], ["created_at", "2018-06-18 14:27:25.974795"], ["updated_at", "2018-06-18 14:27:25.974795"], ["url", "https://www.youtube.com/watch?v=wWN5FBdxTb0"], ["description", "Jayda G - Sound of Fuca"], ["duration", "326"], ["label", "Freakout Cult"], ["catno", "CULT 02"], ["playlist_id", 28], ["resource_url", "https://api.discogs.com/releases/8169015"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (12.34ms)
+Completed 200 OK in 145ms (Views: 31.9ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:28:45 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (60.16ms)
+Completed 200 OK in 90ms (Views: 71.9ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:30:39 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (88.05ms)
+Completed 200 OK in 117ms (Views: 95.5ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:30:45 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (1.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (8.92ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:30:56 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (3.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (103.91ms)
+Completed 200 OK in 159ms (Views: 124.8ms | ActiveRecord: 25.3ms)
+
+
+Started GET "/api/v1/playlists/1" for 127.0.0.1 at 2018-06-18 10:31:00 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::PlaylistsController):
+  
+actionpack (5.2.0) lib/abstract_controller/base.rb:129:in `process'
+actionpack (5.2.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.0) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:31:03 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (9.52ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:31:45 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mPlaylist Load (3.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (61.78ms)
+Completed 200 OK in 68ms (Views: 62.9ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:36:55 -0400
+Processing by Api::V1::TracksController#index as HTML
+  [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE Playlist Load (0.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (85.84ms)
+Completed 200 OK in 129ms (Views: 112.1ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:36:59 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (14.51ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `listing_tracks' for #<Playlist:0x007ffa38e0adc8>):
+  
+app/serializers/playlist_serializer.rb:6:in `tracks'
+app/controllers/api/v1/playlists_controller.rb:7:in `index'
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:40:55 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (3.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (92.69ms)
+Completed 200 OK in 179ms (Views: 123.2ms | ActiveRecord: 39.1ms)
+
+
+  [1m[36mTrack Load (4.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (1.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 4]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 5]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (4.0ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (11.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.8ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTrack Destroy (0.5ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:41:38 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (3.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (9.57ms)
+Completed 200 OK in 18ms (Views: 13.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:41:46 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (7.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (17.39ms)
+Completed 200 OK in 27ms (Views: 12.8ms | ActiveRecord: 13.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:41:54 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Mass Production", "release"=>"Welcome To Our World", "label"=>"Cotillion", "catno"=>"SD 9910", "resource_url"=>"https://api.discogs.com/releases/257509", "library_id"=>12, "title"=>"", "url"=>"https://www.youtube.com/watch?v=TZv26FljO9U", "description"=>"Mass Production - Magic", "duration"=>379, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Mass Production", "release"=>"Welcome To Our World", "url"=>"https://www.youtube.com/watch?v=TZv26FljO9U", "description"=>"Mass Production - Magic", "duration"=>379, "label"=>"Cotillion", "catno"=>"SD 9910", "library_id"=>12, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/257509"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", ""], ["artist", "Mass Production"], ["release", "Welcome To Our World"], ["created_at", "2018-06-18 14:41:54.891664"], ["updated_at", "2018-06-18 14:41:54.891664"], ["url", "https://www.youtube.com/watch?v=TZv26FljO9U"], ["description", "Mass Production - Magic"], ["duration", "379"], ["label", "Cotillion"], ["catno", "SD 9910"], ["playlist_id", 28], ["resource_url", "https://api.discogs.com/releases/257509"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (2.8ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (30.24ms)
+Completed 200 OK in 55ms (Views: 30.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:42:07 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (11.05ms)
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:52:04 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (2.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (148.51ms)
+Completed 200 OK in 200ms (Views: 153.3ms | ActiveRecord: 34.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:52:53 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (10.69ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:53:07 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (12.28ms)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:53:14 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (14.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (9.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (21.74ms)
+Completed 200 OK in 40ms (Views: 12.8ms | ActiveRecord: 26.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:55:41 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (139.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (27.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (58.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (257.05ms)
+Completed 200 OK in 505ms (Views: 167.5ms | ActiveRecord: 330.3ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:55:50 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (10.79ms)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:55:52 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (10.74ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-18 10:56:00 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Nicholas (14)", "release"=>"You Can't Hide / Black Sugar", "label"=>"X-Masters", "catno"=>"X1602", "resource_url"=>"https://api.discogs.com/releases/9256121", "library_id"=>3, "title"=>"", "url"=>"https://www.youtube.com/watch?v=VcW5F630fME", "description"=>"Nicholas ft. Nikki-O - Black Sugar - X-MASTERS", "duration"=>121, "playlist_id"=>"28", "track"=>{"title"=>"", "artist"=>"Nicholas (14)", "release"=>"You Can't Hide / Black Sugar", "url"=>"https://www.youtube.com/watch?v=VcW5F630fME", "description"=>"Nicholas ft. Nikki-O - Black Sugar - X-MASTERS", "duration"=>121, "label"=>"X-Masters", "catno"=>"X1602", "library_id"=>3, "playlist_id"=>"28", "resource_url"=>"https://api.discogs.com/releases/9256121"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (11.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", ""], ["artist", "Nicholas (14)"], ["release", "You Can't Hide / Black Sugar"], ["created_at", "2018-06-18 14:56:00.524051"], ["updated_at", "2018-06-18 14:56:00.524051"], ["url", "https://www.youtube.com/watch?v=VcW5F630fME"], ["description", "Nicholas ft. Nikki-O - Black Sugar - X-MASTERS"], ["duration", "121"], ["label", "X-Masters"], ["catno", "X1602"], ["playlist_id", 28], ["resource_url", "https://api.discogs.com/releases/9256121"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (9.87ms)
+Completed 200 OK in 36ms (Views: 11.9ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 10:56:04 -0400
+Processing by Api::V1::PlaylistsController#index as HTML
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (11.87ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/playlists/28" for 127.0.0.1 at 2018-06-18 10:56:10 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"28"}
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (11.08ms)
+Completed 200 OK in 92ms (Views: 11.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 11:04:05 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (11.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (82.55ms)
+Completed 200 OK in 126ms (Views: 101.4ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 11:06:51 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (16.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (13.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (7.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (37.3ms)
+Completed 200 OK in 59ms (Views: 20.6ms | ActiveRecord: 37.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 11:09:16 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (17.5ms)
+Completed 200 OK in 22ms (Views: 17.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 11:10:04 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (11.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (16.88ms)
+Completed 200 OK in 33ms (Views: 19.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-18 11:10:45 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (24.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (48.68ms)
+Completed 200 OK in 53ms (Views: 22.2ms | ActiveRecord: 30.6ms)
+
+

@@ -12,6 +12,11 @@ class Api::V1::PlaylistsController < ApplicationController
     render json: playlist
   end
 
+  def show
+    
+    render json: @playlist
+  end
+
   private
 
   def set_playlist

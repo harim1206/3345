@@ -1,4 +1,4 @@
 class Playlist < ApplicationRecord
-  has_many :releases
+  has_many :tracks
 
 end

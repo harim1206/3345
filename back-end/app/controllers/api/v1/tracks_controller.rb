@@ -6,18 +6,13 @@ class Api::V1::TracksController < ApplicationController
     render json: Track.all
   end
 
-  def show
-    render json: @track
+  def create
+    track = Track.create(track_params)
+    render json: track
   end
 
-  def collection
-
-    @collection = Collection.new
-    render json: @collection
-    # byebug
-
-    # puts("collection: #{@collection.collection}")
-
+  def show
+    render json: @track
   end
 
   private
@@ -26,6 +21,9 @@ class Api::V1::TracksController < ApplicationController
   #   # whitelist params
   #   params.permit(:title, :created_by)
   # end
+  def track_params
+    params.permit(:title, :artist, :release, :url, :description, :duration, :label, :catno, :playlist_id, :resource_url)
+  end
 
   def set_track
     @track = Track.find(params[:id])
