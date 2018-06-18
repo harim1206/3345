@@ -22,6 +22,7 @@ export const parseJSONtoData = (releases) => {
         label : data.labels[0].name,
         catno : data.labels[0].catno,
         resource_url: data.resource_url,
+        date_added: release.date_added
       }
     )
   })

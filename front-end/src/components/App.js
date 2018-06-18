@@ -13,11 +13,14 @@ class App extends Component {
     releases: [],
     shuffledReleases: [],
     // Current Release
+    currentVideoURL: "",
     currentRelease: {},
     nextRelease:{},
-    currentReleaseURL: "",
     currentReleaseTracks: [],
     currentReleaseVideos:[],
+    // Current Track
+    currentTrack: {},
+    nextTrack: {},
     // Playlists
     newPlaylistInput: "",
     playlists: [],
@@ -35,9 +38,19 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let shuffledReleases = shuffleArr(data.releases).slice(0,50)
+      let releases = data.releases.slice(0,20)
 
-      const parsedData = parseJSONtoData(shuffledReleases)
+      let releasesSortedByDateAdded = releases.sort((a,b)=>{
+        let keyA = new Date(a.date_added),
+            keyB = new Date(b.date_added);
+
+        if(keyA < keyB) return 1;
+        if(keyA > keyB) return -1;
+        return 0;
+      })
+
+
+      const parsedData = parseJSONtoData(releases)
 
       this.setState({
         pagination: data.pagination,
@@ -112,21 +125,28 @@ class App extends Component {
         nextRelease: this.state.shuffledReleases[id+1],
         currentReleaseTracks: tracks,
         currentReleaseVideos: videos,
-        currentReleaseURL: randomVideo.uri
+        currentVideoURL: randomVideo.uri
       },()=>console.log(`state onClick: `,this.state))
     })
   }
 
   onCurrentPlaylistTrackClick = (track) =>{
+    console.log(`this.state.currentPlaylistTracks`,this.state.currentPlaylistTracks)
+
+    const tracks = this.state.currentPlaylistTracks
+    const currentIndex = tracks.indexOf(track)
+    const nextTrack = tracks[currentIndex+1]
 
     this.setState({
-      currentReleaseURL: track.url
-    })
+      currentTrack: track,
+      nextTrack: nextTrack,
+      currentVideoURL: track.url
+    },()=>console.log(`on track click state`, this.state))
   }
 
   onYoutubeClick = (video, event) =>{
     this.setState({
-      currentReleaseURL: video.uri
+      currentVideoURL: video.uri
     })
   }
 
@@ -142,15 +162,32 @@ class App extends Component {
 
   // play next video once it finishes
   onEnded = () =>{
-    const nextReleaseId = this.state.shuffledReleases.indexOf(this.state.nextRelease)
 
-    this.setState({
-      currentRelease: this.state.nextRelease,
-      nextRelease: this.state.shuffledReleases[nextReleaseId+1]
+    if(!this.state.playlistDisplay){
+      const nextReleaseId = this.state.shuffledReleases.indexOf(this.state.nextRelease)
 
-    }, ()=>{
-      this.fetchReleaseURL(this.state.currentRelease)
-    })
+      this.setState({
+        currentRelease: this.state.nextRelease,
+        nextRelease: this.state.shuffledReleases[nextReleaseId+1]
+
+      }, ()=>{
+        this.fetchReleaseURL(this.state.currentRelease)
+      })
+
+    }else{
+      const tracks = this.state.currentPlaylistTracks
+      const currentIndex = tracks.indexOf(this.state.currentTrack)
+      const nextTrack = tracks[currentIndex+2]
+
+      this.setState({
+        currentVideoURL: this.state.nextTrack.url,
+        currentTrack: this.state.nextTrack,
+        nextTrack: nextTrack
+
+      },()=>console.log(`this.state onEnded`,this.state))
+
+    }
+
 
 
   }
@@ -167,7 +204,7 @@ class App extends Component {
       }
 
       this.setState({
-          currentReleaseURL: randomVideo.uri
+          currentVideoURL: randomVideo.uri
         },()=>{
           // console.log(`this.state after URL fetch, `,this.state)
       })
@@ -300,7 +337,7 @@ class App extends Component {
       <div className="App">
         <Video
           onEnded={this.onEnded}
-          currentReleaseURL={this.state.currentReleaseURL}
+          currentVideoURL={this.state.currentVideoURL}
         />
         <div className="main-container">
           <PlaylistContainer

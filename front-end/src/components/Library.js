@@ -23,7 +23,7 @@ class Library extends Component{
       )
     })
 
-    const columnHeaders = ['Id','Artist','Title','Label','Catno',''].map((cat)=>{
+    const columnHeaders = ['Id','Artist','Title','Label','Catno','Date Added'].map((cat)=>{
       return(
         <th onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
       )

@@ -6,6 +6,7 @@ class Release extends Component{
 
   render(){
     const release = this.props.release
+    const date = new Date(release.date_added)
 
     // const playlistSelectOptions = this.props.playlists.map((playlist)=>{
     //   return <option value={playlist.id}>{playlist.name}</option>
@@ -24,7 +25,7 @@ class Release extends Component{
       />
     }
 
-
+    // debugger
     return(
       <React.Fragment>
         <tr onClick={()=>this.props.onClick(release, release.id)}>
@@ -33,6 +34,8 @@ class Release extends Component{
           <td>{release.title}</td>
           <td>{release.label}</td>
           <td>{release.catno}</td>
+          <td>{date.toLocaleDateString()}</td>
+
         </tr>
 
         {trackContainer}
