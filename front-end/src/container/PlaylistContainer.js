@@ -11,6 +11,7 @@ class PlaylistContainer extends Component{
 
     return(
       <div>
+        <button onClick={this.props.onLibraryToggleClick}>library</button><br/>
         new playlist
         <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>
           <input

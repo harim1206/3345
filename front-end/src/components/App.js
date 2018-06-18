@@ -21,6 +21,8 @@ class App extends Component {
     // Playlists
     newPlaylistInput: "",
     playlists: [],
+    // Playlist Display
+    currentPlaylistTracks: [],
     // toggle
     playlistDisplay: false
   }
@@ -115,6 +117,13 @@ class App extends Component {
     })
   }
 
+  onCurrentPlaylistTrackClick = (track) =>{
+
+    this.setState({
+      currentReleaseURL: track.url
+    })
+  }
+
   onYoutubeClick = (video, event) =>{
     this.setState({
       currentReleaseURL: video.uri
@@ -206,14 +215,29 @@ class App extends Component {
 
   // Toggle playlist on click
   onPlaylistClick = (playlist) => {
-    debugger
 
     const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
 
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-      debugger
+      const tracks = data.data.attributes.tracks
+      console.log(`currentPlaylistTracks before`,this.state.currentPlaylistTracks)
+
+      this.setState({
+        playlistDisplay: true,
+        currentPlaylistTracks: tracks
+
+      }, ()=>{console.log(`currentPlaylistTracks`,this.state.currentPlaylistTracks)})
+    })
+
+  }
+
+  // Toggle library on click
+  onLibraryToggleClick = () =>{
+
+    this.setState({
+      playlistDisplay: false
     })
 
   }
@@ -266,13 +290,15 @@ class App extends Component {
         onYoutubeClick={this.onYoutubeClick}
       />
     }else{
-      library = <PlaylistDisplayContainer/>
+      library = <PlaylistDisplayContainer
+        currentPlaylistTracks={this.state.currentPlaylistTracks}
+        onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
+      />
     }
 
     return (
       <div className="App">
         <Video
-          onClick={this.onClick}
           onEnded={this.onEnded}
           currentReleaseURL={this.state.currentReleaseURL}
         />
@@ -283,6 +309,7 @@ class App extends Component {
             onPlaylistClick = {this.onPlaylistClick}
             newPlaylistInput = {this.state.newPlaylistInput}
             playlists = {this.state.playlists}
+            onLibraryToggleClick = {this.onLibraryToggleClick}
           />
           {library}
 
