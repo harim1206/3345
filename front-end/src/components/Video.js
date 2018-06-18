@@ -5,6 +5,7 @@ class Video extends Component {
 
 
   render(){
+    debugger
     return (
       <div className="video-component-wrapper">
         <ReactPlayer url={this.props.currentVideoURL} controls={true} playing={false} onEnded={this.props.onEnded}/>

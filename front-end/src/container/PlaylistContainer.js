@@ -10,7 +10,7 @@ class PlaylistContainer extends Component{
     })
 
     return(
-      <div>
+      <div className="playlistContainer-wrapper">
         <button onClick={this.props.onLibraryToggleClick}>library</button><br/>
         new playlist
         <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>

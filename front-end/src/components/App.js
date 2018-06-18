@@ -38,7 +38,7 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let releases = data.releases.slice(0,20)
+      let releases = data.releases.slice(0,50)
 
       let releasesSortedByDateAdded = releases.sort((a,b)=>{
         let keyA = new Date(a.date_added),
@@ -153,8 +153,25 @@ class App extends Component {
   // on table column header sort
   onSort = (sortKey) =>{
     let data = this.state.shuffledReleases
+    console.log(`sortKey: `,sortKey)
 
-    sortKey === 'id' ? data.sort((a,b) => a[sortKey] - b[sortKey]) : data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+    if(sortKey === 'id'){
+      data.sort((a,b) => a[sortKey] - b[sortKey])
+    }else if(sortKey=== 'date added'){
+      data.sort((a,b)=>{
+        let keyA = new Date(a['date_added']),
+            keyB = new Date(b['date_added']);
+
+        if(keyA < keyB) return 1;
+        if(keyA > keyB) return -1;
+        return 0;
+      })
+
+    }else{
+      data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+    }
+
+
 
     this.setState({shuffledReleases: data})
 

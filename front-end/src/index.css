@@ -1,41 +1,55 @@
 body {
   min-width: 1000px;
+  max-width: 1300px;
+  margin: auto;
   height: 100%;
-  margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /* background-image: url('assets/AkilaBerjaoui_JeTaimeCapri.jpg') */
 }
 
 
 
 .video-component-wrapper{
   margin-top: 50px;
-  /* height: 40px; */
   display: flex;
   justify-content: center;
+  /* height: 250px; */
 }
 
 .video-component-wrapper iframe{
-  /* height: 40px; */
+
 }
 
 .main-container{
   display: grid;
-  width: 80%;
+  width: 640px;
   margin: 25px auto 0 auto;
   grid-template-columns: 25% auto;
 
 }
 
-.library-wrapper{
-  overflow: auto;
+.playlistcontainer-wrapper{
+
 }
 
-.library-wrapper ul{
-  /* border: black 1px solid; */
+.library-wrapper{
   height: 300px;
-  width: 640px;
+  overflow-y: auto;
+}
 
+.library-wrapper table{
+
+
+}
+
+.library-wrapper thead{
+
+}
+
+.library-wrapper tbody{
+  height: 300px;
+  overflow: auto;
 }
 
 
