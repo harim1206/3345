@@ -32,15 +32,16 @@ class TrackContainer extends Component{
       return (
         <tr onClick={(event)=>this.props.onYoutubeClick(video, event)}>
           <td></td>
-          <td></td>
-          <td>{video.title}</td>
-          <td><a href={video.uri}> link </a></td>
-          <td>{video.duration}</td>
           <td>
             <select name="text" onChange={(event)=>this.props.onTrackPlaylistChange(video, this.props.currentRelease, event)}>
               {playlistSelectOptions}
             </select>
+
           </td>
+          <td>{video.title}</td>
+          <td><a href={video.uri}> link </a></td>
+          <td>{video.duration}</td>
+          <td></td>
         </tr>
 
       )
@@ -53,7 +54,7 @@ class TrackContainer extends Component{
         </tr>
         {tracks}
         <tr>
-          {this.columnHeaders(['','','YouTube','URL','Duration','Playlist'])}
+          {this.columnHeaders(['','Playlist','YouTube','URL','Duration',''])}
         </tr>
         {youtubes}
       </React.Fragment>

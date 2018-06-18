@@ -27,7 +27,8 @@ class App extends Component {
     // Playlist Display
     currentPlaylistTracks: [],
     // toggle
-    playlistDisplay: false
+    playlistDisplay: false,
+    playlistContainerDisplay: true
   }
 
 
@@ -330,6 +331,7 @@ class App extends Component {
 
   render() {
     let library
+    let playlist
 
     if(!this.state.playlistDisplay){
       library = <Library
@@ -350,21 +352,29 @@ class App extends Component {
       />
     }
 
+    if(this.state.playlistContainerDisplay){
+      playlist =  <PlaylistContainer
+        onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
+        onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
+        onPlaylistClick = {this.onPlaylistClick}
+        newPlaylistInput = {this.state.newPlaylistInput}
+        playlists = {this.state.playlists}
+        onLibraryToggleClick = {this.onLibraryToggleClick}
+      />
+    }
+
     return (
       <div className="App">
         <Video
           onEnded={this.onEnded}
           currentVideoURL={this.state.currentVideoURL}
         />
+        <div className="playlist-toggle-div">
+          playlist
+        </div>
         <div className="main-container">
-          <PlaylistContainer
-            onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
-            onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
-            onPlaylistClick = {this.onPlaylistClick}
-            newPlaylistInput = {this.state.newPlaylistInput}
-            playlists = {this.state.playlists}
-            onLibraryToggleClick = {this.onLibraryToggleClick}
-          />
+          {playlist}
+
           {library}
 
         </div>
