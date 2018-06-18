@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Video from './Video.js'
 import Library from './Library.js'
 import PlaylistContainer from '../container/PlaylistContainer.js'
+import PlaylistDisplayContainer from '../container/PlaylistDisplayContainer'
 
 import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 
@@ -19,7 +20,9 @@ class App extends Component {
     currentReleaseVideos:[],
     // Playlists
     newPlaylistInput: "",
-    playlists: []
+    playlists: [],
+    // toggle
+    playlistDisplay: false
   }
 
 
@@ -248,6 +251,24 @@ class App extends Component {
   }
 
   render() {
+    let library
+
+    if(!this.state.playlistDisplay){
+      library = <Library
+        shuffledReleases={this.state.shuffledReleases}
+        currentRelease={this.state.currentRelease}
+        currentReleaseTracks={this.state.currentReleaseTracks}
+        currentReleaseVideos={this.state.currentReleaseVideos}
+        playlists={this.state.playlists}
+        onClick={this.onClick}
+        onSort={this.onSort}
+        onTrackPlaylistChange={this.onTrackPlaylistChange}
+        onYoutubeClick={this.onYoutubeClick}
+      />
+    }else{
+      library = <PlaylistDisplayContainer/>
+    }
+
     return (
       <div className="App">
         <Video
@@ -263,22 +284,14 @@ class App extends Component {
             newPlaylistInput = {this.state.newPlaylistInput}
             playlists = {this.state.playlists}
           />
-          <Library
-            shuffledReleases={this.state.shuffledReleases}
-            currentRelease={this.state.currentRelease}
-            currentReleaseTracks={this.state.currentReleaseTracks}
-            currentReleaseVideos={this.state.currentReleaseVideos}
-            playlists={this.state.playlists}
-            onClick={this.onClick}
-            onSort={this.onSort}
-            onTrackPlaylistChange={this.onTrackPlaylistChange}
-            onYoutubeClick={this.onYoutubeClick}
-          />
+          {library}
+
         </div>
       </div>
     );
   }
 }
+
 
 
 export default App;

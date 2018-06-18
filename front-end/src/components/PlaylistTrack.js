@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 class PlaylistTrack extends Component{
 
   render(){
-    return()
+    return(
+      <div></div>
+
+    )
   }
 }
 

@@ -5,7 +5,9 @@ class PlaylistDisplayContainer extends Component{
 
 
   render(){
-    return()
+    return(
+      <div>PlaylistDisplayContainer</div>
+    )
   }
 }
 
