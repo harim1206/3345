@@ -232,8 +232,8 @@ class App extends Component {
   }
 
   // on new playlist submit
-  onNewPlaylistSubmit = (e) =>{
-    e.preventDefault()
+  onNewPlaylistSubmit = () =>{
+    // e.preventDefault()
 
     let postData = {
       name: this.state.newPlaylistInput
@@ -291,10 +291,19 @@ class App extends Component {
   // Toggle library on click
   onLibraryToggleClick = () =>{
 
+
     this.setState({
-      playlistDisplay: false
+      playlistDisplay: false,
     })
 
+  }
+
+  onPlaylistToggleClick = () =>{
+    // debugger
+    const toggle = !this.state.playlistContainerDisplay
+    this.setState({
+      playlistContainerDisplay: toggle
+    })
   }
 
   // on playlist select menu change, add track to playlist
@@ -370,9 +379,14 @@ class App extends Component {
           currentVideoURL={this.state.currentVideoURL}
         />
         <div className="playlist-toggle-div">
-          playlist
+          <div onClick={this.onPlaylistToggleClick}>
+            playlists
+          </div>
+          <div onClick={this.onLibraryToggleClick}>
+            library
+          </div>
         </div>
-        <div className="main-container">
+        <div className={this.state.playlistContainerDisplay ? "main-container" : "main-container-playlisthidden"}>
           {playlist}
 
           {library}
@@ -382,6 +396,7 @@ class App extends Component {
     );
   }
 }
+// className={completed ? 'text-strike' : null}
 
 
 

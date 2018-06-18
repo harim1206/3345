@@ -29,18 +29,49 @@ body {
   margin: auto;
 }
 
+.playlist-toggle-div div{
+  display: inline-block;
+  margin-right: 5px;
+}
+
 .main-container{
   display: grid;
   width: 640px;
   margin: auto;
-  grid-template-columns: 25% auto;
+  grid-template-columns: 20% auto;
+
+}
+
+.main-container-playlisthidden{
+  width: 640px;
+  margin: auto;
 
 }
 
 .playlistContainer-wrapper{
   background-color: white;
+  position: relative;
+  padding-top: 10px;
 
 }
+
+.new-playlist-wrapper{
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.new-playlist-wrapper i{
+  padding-top: 5px;
+}
+.new-playlist-wrapper input{
+  width: 70%;
+  margin-right: 5px;
+}
+
+
 
 .library-wrapper{
   background-color: white;
@@ -48,20 +79,17 @@ body {
   overflow-y: auto;
 }
 
-.library-wrapper table{
-
-
+.library-table{
+  width: 700px;
 }
 
-.library-wrapper thead{
 
-}
-
-.library-wrapper tbody{
+.playlistDisplay-wrapper{
+  background-color: white;
   height: 300px;
-  overflow: auto;
-}
+  overflow-y: auto;
 
+}
 
 .track-column-header{
   font-weight: bold;

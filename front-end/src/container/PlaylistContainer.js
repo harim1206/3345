@@ -11,22 +11,39 @@ class PlaylistContainer extends Component{
 
     return(
       <div className="playlistContainer-wrapper">
-        <button onClick={this.props.onLibraryToggleClick}>library</button><br/>
-        new playlist
-        <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>
+
+        {playlists}
+
+        <div className="new-playlist-wrapper">
           <input
             type="text"
             value={this.props.newPlaylistInput}
+            placeholder="new playlist"
             onChange={(e)=>this.props.onNewPlaylistInputchange(e)}
           />
-          <input type="submit"/>
-        </form>
 
-        {playlists}
+          <i className="fas fa-plus" onClick={this.props.onNewPlaylistSubmit}></i>
+
+        </div>
+
+
       </div>
     )
   }
 
 }
+
+// <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>
+//   <input
+//     type="text"
+//     value={this.props.newPlaylistInput}
+//     onChange={(e)=>this.props.onNewPlaylistInputchange(e)}
+//   />
+//   <input type="submit"/>
+//
+//
+//
+// </form>
+
 
 export default PlaylistContainer
