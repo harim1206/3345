@@ -3,7 +3,7 @@ import Video from './Video.js'
 import Library from './Library.js'
 import PlaylistContainer from '../container/PlaylistContainer.js'
 
-import { shuffleArr } from '../helpers/helper.js'
+import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 
 class App extends Component {
   state={
@@ -22,54 +22,7 @@ class App extends Component {
     playlists: []
   }
 
-  // takes in raw fetch json data and returns clean data for state
-  parseJSONtoData = (releases) => {
-    return releases.map((release)=>{
-      let data = release.basic_information
 
-      // let tracks = []
-      // let videos = []
-      // fetch(data.resource_url)
-      // .then(res => res.json())
-      // .then(data => {
-      //   debugger
-      //   let tracksData = data.tracklist.map((track)=>{
-      //     return ({
-      //       duration: track.duration,
-      //       position: track.position,
-      //       title: track.title
-      //     })
-      //   })
-      //   tracks = [...tracks, tracksData]
-      //
-      //   if(data.videos){
-      //     // debugger
-      //     let videosData = data.videos.map((video)=>{
-      //       return({
-      //         description: video.description,
-      //         title: video.title,
-      //         uri: video.uri,
-      //         duration: video.duration
-      //       })
-      //     })
-      //
-      //     videos = [...videos, videosData]
-      //   }
-      // })
-      // debugger
-
-      return(
-        {
-          id: releases.indexOf(release),
-          artist : data.artists[0].name,
-          title : data.title,
-          label : data.labels[0].name,
-          catno : data.labels[0].catno,
-          resource_url: data.resource_url,
-        }
-      )
-    })
-  }
 
   componentDidMount(){
     const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
@@ -78,8 +31,8 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
       let shuffledReleases = shuffleArr(data.releases).slice(0,50)
-      debugger
-      const parsedData = this.parseJSONtoData(shuffledReleases)
+
+      const parsedData = parseJSONtoData(shuffledReleases)
 
       this.setState({
         pagination: data.pagination,
@@ -93,6 +46,7 @@ class App extends Component {
       })
     })
 
+    // fetch playlists from server
     const playlistUrl = '//localhost:3000/api/v1/playlists'
     fetch(playlistUrl)
     .then(res => res.json())
@@ -108,15 +62,6 @@ class App extends Component {
     })
 
   }
-
-  // returns a shuffled array
-  // shuffleArr = (a) => {
-  //   for (let i = a.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [a[i], a[j]] = [a[j], a[i]];
-  //   }
-  //   return a;
-  // }
 
   // Play video on click of the release
   onClick = (release, id) => {
