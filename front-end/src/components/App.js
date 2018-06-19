@@ -39,7 +39,7 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let releases = data.releases.slice(0,50)
+      let releases = data.releases.slice(0,150)
 
       let releasesSortedByDateAdded = releases.sort((a,b)=>{
         let keyA = new Date(a.date_added),
