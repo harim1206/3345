@@ -13,19 +13,33 @@ body {
 
 
 .video-component-wrapper{
-  margin-top: 50px;
+  padding-top: 50px;
   display: flex;
-  justify-content: center;
-  height: 250px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.video-component-wrapper iframe{
-  height: 250px;
+.video-component-wrapper .image-wrapper{
+  width: 600px;
+  background-color: black;
+
+}
+
+.video-component-wrapper img{
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: auto;
+}
+
+.video-component-wrapper iframe, .react-player{
+  height: 45px;
+  width: 600px;
 
 }
 
 .playlist-toggle-div{
-  width: 640px;
+  width: 600px;
   margin: auto;
 }
 
@@ -36,14 +50,14 @@ body {
 
 .main-container{
   display: grid;
-  width: 640px;
+  width: 600px;
   margin: auto;
   grid-template-columns: 20% auto;
 
 }
 
 .main-container-playlisthidden{
-  width: 640px;
+  width: 600px;
   margin: auto;
 
 }

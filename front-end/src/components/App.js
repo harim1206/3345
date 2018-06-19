@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import BodyImages from 'react-body-images';
+
 import Video from './Video.js'
 import Library from './Library.js'
 import PlaylistContainer from '../container/PlaylistContainer.js'
 import PlaylistDisplayContainer from '../container/PlaylistDisplayContainer'
 
 import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
+require('dotenv').config()
 
 class App extends Component {
   state={
@@ -18,6 +21,7 @@ class App extends Component {
     nextRelease:{},
     currentReleaseTracks: [],
     currentReleaseVideos:[],
+    currentReleaseImgUrl:"",
     // Current Track
     currentTrack: {},
     nextTrack: {},
@@ -88,7 +92,10 @@ class App extends Component {
     let tracks = []
     let videos = []
 
-    fetch(release.resource_url)
+    const token = process.env.REACT_APP_API_TOKEN;
+    const url = release.resource_url + `?token=${token}`
+
+    fetch(url)
     .then(res => res.json())
     .then(data => {
 
@@ -120,15 +127,17 @@ class App extends Component {
         videos = videosData
       }
 
-
       this.setState({
         currentRelease: release,
         nextRelease: this.state.shuffledReleases[id+1],
         currentReleaseTracks: tracks,
         currentReleaseVideos: videos,
-        currentVideoURL: randomVideo.uri
+        currentVideoURL: randomVideo.uri,
+        currentReleaseImgUrl: data.images[0].uri,
       },()=>console.log(`state onClick: `,this.state))
     })
+
+
   }
 
   onCurrentPlaylistTrackClick = (track) =>{
@@ -341,6 +350,28 @@ class App extends Component {
   render() {
     let library
     let playlist
+    let img
+    let appStyle
+
+
+    // var divStyle = {
+    //   color: 'white',
+    //   backgroundImage: 'url(' + imgUrl + ')',
+    //   WebkitTransition: 'all', // note the capital 'W' here
+    //   msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+    // };
+    //
+    // ReactDOM.render(<div style={divStyle}>Hello World!</div>, mountNode);
+
+
+    if(this.state.currentReleaseImgUrl){
+      appStyle = {
+        backgroundImage: `url(${this.state.currentReleaseImgUrl})`
+      }
+      img = <img src={this.state.currentReleaseImgUrl} alt="Smiley face" height={"300"} width={"300"}/>
+    }
+
+    console.log(`appStyle: `, appStyle)
 
     if(!this.state.playlistDisplay){
       library = <Library
@@ -374,10 +405,19 @@ class App extends Component {
 
     return (
       <div className="App">
+
+      <BodyImages>
+      </BodyImages>
+
+
+
+
         <Video
           onEnded={this.onEnded}
           currentVideoURL={this.state.currentVideoURL}
+          currentReleaseImageURL={this.state.currentReleaseImgUrl}
         />
+
         <div className="playlist-toggle-div">
           <div onClick={this.onPlaylistToggleClick}>
             playlists
@@ -386,12 +426,12 @@ class App extends Component {
             library
           </div>
         </div>
+
         <div className={this.state.playlistContainerDisplay ? "main-container" : "main-container-playlisthidden"}>
           {playlist}
-
           {library}
-
         </div>
+
       </div>
     );
   }
