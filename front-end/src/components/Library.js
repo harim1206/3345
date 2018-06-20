@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Release from './Release'
-// import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+
 
 class Library extends Component{
 
@@ -23,7 +23,7 @@ class Library extends Component{
       )
     })
 
-    const columnHeaders = ['Id','Artist','Title','Label','Catno','Date Added'].map((cat)=>{
+    const columnHeaders = ['ARTIST','TITLE','LABEL','CATNO','DATE'].map((cat)=>{
       return(
         <th onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
       )

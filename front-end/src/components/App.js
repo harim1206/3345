@@ -41,7 +41,7 @@ class App extends Component {
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let releases = data.releases.slice(0,150)
+      let releases = data.releases.slice(0,300)
 
       let releasesSortedByDateAdded = releases.sort((a,b)=>{
         let keyA = new Date(a.date_added),
@@ -51,7 +51,6 @@ class App extends Component {
         if(keyA > keyB) return -1;
         return 0;
       })
-
 
       const parsedData = parseJSONtoData(releases)
 
@@ -284,13 +283,12 @@ class App extends Component {
     .then(res=>res.json())
     .then(data=>{
       const tracks = data.data.attributes.tracks
-      console.log(`currentPlaylistTracks before`,this.state.currentPlaylistTracks)
 
       this.setState({
         playlistDisplay: true,
         currentPlaylistTracks: tracks
 
-      }, ()=>{console.log(`currentPlaylistTracks`,this.state.currentPlaylistTracks)})
+      }/*, ()=>{console.log(`currentPlaylistTracks`,this.state.currentPlaylistTracks)}*/)
     })
 
   }
@@ -354,6 +352,14 @@ class App extends Component {
     let bgLeft
     let bgRepeat
 
+    let libraryToggleButton
+
+    if(this.state.playlistDisplay===true){
+      libraryToggleButton = <div onClick={this.onLibraryToggleClick}>
+        LIBRARY
+      </div>
+    }
+
 
     if(this.state.currentReleaseImgUrl){
       bgUrl = this.state.currentReleaseImgUrl
@@ -370,7 +376,7 @@ class App extends Component {
     let bgStyle = {
       backgroundImage: `url('${bgUrl}')`,
       backgroundSize: bgSize,
-      width: '2000px',
+      width: '2500px',
       height: '2000px',
       backgroundRepeat: bgRepeat,
       position: 'fixed',
@@ -415,25 +421,29 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Video
-          onEnded={this.onEnded}
-          currentVideoURL={this.state.currentVideoURL}
-          currentReleaseImageURL={this.state.currentReleaseImgUrl}
-        />
+        <div className="main-container-shadow">
+          <Video
+            onEnded={this.onEnded}
+            currentVideoURL={this.state.currentVideoURL}
+            currentReleaseImageURL={this.state.currentReleaseImgUrl}
+          />
 
-        <div className="playlist-toggle-div">
-          <div onClick={this.onPlaylistToggleClick}>
-            playlists
+          <div className = "main-container-padding">
+          <div className="playlist-toggle-div">
+            <div onClick={this.onPlaylistToggleClick}>
+              PLAYLISTS
+            </div>
+            {libraryToggleButton}
           </div>
-          <div onClick={this.onLibraryToggleClick}>
-            library
+
+          <div className={this.state.playlistContainerDisplay ? "main-container" : "main-container-playlisthidden"}>
+            {playlist}
+            {library}
           </div>
         </div>
-
-        <div className={this.state.playlistContainerDisplay ? "main-container" : "main-container-playlisthidden"}>
-          {playlist}
-          {library}
         </div>
+
+
 
         {bgDiv}
 

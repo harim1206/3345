@@ -13,12 +13,12 @@ class TrackContainer extends Component{
 
     const tracks = this.props.currentReleaseTracks.map((track)=>{
       return (
-        <tr>
-          <td></td>
+        <tr className='track-container-row'>
           <td></td>
           <td>{track.title}</td>
           <td>{track.position}</td>
           <td>{track.duration}</td>
+          <td></td>
         </tr>
 
       )
@@ -30,31 +30,37 @@ class TrackContainer extends Component{
 
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
       return (
-        <tr onClick={(event)=>this.props.onYoutubeClick(video, event)}>
+        <tr className='track-container-row' onClick={(event)=>this.props.onYoutubeClick(video, event)}>
           <td></td>
+          <td>{video.title}</td>
           <td>
             <select name="text" onChange={(event)=>this.props.onTrackPlaylistChange(video, this.props.currentRelease, event)}>
               {playlistSelectOptions}
             </select>
 
           </td>
-          <td>{video.title}</td>
           <td><a href={video.uri}> link </a></td>
-          <td>{video.duration}</td>
           <td></td>
         </tr>
+
 
       )
     })
 
     return(
       <React.Fragment>
-        <tr>
-          {this.columnHeaders(['','','Title','Position','Duration',''])}
+        <tr className='track-container-row'>
+          <td colspan={5} style={{fontWeight: 'bold'}}>TRACKLIST</td>
+        </tr>
+        <tr className='track-container-row'>
+          {this.columnHeaders(['','Title','Position','',''])}
         </tr>
         {tracks}
-        <tr>
-          {this.columnHeaders(['','Playlist','YouTube','URL','Duration',''])}
+        <tr className='track-container-row'>
+          <td colspan={5} style={{fontWeight: 'bold'}}>YOUTUBE LINKS</td>
+        </tr>
+        <tr className='track-container-row'>
+          {this.columnHeaders(['','Title','Playlist','URL',''])}
         </tr>
         {youtubes}
       </React.Fragment>

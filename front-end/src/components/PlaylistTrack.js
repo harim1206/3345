@@ -10,13 +10,14 @@ class PlaylistTrack extends Component{
     return(
 
       <tr onClick={()=>this.props.onCurrentPlaylistTrackClick(track)}>
-        <td>{track.id}</td>
+
         <td>{track.description}</td>
         <td>{track.artist}</td>
         <td>{track.release}</td>
+        <td><a href={track.url}>link</a></td>
         <td>{track.label}</td>
         <td>{track.catno}</td>
-        <td></td>
+
       </tr>
 
 

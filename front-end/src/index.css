@@ -1,3 +1,5 @@
+/* border color rgb(232, 232, 232) */
+
 body {
   min-width: 1000px;
   max-width: 1300px;
@@ -5,10 +7,12 @@ body {
   height: 100%;
   padding: 0;
   font-family: sans-serif;
+  color: dark-grey;
 }
 
+
 .video-component-wrapper{
-  padding-top: 50px;
+  /* padding-top: 50px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,25 +31,37 @@ body {
 }
 
 .playlist-toggle-div, .main-container, .main-container-playlisthidden, .playlistContainer-wrapper{
-  background-color: rgb(218, 225, 237);
-  border: 0.5px solid rgb(201, 211, 226);
+  background-color: white;
+  /* border: 0.5px solid rgb(201, 211, 226); */
 }
 
+.main-container-padding{
+  padding: 10px;
+  background-color: white;
+}
+
+.main-container-shadow{
+  width: 640px;
+  margin: 8vh auto 0 auto;
+  box-shadow: 13px 13px 20px rgb(56, 62, 71);
+}
 
 .playlist-toggle-div{
-  width: 640px;
+  /* width: 640px; */
   margin: auto;
+  padding: 3px 0 3px 10px;
+  border-bottom: solid 1px rgb(232, 232, 232);
 
 }
 
 .playlist-toggle-div div{
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 225px;
 }
 
 .main-container{
   display: grid;
-  width: 640px;
+  /* width: 640px; */
   margin: auto;
   grid-template-columns: 20% auto;
 
@@ -54,7 +70,7 @@ body {
 }
 
 .main-container-playlisthidden{
-  width: 640px;
+  /* width: 640px; */
   margin: auto;
 
 
@@ -63,7 +79,9 @@ body {
 .playlistContainer-wrapper{
 
   position: relative;
-  padding-top: 10px;
+  padding: 10px;
+  overflow: auto;
+  border-right: 1px solid rgb(232, 232, 232);
 
 }
 
@@ -73,6 +91,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 0px 0px 5px 5px;
 }
 
 .new-playlist-wrapper i{
@@ -83,9 +102,10 @@ body {
   margin-right: 5px;
 }
 
-.library-wrapper-padding{
+.library-wrapper-padding, .playlistDisplay-wrapper{
   overflow: auto;
   padding: 10px;
+  padding-left: 15px;
 }
 
 .library-wrapper{
@@ -96,8 +116,21 @@ body {
 
 .library-table{
   width: 700px;
+
 }
 
+.library-table tr, .playlistDisplay-table tr{
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.library-table th, .library-table td, .playlistDisplay-table th, .playlistDisplay-table td{
+  padding-left: 10px;
+
+}
+
+select{
+  width: 100px;
+}
 
 .playlistDisplay-wrapper{
 
@@ -106,6 +139,16 @@ body {
 
 }
 
+.playlistDisplay-table{
+  width: 700px;
+}
+
 .track-column-header{
   font-weight: bold;
+}
+
+.track-container-row{
+  background-color: rgb(247, 247, 247);
+  border-left: solid 1px rgb(247, 247, 247);
+  border-right: solid 1px rgb(247, 247, 247);
 }
