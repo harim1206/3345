@@ -5098,3 +5098,1056 @@ Processing by Api::V1::PlaylistsController#show as */*
 Completed 200 OK in 30ms (Views: 12.4ms | ActiveRecord: 14.3ms)
 
 
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:37:41 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (15.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (62.22ms)
+Completed 200 OK in 100ms (Views: 73.7ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:39:00 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (4.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (89.39ms)
+Completed 200 OK in 135ms (Views: 126.5ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:40:00 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (9.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (38.91ms)
+Completed 200 OK in 53ms (Views: 38.8ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:40:59 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (28.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (8.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (8.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (123.86ms)
+Completed 200 OK in 156ms (Views: 106.9ms | ActiveRecord: 48.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:47:58 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (21.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (33.28ms)
+Completed 200 OK in 60ms (Views: 34.3ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:49:14 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (6.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (15.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (55.55ms)
+Completed 200 OK in 65ms (Views: 35.0ms | ActiveRecord: 30.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:50:47 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (63.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (97.34ms)
+Completed 200 OK in 166ms (Views: 94.1ms | ActiveRecord: 71.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:50:56 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (26.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (82.04ms)
+Completed 200 OK in 112ms (Views: 79.9ms | ActiveRecord: 31.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:51:12 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (10.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (123.12ms)
+Completed 200 OK in 138ms (Views: 123.4ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:51:45 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (166.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (14.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (137.41ms)
+Completed 200 OK in 307ms (Views: 122.9ms | ActiveRecord: 183.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:52:31 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (6.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (79.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (63.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (231.52ms)
+Completed 200 OK in 237ms (Views: 83.4ms | ActiveRecord: 152.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:52:38 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (12.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (119.35ms)
+Completed 200 OK in 129ms (Views: 107.0ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:52:47 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (2.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (73.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (110.98ms)
+Completed 200 OK in 116ms (Views: 38.6ms | ActiveRecord: 77.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 19:53:43 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (34.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (78.41ms)
+Completed 200 OK in 82ms (Views: 40.5ms | ActiveRecord: 41.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:02:23 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (2.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (21.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (517.96ms)
+Completed 200 OK in 542ms (Views: 508.1ms | ActiveRecord: 28.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:03:08 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (6.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (77.7ms)
+Completed 200 OK in 82ms (Views: 66.3ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:03:22 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (20.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (19.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (14.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (111.54ms)
+Completed 200 OK in 120ms (Views: 59.9ms | ActiveRecord: 59.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:03:33 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (3.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (72.72ms)
+Completed 200 OK in 79ms (Views: 68.7ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:05:49 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (2.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (20.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (82.15ms)
+Completed 200 OK in 92ms (Views: 65.4ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:08:05 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (34.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (45.26ms)
+Completed 200 OK in 84ms (Views: 41.9ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:08:41 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (12.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (77.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (16.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (325.55ms)
+Completed 200 OK in 330ms (Views: 220.0ms | ActiveRecord: 109.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:09:02 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (18.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (33.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (165.01ms)
+Completed 200 OK in 170ms (Views: 110.2ms | ActiveRecord: 58.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:09:15 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (4.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (16.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (50.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (9.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (148.28ms)
+Completed 200 OK in 157ms (Views: 73.6ms | ActiveRecord: 82.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:09:36 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (6.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (38.12ms)
+Completed 200 OK in 43ms (Views: 31.5ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:09:52 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (3.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (34.91ms)
+Completed 200 OK in 42ms (Views: 36.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:10:22 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (57.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (88.34ms)
+Completed 200 OK in 149ms (Views: 78.1ms | ActiveRecord: 70.5ms)
+
+
+Started GET "/api/v1/playlists/28" for 127.0.0.1 at 2018-06-19 20:20:17 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"28"}
+  [1m[36mPlaylist Load (18.8ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (21.07ms)
+Completed 200 OK in 53ms (Views: 24.3ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:22:19 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (49.9ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (52.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (169.74ms)
+Completed 200 OK in 225ms (Views: 115.4ms | ActiveRecord: 109.3ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:27:24 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (108.67ms)
+Completed 200 OK in 114ms (Views: 99.8ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:29:52 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (12.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (68.35ms)
+Completed 200 OK in 85ms (Views: 58.2ms | ActiveRecord: 26.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:36:16 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (8.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (85.32ms)
+Completed 200 OK in 93ms (Views: 74.1ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:41:58 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (8.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (140.79ms)
+Completed 200 OK in 164ms (Views: 90.7ms | ActiveRecord: 68.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:00 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (184.77ms)
+Completed 200 OK in 195ms (Views: 188.1ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:08 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (12.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (4.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (105.82ms)
+Completed 200 OK in 110ms (Views: 88.1ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:16 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (6.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (14.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (14.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (143.76ms)
+Completed 200 OK in 156ms (Views: 114.6ms | ActiveRecord: 40.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:32 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (6.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (197.86ms)
+Completed 200 OK in 209ms (Views: 198.9ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:48 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (7.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (15.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (7.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (94.29ms)
+Completed 200 OK in 107ms (Views: 67.3ms | ActiveRecord: 38.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:53:58 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (8.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (22.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (153.19ms)
+Completed 200 OK in 165ms (Views: 129.2ms | ActiveRecord: 35.4ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:54:31 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (13.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (35.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (130.56ms)
+Completed 200 OK in 149ms (Views: 95.6ms | ActiveRecord: 52.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:54:45 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (5.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (53.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (107.91ms)
+Completed 200 OK in 113ms (Views: 48.8ms | ActiveRecord: 63.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:55:05 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (57.47ms)
+Completed 200 OK in 67ms (Views: 54.3ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:55:14 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (108.91ms)
+Completed 200 OK in 113ms (Views: 109.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:55:36 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (35.87ms)
+Completed 200 OK in 40ms (Views: 35.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:55:41 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (4.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (50.4ms)
+Completed 200 OK in 55ms (Views: 43.5ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:55:51 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (80.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (36.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (10.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (92.89ms)
+Completed 200 OK in 178ms (Views: 43.5ms | ActiveRecord: 133.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:56:01 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (8.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (9.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (10.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (7.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (6.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (9.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (128.84ms)
+Completed 200 OK in 140ms (Views: 89.1ms | ActiveRecord: 50.9ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:56:10 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (29.02ms)
+Completed 200 OK in 38ms (Views: 29.7ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:56:20 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (6.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (87.92ms)
+Completed 200 OK in 91ms (Views: 79.4ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:56:44 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (7.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (10.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (118.99ms)
+Completed 200 OK in 129ms (Views: 104.8ms | ActiveRecord: 23.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 20:57:01 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (5.0ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (9.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (39.6ms)
+Completed 200 OK in 48ms (Views: 31.3ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/api/v1/playlists/31" for 127.0.0.1 at 2018-06-19 20:57:49 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"31"}
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (2.63ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/playlists/28" for 127.0.0.1 at 2018-06-19 20:57:51 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"28"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (8.24ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists/27" for 127.0.0.1 at 2018-06-19 20:58:34 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"27"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (3.15ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists/28" for 127.0.0.1 at 2018-06-19 21:00:08 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"28"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (6.16ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists/28" for 127.0.0.1 at 2018-06-19 21:02:03 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"28"}
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (9.39ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/playlists/27" for 127.0.0.1 at 2018-06-19 21:02:05 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"27"}
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (3.26ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists/31" for 127.0.0.1 at 2018-06-19 21:02:07 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"31"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (3.75ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists/31" for 127.0.0.1 at 2018-06-19 21:02:07 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"31"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (3.38ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 21:03:42 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (94.97ms)
+Completed 200 OK in 99ms (Views: 92.9ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 21:09:41 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (96.02ms)
+Completed 200 OK in 132ms (Views: 121.9ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 21:12:35 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (109.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (37.97ms)
+Completed 200 OK in 151ms (Views: 39.0ms | ActiveRecord: 111.8ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-19 21:14:33 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 27]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 28]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 29]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 30]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 31]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (30.27ms)
+Completed 200 OK in 35ms (Views: 31.9ms | ActiveRecord: 2.6ms)
+
+

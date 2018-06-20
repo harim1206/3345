@@ -31,17 +31,19 @@ class Library extends Component{
 
 
     return(
-      <div className="library-wrapper">
-        <table className="library-table">
-          <thead>
-            <tr>
-              {columnHeaders}
-            </tr>
-          </thead>
-          <tbody>
-            {shuffledReleases}
-          </tbody>
-        </table>
+      <div className="library-wrapper-padding">
+        <div className="library-wrapper">
+          <table className="library-table">
+            <thead>
+              <tr>
+                {columnHeaders}
+              </tr>
+            </thead>
+            <tbody>
+              {shuffledReleases}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

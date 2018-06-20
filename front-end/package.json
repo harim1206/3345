@@ -5,7 +5,6 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "react": "^16.4.0",
-    "react-body-images": "^1.0.1",
     "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.4.0",
     "react-player": "^1.6.4",

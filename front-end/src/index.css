@@ -5,12 +5,7 @@ body {
   height: 100%;
   padding: 0;
   font-family: sans-serif;
-  /* background-image: url('assets/AkilaBerjaoui_JeTaimeCapri.jpg');
-  background-size: no-repeat;
-  background-position: left; */
 }
-
-
 
 .video-component-wrapper{
   padding-top: 50px;
@@ -20,27 +15,27 @@ body {
 }
 
 .video-component-wrapper .image-wrapper{
-  width: 600px;
+  width: 640px;
   background-color: black;
 
 }
 
-.video-component-wrapper img{
-  width: 300px;
-  height: 300px;
-  display: block;
-  margin: auto;
-}
-
 .video-component-wrapper iframe, .react-player{
-  height: 45px;
-  width: 600px;
+  height: 300px;
+  width: 640px;
 
 }
+
+.playlist-toggle-div, .main-container, .main-container-playlisthidden, .playlistContainer-wrapper{
+  background-color: rgb(218, 225, 237);
+  border: 0.5px solid rgb(201, 211, 226);
+}
+
 
 .playlist-toggle-div{
-  width: 600px;
+  width: 640px;
   margin: auto;
+
 }
 
 .playlist-toggle-div div{
@@ -50,20 +45,23 @@ body {
 
 .main-container{
   display: grid;
-  width: 600px;
+  width: 640px;
   margin: auto;
   grid-template-columns: 20% auto;
+
+
 
 }
 
 .main-container-playlisthidden{
-  width: 600px;
+  width: 640px;
   margin: auto;
+
 
 }
 
 .playlistContainer-wrapper{
-  background-color: white;
+
   position: relative;
   padding-top: 10px;
 
@@ -85,10 +83,13 @@ body {
   margin-right: 5px;
 }
 
-
+.library-wrapper-padding{
+  overflow: auto;
+  padding: 10px;
+}
 
 .library-wrapper{
-  background-color: white;
+
   height: 300px;
   overflow-y: auto;
 }
@@ -99,7 +100,7 @@ body {
 
 
 .playlistDisplay-wrapper{
-  background-color: white;
+
   height: 300px;
   overflow-y: auto;
 

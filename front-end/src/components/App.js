@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import BodyImages from 'react-body-images';
-
 import Video from './Video.js'
 import Library from './Library.js'
 import PlaylistContainer from '../container/PlaylistContainer.js'
@@ -350,28 +348,39 @@ class App extends Component {
   render() {
     let library
     let playlist
-    let img
-    let appStyle
-
-
-    // var divStyle = {
-    //   color: 'white',
-    //   backgroundImage: 'url(' + imgUrl + ')',
-    //   WebkitTransition: 'all', // note the capital 'W' here
-    //   msTransition: 'all' // 'ms' is the only lowercase vendor prefix
-    // };
-    //
-    // ReactDOM.render(<div style={divStyle}>Hello World!</div>, mountNode);
+    let bgUrl
+    let bgSize
+    let bgTop
+    let bgLeft
+    let bgRepeat
 
 
     if(this.state.currentReleaseImgUrl){
-      appStyle = {
-        backgroundImage: `url(${this.state.currentReleaseImgUrl})`
-      }
-      img = <img src={this.state.currentReleaseImgUrl} alt="Smiley face" height={"300"} width={"300"}/>
+      bgUrl = this.state.currentReleaseImgUrl
+      bgSize = '400px 400px'
+      bgTop = '0'
+      bgLeft = '0'
+      bgRepeat = 'repeat'
+    }else{
+      bgUrl = 'https://78.media.tumblr.com/a7f02d7176d50f610b7f544b28c92e5a/tumblr_ohtrc8hT9n1sm5cgbo1_640.jpg'
+      bgTop = '0'
+      bgLeft = '0'
     }
 
-    console.log(`appStyle: `, appStyle)
+    let bgStyle = {
+      backgroundImage: `url('${bgUrl}')`,
+      backgroundSize: bgSize,
+      width: '2000px',
+      height: '2000px',
+      backgroundRepeat: bgRepeat,
+      position: 'fixed',
+      top: bgTop,
+      left: bgLeft,
+      zIndex: '-5'
+    }
+
+    let  bgDiv = <div style={bgStyle}></div>
+
 
     if(!this.state.playlistDisplay){
       library = <Library
@@ -406,12 +415,6 @@ class App extends Component {
     return (
       <div className="App">
 
-      <BodyImages>
-      </BodyImages>
-
-
-
-
         <Video
           onEnded={this.onEnded}
           currentVideoURL={this.state.currentVideoURL}
@@ -432,11 +435,12 @@ class App extends Component {
           {library}
         </div>
 
+        {bgDiv}
+
       </div>
     );
   }
 }
-// className={completed ? 'text-strike' : null}
 
 
 
