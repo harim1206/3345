@@ -10,9 +10,9 @@ class PlaylistDisplayContainer extends Component{
 
     const columnHeaders = ['DESCRIPTION','ARTIST','RELEASE','URL','LABEL','CATNO'].map((cat)=>{
       if(cat==='DESCRIPTION'){
-        return <th style={{width:"50%"}} onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
-      }else if(cat==='ARTIST'){
         return <th style={{width:"30%"}} onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
+      }else if(cat==='ARTIST'){
+        return <th style={{width:"20%"}} onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
       }else{
         return <th style={{width:"20%"}} onClick={()=>this.props.onSort(cat.toLowerCase())}>{cat}</th>
       }

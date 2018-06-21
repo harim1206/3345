@@ -144,10 +144,12 @@ class App extends Component {
     const currentIndex = tracks.indexOf(track)
     const nextTrack = tracks[currentIndex+1]
 
+
     this.setState({
       currentTrack: track,
       nextTrack: nextTrack,
-      currentVideoURL: track.url
+      currentVideoURL: track.url,
+      currentReleaseImgUrl: track.imgurl
     },()=>console.log(`on track click state`, this.state))
   }
 
@@ -314,6 +316,8 @@ class App extends Component {
   // on playlist select menu change, add track to playlist
   onTrackPlaylistChange = (video, release, event) =>{
 
+    console.log(`this.state.currentReleaseImgUrl: `, this.state.currentReleaseImgUrl)
+
     let postData = {
       artist: release.artist,
       release: release.title,
@@ -325,6 +329,7 @@ class App extends Component {
       url: video.uri,
       description: video.description,
       duration: video.duration,
+      imgurl: this.state.currentReleaseImgUrl,
       playlist_id: event.target.value
     }
 
@@ -363,7 +368,7 @@ class App extends Component {
 
     if(this.state.currentReleaseImgUrl){
       bgUrl = this.state.currentReleaseImgUrl
-      bgSize = '400px 400px'
+      bgSize = '450px 450px'
       bgTop = '0'
       bgLeft = '0'
       bgRepeat = 'repeat'
@@ -386,6 +391,9 @@ class App extends Component {
     }
 
     let  bgDiv = <div style={bgStyle}></div>
+
+
+    let logo = <div id='logo'>33/45</div>
 
 
     if(!this.state.playlistDisplay){
@@ -444,7 +452,7 @@ class App extends Component {
         </div>
 
 
-
+        {logo}
         {bgDiv}
 
       </div>

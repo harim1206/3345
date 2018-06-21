@@ -22,7 +22,7 @@ class Api::V1::TracksController < ApplicationController
   #   params.permit(:title, :created_by)
   # end
   def track_params
-    params.permit(:title, :artist, :release, :url, :description, :duration, :label, :catno, :playlist_id, :resource_url)
+    params.permit(:title, :artist, :release, :url, :description, :duration, :label, :catno, :playlist_id, :resource_url, :imgurl)
   end
 
   def set_track
