@@ -10156,3 +10156,183 @@ Processing by Api::V1::PlaylistsController#index as */*
 Completed 200 OK in 138ms (Views: 111.3ms | ActiveRecord: 21.6ms)
 
 
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-21 10:13:31 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (3.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 36]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (120.68ms)
+Completed 200 OK in 182ms (Views: 161.0ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-21 10:18:47 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 36]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (2.3ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (185.92ms)
+Completed 200 OK in 240ms (Views: 228.9ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/api/v1/playlists" for 127.0.0.1 at 2018-06-21 10:19:57 -0400
+Processing by Api::V1::PlaylistsController#create as */*
+  Parameters: {"name"=>"nice covers", "playlist"=>{"name"=>"nice covers"}}
+Unpermitted parameter: :playlist
+  [1m[35m (12.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[36mPlaylist Create (36.8ms)[0m  [1m[32mINSERT INTO "playlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "nice covers"], ["created_at", "2018-06-21 14:19:57.934002"], ["updated_at", "2018-06-21 14:19:57.934002"]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:12
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (8.48ms)
+Completed 200 OK in 82ms (Views: 9.0ms | ActiveRecord: 52.2ms)
+
+
+Started POST "/api/v1/playlists" for 127.0.0.1 at 2018-06-21 10:20:01 -0400
+Processing by Api::V1::PlaylistsController#create as */*
+  Parameters: {"name"=>"mv", "playlist"=>{"name"=>"mv"}}
+Unpermitted parameter: :playlist
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[36mPlaylist Create (0.6ms)[0m  [1m[32mINSERT INTO "playlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "mv"], ["created_at", "2018-06-21 14:20:01.366155"], ["updated_at", "2018-06-21 14:20:01.366155"]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 39]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:12
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (4.88ms)
+Completed 200 OK in 24ms (Views: 5.3ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/api/v1/playlists/38" for 127.0.0.1 at 2018-06-21 10:20:08 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"38"}
+  [1m[36mPlaylist Load (16.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (6.04ms)
+Completed 200 OK in 28ms (Views: 5.7ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/api/v1/playlists/39" for 127.0.0.1 at 2018-06-21 10:20:09 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"39"}
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 39]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (3.66ms)
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/playlists/37" for 127.0.0.1 at 2018-06-21 10:20:11 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"37"}
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (13.41ms)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-21 10:21:12 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"The Very Soviet Cut Outs", "label"=>"The Very Polish Cut-Outs", "catno"=>"TVSC001", "resource_url"=>"https://api.discogs.com/releases/7348140", "library_id"=>4, "title"=>"", "url"=>"https://www.youtube.com/watch?v=TzRM34FNW5U", "description"=>"Алла Пугачева - Кафе танцующих огней(krjuk edit)", "duration"=>64, "imgurl"=>"https://img.discogs.com/ZwDczrgHX6TqgBB_Kc4EXiwTXQ8=/fit-in/400x400/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7348140-1440313402-2786.jpeg.jpg", "playlist_id"=>"39", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"The Very Soviet Cut Outs", "url"=>"https://www.youtube.com/watch?v=TzRM34FNW5U", "description"=>"Алла Пугачева - Кафе танцующих огней(krjuk edit)", "duration"=>64, "label"=>"The Very Polish Cut-Outs", "catno"=>"TVSC001", "library_id"=>4, "playlist_id"=>"39", "resource_url"=>"https://api.discogs.com/releases/7348140", "imgurl"=>"https://img.discogs.com/ZwDczrgHX6TqgBB_Kc4EXiwTXQ8=/fit-in/400x400/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7348140-1440313402-2786.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "The Very Soviet Cut Outs"], ["created_at", "2018-06-21 14:21:12.534664"], ["updated_at", "2018-06-21 14:21:12.534664"], ["url", "https://www.youtube.com/watch?v=TzRM34FNW5U"], ["description", "Алла Пугачева - Кафе танцующих огней(krjuk edit)"], ["duration", "64"], ["label", "The Very Polish Cut-Outs"], ["catno", "TVSC001"], ["playlist_id", 39], ["resource_url", "https://api.discogs.com/releases/7348140"], ["imgurl", "https://img.discogs.com/ZwDczrgHX6TqgBB_Kc4EXiwTXQ8=/fit-in/400x400/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7348140-1440313402-2786.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (10.35ms)
+Completed 200 OK in 31ms (Views: 11.5ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-21 10:22:14 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"The Very Polish Cut-Outs Sampler Vol. 5", "label"=>"The Very Polish Cut-Outs", "catno"=>"TVPC008", "resource_url"=>"https://api.discogs.com/releases/8102757", "library_id"=>10, "title"=>"", "url"=>"https://www.youtube.com/watch?v=9BQgM_058o8", "description"=>"Budka Suflera - Za Ostatni Grosz (Carpentaria Feat Almighty Shux & Moose Rework) (2016)", "duration"=>277, "imgurl"=>"https://img.discogs.com/rvs-A2MAlhMJHDqzat8OLMl-ZCA=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8102757-1455194379-8555.jpeg.jpg", "playlist_id"=>"38", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"The Very Polish Cut-Outs Sampler Vol. 5", "url"=>"https://www.youtube.com/watch?v=9BQgM_058o8", "description"=>"Budka Suflera - Za Ostatni Grosz (Carpentaria Feat Almighty Shux & Moose Rework) (2016)", "duration"=>277, "label"=>"The Very Polish Cut-Outs", "catno"=>"TVPC008", "library_id"=>10, "playlist_id"=>"38", "resource_url"=>"https://api.discogs.com/releases/8102757", "imgurl"=>"https://img.discogs.com/rvs-A2MAlhMJHDqzat8OLMl-ZCA=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8102757-1455194379-8555.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (3.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "The Very Polish Cut-Outs Sampler Vol. 5"], ["created_at", "2018-06-21 14:22:14.104536"], ["updated_at", "2018-06-21 14:22:14.104536"], ["url", "https://www.youtube.com/watch?v=9BQgM_058o8"], ["description", "Budka Suflera - Za Ostatni Grosz (Carpentaria Feat Almighty Shux & Moose Rework) (2016)"], ["duration", "277"], ["label", "The Very Polish Cut-Outs"], ["catno", "TVPC008"], ["playlist_id", 38], ["resource_url", "https://api.discogs.com/releases/8102757"], ["imgurl", "https://img.discogs.com/rvs-A2MAlhMJHDqzat8OLMl-ZCA=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8102757-1455194379-8555.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.88ms)
+Completed 200 OK in 27ms (Views: 8.9ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-21 10:23:24 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Edward", "release"=>"Giigoog", "label"=>"Giegling", "catno"=>"giigooog", "resource_url"=>"https://api.discogs.com/releases/10509597", "library_id"=>15, "title"=>"", "url"=>"https://www.youtube.com/watch?v=VWv3KQsCEbY", "description"=>"Edward - Bebe [GIIGOOOG]", "duration"=>737, "imgurl"=>"https://img.discogs.com/Bb0zLKwMC8clsgSAkCF1Ge0eD_Q=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10509597-1501507582-8979.jpeg.jpg", "playlist_id"=>"38", "track"=>{"title"=>"", "artist"=>"Edward", "release"=>"Giigoog", "url"=>"https://www.youtube.com/watch?v=VWv3KQsCEbY", "description"=>"Edward - Bebe [GIIGOOOG]", "duration"=>737, "label"=>"Giegling", "catno"=>"giigooog", "library_id"=>15, "playlist_id"=>"38", "resource_url"=>"https://api.discogs.com/releases/10509597", "imgurl"=>"https://img.discogs.com/Bb0zLKwMC8clsgSAkCF1Ge0eD_Q=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10509597-1501507582-8979.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (4.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Edward"], ["release", "Giigoog"], ["created_at", "2018-06-21 14:23:24.820272"], ["updated_at", "2018-06-21 14:23:24.820272"], ["url", "https://www.youtube.com/watch?v=VWv3KQsCEbY"], ["description", "Edward - Bebe [GIIGOOOG]"], ["duration", "737"], ["label", "Giegling"], ["catno", "giigooog"], ["playlist_id", 38], ["resource_url", "https://api.discogs.com/releases/10509597"], ["imgurl", "https://img.discogs.com/Bb0zLKwMC8clsgSAkCF1Ge0eD_Q=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10509597-1501507582-8979.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (8.34ms)
+Completed 200 OK in 97ms (Views: 8.9ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/api/v1/playlists/38" for 127.0.0.1 at 2018-06-21 10:28:15 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"38"}
+  [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:23
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (8.26ms)
+Completed 200 OK in 13ms (Views: 9.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-21 10:28:53 -0400
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 36]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (3.0ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 39]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (41.33ms)
+Completed 200 OK in 45ms (Views: 39.1ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-21 10:29:32 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "label"=>"Disco Halal", "catno"=>"DH015", "resource_url"=>"https://api.discogs.com/releases/12015450", "library_id"=>62, "title"=>"", "url"=>"https://www.youtube.com/watch?v=vnN9o7pVRiM", "description"=>"Dervish Euphoria", "duration"=>377, "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg", "playlist_id"=>"38", "track"=>{"title"=>"", "artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "url"=>"https://www.youtube.com/watch?v=vnN9o7pVRiM", "description"=>"Dervish Euphoria", "duration"=>377, "label"=>"Disco Halal", "catno"=>"DH015", "library_id"=>62, "playlist_id"=>"38", "resource_url"=>"https://api.discogs.com/releases/12015450", "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.3ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Simple Symmetry"], ["release", "Beginners Guide To Magic"], ["created_at", "2018-06-21 14:29:32.938543"], ["updated_at", "2018-06-21 14:29:32.938543"], ["url", "https://www.youtube.com/watch?v=vnN9o7pVRiM"], ["description", "Dervish Euphoria"], ["duration", "377"], ["label", "Disco Halal"], ["catno", "DH015"], ["playlist_id", 38], ["resource_url", "https://api.discogs.com/releases/12015450"], ["imgurl", "https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.85ms)
+Completed 200 OK in 21ms (Views: 8.0ms | ActiveRecord: 3.1ms)
+
+
