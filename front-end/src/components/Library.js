@@ -34,7 +34,7 @@ class Library extends Component{
       <div className="library-wrapper-padding">
         <div className="library-wrapper">
           <table className="library-table">
-            <thead>
+            <thead >
               <tr>
                 {columnHeaders}
               </tr>

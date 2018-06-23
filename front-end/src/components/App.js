@@ -30,7 +30,7 @@ class App extends Component {
     currentPlaylistTracks: [],
     // toggle
     playlistDisplay: false,
-    playlistContainerDisplay: true
+    playlistContainerDisplay: false
   }
 
 
@@ -68,6 +68,7 @@ class App extends Component {
 
     // fetch playlists from server
     const playlistUrl = '//localhost:3000/api/v1/playlists'
+
     fetch(playlistUrl)
     .then(res => res.json())
     .then(data => {
@@ -295,6 +296,39 @@ class App extends Component {
 
   }
 
+  // Delete playlist
+  onPlaylistDelete = (playlist) => {
+
+
+    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+
+    fetch(url,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res=>{
+
+      const playlistUrl = '//localhost:3000/api/v1/playlists'
+      fetch(playlistUrl)
+      .then(res => res.json())
+      .then(data => {
+
+        const playlists = data.data.map((obj)=>{
+          return {id: obj.id, name: obj.attributes.name}
+        })
+
+        this.setState({
+          playlists: playlists
+        },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
+      })
+
+    })
+
+
+  }
+
   // Toggle library on click
   onLibraryToggleClick = () =>{
 
@@ -420,6 +454,7 @@ class App extends Component {
         onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
         onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
         onPlaylistClick = {this.onPlaylistClick}
+        onPlaylistDelete = {this.onPlaylistDelete}
         newPlaylistInput = {this.state.newPlaylistInput}
         playlists = {this.state.playlists}
         onLibraryToggleClick = {this.onLibraryToggleClick}

@@ -5,11 +5,6 @@ class Video extends Component {
 
 
   render(){
-    // let img = <img src={this.props.currentReleaseImageURL ? this.props.currentReleaseImageURL : "https://static.tumblr.com/6450ef762c1ebcc4b87153c2795bd1a9/qn00bwe/xucn1d6mk/tumblr_static_banner.jpg"} alt="no image"/>
-    // <div className="image-wrapper">
-    // {img}
-    // </div>
-
     return (
       <div className="video-component-wrapper">
         <div className="react-player">

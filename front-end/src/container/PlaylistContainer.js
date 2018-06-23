@@ -6,7 +6,11 @@ class PlaylistContainer extends Component{
   render(){
 
     const playlists = this.props.playlists.map((playlist)=>{
-      return <Playlist playlist={playlist} onPlaylistClick={this.props.onPlaylistClick}/>
+      return <Playlist
+        playlist={playlist}
+        onPlaylistClick={this.props.onPlaylistClick}
+        onPlaylistDelete={this.props.onPlaylistDelete}
+      />
     })
 
     return(

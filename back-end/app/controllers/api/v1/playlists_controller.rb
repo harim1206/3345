@@ -13,8 +13,15 @@ class Api::V1::PlaylistsController < ApplicationController
   end
 
   def show
-    
+
     render json: @playlist
+  end
+
+  def destroy
+    
+    playlistId = @playlist.id
+    @playlist.destroy
+    render json: {message:"Zap! Note deleted", playlistId:playlistId}
   end
 
   private
