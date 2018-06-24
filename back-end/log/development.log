@@ -10336,3 +10336,835 @@ Unpermitted parameters: :library_id, :track
 Completed 200 OK in 21ms (Views: 8.0ms | ActiveRecord: 3.1ms)
 
 
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-23 14:32:08 -0400
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (27.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (12.7ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 36]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (1.2ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 39]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 43]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (183.36ms)
+Completed 200 OK in 315ms (Views: 219.7ms | ActiveRecord: 80.1ms)
+
+
+Started POST "/api/v1/playlists" for 127.0.0.1 at 2018-06-23 14:33:35 -0400
+Processing by Api::V1::PlaylistsController#create as */*
+  Parameters: {"name"=>"new", "playlist"=>{"name"=>"new"}}
+Unpermitted parameter: :playlist
+  [1m[35m (12.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[36mPlaylist Create (18.5ms)[0m  [1m[32mINSERT INTO "playlists" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "new"], ["created_at", "2018-06-23 18:33:35.528890"], ["updated_at", "2018-06-23 18:33:35.528890"]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:11
+[active_model_serializers]   [1m[36mTrack Load (0.6ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 44]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:12
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (5.04ms)
+Completed 200 OK in 45ms (Views: 5.1ms | ActiveRecord: 33.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:35:29 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "label"=>"Disco Halal", "catno"=>"DH015", "resource_url"=>"https://api.discogs.com/releases/12015450", "library_id"=>62, "title"=>"", "url"=>"https://www.youtube.com/watch?v=xIec9BILbBg", "description"=>"Simple Symmetry - Too Much Fun In The Temple Of Doom", "duration"=>476, "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "url"=>"https://www.youtube.com/watch?v=xIec9BILbBg", "description"=>"Simple Symmetry - Too Much Fun In The Temple Of Doom", "duration"=>476, "label"=>"Disco Halal", "catno"=>"DH015", "library_id"=>62, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/12015450", "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (7.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Simple Symmetry"], ["release", "Beginners Guide To Magic"], ["created_at", "2018-06-23 18:35:29.966499"], ["updated_at", "2018-06-23 18:35:29.966499"], ["url", "https://www.youtube.com/watch?v=xIec9BILbBg"], ["description", "Simple Symmetry - Too Much Fun In The Temple Of Doom"], ["duration", "476"], ["label", "Disco Halal"], ["catno", "DH015"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/12015450"], ["imgurl", "https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (27.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (2.2ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (15.37ms)
+Completed 200 OK in 62ms (Views: 16.5ms | ActiveRecord: 37.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:35:31 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "label"=>"Disco Halal", "catno"=>"DH015", "resource_url"=>"https://api.discogs.com/releases/12015450", "library_id"=>62, "title"=>"", "url"=>"https://www.youtube.com/watch?v=vnN9o7pVRiM", "description"=>"Dervish Euphoria", "duration"=>377, "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "url"=>"https://www.youtube.com/watch?v=vnN9o7pVRiM", "description"=>"Dervish Euphoria", "duration"=>377, "label"=>"Disco Halal", "catno"=>"DH015", "library_id"=>62, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/12015450", "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (12.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Simple Symmetry"], ["release", "Beginners Guide To Magic"], ["created_at", "2018-06-23 18:35:31.873994"], ["updated_at", "2018-06-23 18:35:31.873994"], ["url", "https://www.youtube.com/watch?v=vnN9o7pVRiM"], ["description", "Dervish Euphoria"], ["duration", "377"], ["label", "Disco Halal"], ["catno", "DH015"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/12015450"], ["imgurl", "https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (20.76ms)
+Completed 200 OK in 92ms (Views: 24.0ms | ActiveRecord: 19.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:35:33 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "label"=>"Disco Halal", "catno"=>"DH015", "resource_url"=>"https://api.discogs.com/releases/12015450", "library_id"=>62, "title"=>"", "url"=>"https://www.youtube.com/watch?v=kCkx6dYaWZU", "description"=>"Exploading Toad Mystery", "duration"=>464, "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Simple Symmetry", "release"=>"Beginners Guide To Magic", "url"=>"https://www.youtube.com/watch?v=kCkx6dYaWZU", "description"=>"Exploading Toad Mystery", "duration"=>464, "label"=>"Disco Halal", "catno"=>"DH015", "library_id"=>62, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/12015450", "imgurl"=>"https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (3.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Simple Symmetry"], ["release", "Beginners Guide To Magic"], ["created_at", "2018-06-23 18:35:33.725105"], ["updated_at", "2018-06-23 18:35:33.725105"], ["url", "https://www.youtube.com/watch?v=kCkx6dYaWZU"], ["description", "Exploading Toad Mystery"], ["duration", "464"], ["label", "Disco Halal"], ["catno", "DH015"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/12015450"], ["imgurl", "https://img.discogs.com/Vd7c6X3FEty_ZBEQij9XQf-6hKU=/fit-in/600x603/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12015450-1527081217-2240.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (11.98ms)
+Completed 200 OK in 35ms (Views: 11.4ms | ActiveRecord: 8.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:00 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Stereofuse", "release"=>"Casino EP", "label"=>"Phonica Records", "catno"=>"PHONICA020", "resource_url"=>"https://api.discogs.com/releases/11757129", "library_id"=>64, "title"=>"", "url"=>"https://www.youtube.com/watch?v=cEYjE3XIeig", "description"=>"Stereofuse - Black Jack [PHONICA020]", "duration"=>453, "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Stereofuse", "release"=>"Casino EP", "url"=>"https://www.youtube.com/watch?v=cEYjE3XIeig", "description"=>"Stereofuse - Black Jack [PHONICA020]", "duration"=>453, "label"=>"Phonica Records", "catno"=>"PHONICA020", "library_id"=>64, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11757129", "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (13.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Stereofuse"], ["release", "Casino EP"], ["created_at", "2018-06-23 18:36:00.066668"], ["updated_at", "2018-06-23 18:36:00.066668"], ["url", "https://www.youtube.com/watch?v=cEYjE3XIeig"], ["description", "Stereofuse - Black Jack [PHONICA020]"], ["duration", "453"], ["label", "Phonica Records"], ["catno", "PHONICA020"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11757129"], ["imgurl", "https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.9ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (10.01ms)
+Completed 200 OK in 46ms (Views: 11.7ms | ActiveRecord: 24.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:02 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Stereofuse", "release"=>"Casino EP", "label"=>"Phonica Records", "catno"=>"PHONICA020", "resource_url"=>"https://api.discogs.com/releases/11757129", "library_id"=>64, "title"=>"", "url"=>"https://www.youtube.com/watch?v=495Kq_fVf1o", "description"=>"Stereofuse - Hot Slot [PHONICA020]", "duration"=>286, "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Stereofuse", "release"=>"Casino EP", "url"=>"https://www.youtube.com/watch?v=495Kq_fVf1o", "description"=>"Stereofuse - Hot Slot [PHONICA020]", "duration"=>286, "label"=>"Phonica Records", "catno"=>"PHONICA020", "library_id"=>64, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11757129", "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Stereofuse"], ["release", "Casino EP"], ["created_at", "2018-06-23 18:36:02.883458"], ["updated_at", "2018-06-23 18:36:02.883458"], ["url", "https://www.youtube.com/watch?v=495Kq_fVf1o"], ["description", "Stereofuse - Hot Slot [PHONICA020]"], ["duration", "286"], ["label", "Phonica Records"], ["catno", "PHONICA020"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11757129"], ["imgurl", "https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.6ms)
+Completed 200 OK in 21ms (Views: 6.0ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:06 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Stereofuse", "release"=>"Casino EP", "label"=>"Phonica Records", "catno"=>"PHONICA020", "resource_url"=>"https://api.discogs.com/releases/11757129", "library_id"=>64, "title"=>"", "url"=>"https://www.youtube.com/watch?v=GqZDDLYMzTw", "description"=>"Stereofuse - Royal Flash", "duration"=>451, "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Stereofuse", "release"=>"Casino EP", "url"=>"https://www.youtube.com/watch?v=GqZDDLYMzTw", "description"=>"Stereofuse - Royal Flash", "duration"=>451, "label"=>"Phonica Records", "catno"=>"PHONICA020", "library_id"=>64, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11757129", "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Stereofuse"], ["release", "Casino EP"], ["created_at", "2018-06-23 18:36:06.695157"], ["updated_at", "2018-06-23 18:36:06.695157"], ["url", "https://www.youtube.com/watch?v=GqZDDLYMzTw"], ["description", "Stereofuse - Royal Flash"], ["duration", "451"], ["label", "Phonica Records"], ["catno", "PHONICA020"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11757129"], ["imgurl", "https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.39ms)
+Completed 200 OK in 15ms (Views: 6.7ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:09 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Stereofuse", "release"=>"Casino EP", "label"=>"Phonica Records", "catno"=>"PHONICA020", "resource_url"=>"https://api.discogs.com/releases/11757129", "library_id"=>64, "title"=>"", "url"=>"https://www.youtube.com/watch?v=63WmNGFqKKI", "description"=>"Stereofuse - Pokerface [PHONICA020]", "duration"=>305, "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Stereofuse", "release"=>"Casino EP", "url"=>"https://www.youtube.com/watch?v=63WmNGFqKKI", "description"=>"Stereofuse - Pokerface [PHONICA020]", "duration"=>305, "label"=>"Phonica Records", "catno"=>"PHONICA020", "library_id"=>64, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11757129", "imgurl"=>"https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Stereofuse"], ["release", "Casino EP"], ["created_at", "2018-06-23 18:36:09.284511"], ["updated_at", "2018-06-23 18:36:09.284511"], ["url", "https://www.youtube.com/watch?v=63WmNGFqKKI"], ["description", "Stereofuse - Pokerface [PHONICA020]"], ["duration", "305"], ["label", "Phonica Records"], ["catno", "PHONICA020"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11757129"], ["imgurl", "https://img.discogs.com/oGPRvG3Qmk_-MovxxaNI6dOrNRQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11757129-1527072946-9696.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.47ms)
+Completed 200 OK in 24ms (Views: 7.1ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:15 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Dude Energy", "release"=>"Dude Energy", "label"=>"Animals Dancing", "catno"=>"ANIMALS 002", "resource_url"=>"https://api.discogs.com/releases/6522638", "library_id"=>65, "title"=>"", "url"=>"https://www.youtube.com/watch?v=UJxip423AZ8", "description"=>"Dude Energy - Renee Running", "duration"=>334, "imgurl"=>"https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Dude Energy", "release"=>"Dude Energy", "url"=>"https://www.youtube.com/watch?v=UJxip423AZ8", "description"=>"Dude Energy - Renee Running", "duration"=>334, "label"=>"Animals Dancing", "catno"=>"ANIMALS 002", "library_id"=>65, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/6522638", "imgurl"=>"https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (7.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Dude Energy"], ["release", "Dude Energy"], ["created_at", "2018-06-23 18:36:15.812069"], ["updated_at", "2018-06-23 18:36:15.812069"], ["url", "https://www.youtube.com/watch?v=UJxip423AZ8"], ["description", "Dude Energy - Renee Running"], ["duration", "334"], ["label", "Animals Dancing"], ["catno", "ANIMALS 002"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/6522638"], ["imgurl", "https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.7ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (9.34ms)
+Completed 200 OK in 36ms (Views: 6.8ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:17 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Dude Energy", "release"=>"Dude Energy", "label"=>"Animals Dancing", "catno"=>"ANIMALS 002", "resource_url"=>"https://api.discogs.com/releases/6522638", "library_id"=>65, "title"=>"", "url"=>"https://www.youtube.com/watch?v=iWGKfuME4nQ", "description"=>"Dude Energy - Some Desire", "duration"=>483, "imgurl"=>"https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Dude Energy", "release"=>"Dude Energy", "url"=>"https://www.youtube.com/watch?v=iWGKfuME4nQ", "description"=>"Dude Energy - Some Desire", "duration"=>483, "label"=>"Animals Dancing", "catno"=>"ANIMALS 002", "library_id"=>65, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/6522638", "imgurl"=>"https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (11.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (13.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Dude Energy"], ["release", "Dude Energy"], ["created_at", "2018-06-23 18:36:17.846168"], ["updated_at", "2018-06-23 18:36:17.846168"], ["url", "https://www.youtube.com/watch?v=iWGKfuME4nQ"], ["description", "Dude Energy - Some Desire"], ["duration", "483"], ["label", "Animals Dancing"], ["catno", "ANIMALS 002"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/6522638"], ["imgurl", "https://img.discogs.com/qqGvhZNoOq3oLTXm5bbEgdILh28=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-6522638-1421610697-1857.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (44.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (87.8ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (120.06ms)
+Completed 200 OK in 253ms (Views: 35.8ms | ActiveRecord: 156.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:21 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Inner Sense (2)", "release"=>"Motp", "label"=>"My Love Is Underground", "catno"=>"mliu17", "resource_url"=>"https://api.discogs.com/releases/11972911", "library_id"=>66, "title"=>"", "url"=>"https://www.youtube.com/watch?v=gHb-zw5cVyc", "description"=>"Inner Sense - MoTP (Tuff City Kids Remix)", "duration"=>383, "imgurl"=>"https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Inner Sense (2)", "release"=>"Motp", "url"=>"https://www.youtube.com/watch?v=gHb-zw5cVyc", "description"=>"Inner Sense - MoTP (Tuff City Kids Remix)", "duration"=>383, "label"=>"My Love Is Underground", "catno"=>"mliu17", "library_id"=>66, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11972911", "imgurl"=>"https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Inner Sense (2)"], ["release", "Motp"], ["created_at", "2018-06-23 18:36:21.785008"], ["updated_at", "2018-06-23 18:36:21.785008"], ["url", "https://www.youtube.com/watch?v=gHb-zw5cVyc"], ["description", "Inner Sense - MoTP (Tuff City Kids Remix)"], ["duration", "383"], ["label", "My Love Is Underground"], ["catno", "mliu17"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11972911"], ["imgurl", "https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.66ms)
+Completed 200 OK in 25ms (Views: 8.2ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:23 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Inner Sense (2)", "release"=>"Motp", "label"=>"My Love Is Underground", "catno"=>"mliu17", "resource_url"=>"https://api.discogs.com/releases/11972911", "library_id"=>66, "title"=>"", "url"=>"https://www.youtube.com/watch?v=r4o-YB4aKkE", "description"=>"Inner Sense - MoTP - My Love Is Underground 2013", "duration"=>366, "imgurl"=>"https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Inner Sense (2)", "release"=>"Motp", "url"=>"https://www.youtube.com/watch?v=r4o-YB4aKkE", "description"=>"Inner Sense - MoTP - My Love Is Underground 2013", "duration"=>366, "label"=>"My Love Is Underground", "catno"=>"mliu17", "library_id"=>66, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11972911", "imgurl"=>"https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Inner Sense (2)"], ["release", "Motp"], ["created_at", "2018-06-23 18:36:23.837466"], ["updated_at", "2018-06-23 18:36:23.837466"], ["url", "https://www.youtube.com/watch?v=r4o-YB4aKkE"], ["description", "Inner Sense - MoTP - My Love Is Underground 2013"], ["duration", "366"], ["label", "My Love Is Underground"], ["catno", "mliu17"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11972911"], ["imgurl", "https://img.discogs.com/HVEI20GeVTa2OYMO2Dq_DU9P8X8=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11972911-1525792525-2771.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.13ms)
+Completed 200 OK in 55ms (Views: 8.0ms | ActiveRecord: 9.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:32 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Unknown Artist", "release"=>"Eastern Edits Vol. 1", "label"=>"Orange Tree Edits", "catno"=>"OTE004", "resource_url"=>"https://api.discogs.com/releases/11463219", "library_id"=>67, "title"=>"", "url"=>"https://www.youtube.com/watch?v=CirInru0Kkg", "description"=>"Dorain - Jimmy Rouge Edit | Orange Tree Edits [2018]", "duration"=>397, "imgurl"=>"https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Unknown Artist", "release"=>"Eastern Edits Vol. 1", "url"=>"https://www.youtube.com/watch?v=CirInru0Kkg", "description"=>"Dorain - Jimmy Rouge Edit | Orange Tree Edits [2018]", "duration"=>397, "label"=>"Orange Tree Edits", "catno"=>"OTE004", "library_id"=>67, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11463219", "imgurl"=>"https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Unknown Artist"], ["release", "Eastern Edits Vol. 1"], ["created_at", "2018-06-23 18:36:32.054686"], ["updated_at", "2018-06-23 18:36:32.054686"], ["url", "https://www.youtube.com/watch?v=CirInru0Kkg"], ["description", "Dorain - Jimmy Rouge Edit | Orange Tree Edits [2018]"], ["duration", "397"], ["label", "Orange Tree Edits"], ["catno", "OTE004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11463219"], ["imgurl", "https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.97ms)
+Completed 200 OK in 22ms (Views: 6.7ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:34 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Unknown Artist", "release"=>"Eastern Edits Vol. 1", "label"=>"Orange Tree Edits", "catno"=>"OTE004", "resource_url"=>"https://api.discogs.com/releases/11463219", "library_id"=>67, "title"=>"", "url"=>"https://www.youtube.com/watch?v=-ma38ZIFg_c", "description"=>"Orange Tree Edits - Clock (Jimmy Rouge Edit)", "duration"=>419, "imgurl"=>"https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Unknown Artist", "release"=>"Eastern Edits Vol. 1", "url"=>"https://www.youtube.com/watch?v=-ma38ZIFg_c", "description"=>"Orange Tree Edits - Clock (Jimmy Rouge Edit)", "duration"=>419, "label"=>"Orange Tree Edits", "catno"=>"OTE004", "library_id"=>67, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11463219", "imgurl"=>"https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Unknown Artist"], ["release", "Eastern Edits Vol. 1"], ["created_at", "2018-06-23 18:36:34.049636"], ["updated_at", "2018-06-23 18:36:34.049636"], ["url", "https://www.youtube.com/watch?v=-ma38ZIFg_c"], ["description", "Orange Tree Edits - Clock (Jimmy Rouge Edit)"], ["duration", "419"], ["label", "Orange Tree Edits"], ["catno", "OTE004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11463219"], ["imgurl", "https://img.discogs.com/LlrPVBpIHLEvGwsw9G8Q9WpQmrc=/fit-in/526x535/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11463219-1516770793-6755.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.1ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (12.67ms)
+Completed 200 OK in 30ms (Views: 11.6ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:40 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Trinidadian Deep", "release"=>"Sonics & Movements", "label"=>"Neroli", "catno"=>"NERO 041", "resource_url"=>"https://api.discogs.com/releases/11906092", "library_id"=>68, "title"=>"", "url"=>"https://www.youtube.com/watch?v=Q-28SnjNm0o", "description"=>"TRINIDADIAN DEEP & LARS BARTKUHN – SONICS & MOVEMENTS EP (NERO041) [preview]", "duration"=>481, "imgurl"=>"https://img.discogs.com/MG5khKnG60oJjetQJkifhClpxfg=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11906092-1524494743-1632.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Trinidadian Deep", "release"=>"Sonics & Movements", "url"=>"https://www.youtube.com/watch?v=Q-28SnjNm0o", "description"=>"TRINIDADIAN DEEP & LARS BARTKUHN – SONICS & MOVEMENTS EP (NERO041) [preview]", "duration"=>481, "label"=>"Neroli", "catno"=>"NERO 041", "library_id"=>68, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11906092", "imgurl"=>"https://img.discogs.com/MG5khKnG60oJjetQJkifhClpxfg=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11906092-1524494743-1632.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (7.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Trinidadian Deep"], ["release", "Sonics & Movements"], ["created_at", "2018-06-23 18:36:40.953255"], ["updated_at", "2018-06-23 18:36:40.953255"], ["url", "https://www.youtube.com/watch?v=Q-28SnjNm0o"], ["description", "TRINIDADIAN DEEP & LARS BARTKUHN – SONICS & MOVEMENTS EP (NERO041) [preview]"], ["duration", "481"], ["label", "Neroli"], ["catno", "NERO 041"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11906092"], ["imgurl", "https://img.discogs.com/MG5khKnG60oJjetQJkifhClpxfg=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11906092-1524494743-1632.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.86ms)
+Completed 200 OK in 32ms (Views: 5.9ms | ActiveRecord: 17.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:47 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "label"=>"Cree Records", "catno"=>"CRS 512", "resource_url"=>"https://api.discogs.com/releases/11377288", "library_id"=>69, "title"=>"", "url"=>"https://www.youtube.com/watch?v=JDpwdJcNMBM", "description"=>"Leston Paul - What A Surprise", "duration"=>396, "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "url"=>"https://www.youtube.com/watch?v=JDpwdJcNMBM", "description"=>"Leston Paul - What A Surprise", "duration"=>396, "label"=>"Cree Records", "catno"=>"CRS 512", "library_id"=>69, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11377288", "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Leston Paul"], ["release", "Let's Party Tonight"], ["created_at", "2018-06-23 18:36:47.072626"], ["updated_at", "2018-06-23 18:36:47.072626"], ["url", "https://www.youtube.com/watch?v=JDpwdJcNMBM"], ["description", "Leston Paul - What A Surprise"], ["duration", "396"], ["label", "Cree Records"], ["catno", "CRS 512"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11377288"], ["imgurl", "https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (2.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.59ms)
+Completed 200 OK in 18ms (Views: 6.3ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:49 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "label"=>"Cree Records", "catno"=>"CRS 512", "resource_url"=>"https://api.discogs.com/releases/11377288", "library_id"=>69, "title"=>"", "url"=>"https://www.youtube.com/watch?v=xTGu179SZXs", "description"=>"Leston Paul - Everyday Life", "duration"=>237, "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "url"=>"https://www.youtube.com/watch?v=xTGu179SZXs", "description"=>"Leston Paul - Everyday Life", "duration"=>237, "label"=>"Cree Records", "catno"=>"CRS 512", "library_id"=>69, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11377288", "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (9.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Leston Paul"], ["release", "Let's Party Tonight"], ["created_at", "2018-06-23 18:36:49.121267"], ["updated_at", "2018-06-23 18:36:49.121267"], ["url", "https://www.youtube.com/watch?v=xTGu179SZXs"], ["description", "Leston Paul - Everyday Life"], ["duration", "237"], ["label", "Cree Records"], ["catno", "CRS 512"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11377288"], ["imgurl", "https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (6.2ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (13.02ms)
+Completed 200 OK in 40ms (Views: 8.6ms | ActiveRecord: 18.0ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:51 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "label"=>"Cree Records", "catno"=>"CRS 512", "resource_url"=>"https://api.discogs.com/releases/11377288", "library_id"=>69, "title"=>"", "url"=>"https://www.youtube.com/watch?v=ZHlMZgj9EFY", "description"=>"[REISSUE] Leston Paul - Let’s Party Tonight (Cree Records)", "duration"=>345, "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "url"=>"https://www.youtube.com/watch?v=ZHlMZgj9EFY", "description"=>"[REISSUE] Leston Paul - Let’s Party Tonight (Cree Records)", "duration"=>345, "label"=>"Cree Records", "catno"=>"CRS 512", "library_id"=>69, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11377288", "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Leston Paul"], ["release", "Let's Party Tonight"], ["created_at", "2018-06-23 18:36:51.125287"], ["updated_at", "2018-06-23 18:36:51.125287"], ["url", "https://www.youtube.com/watch?v=ZHlMZgj9EFY"], ["description", "[REISSUE] Leston Paul - Let’s Party Tonight (Cree Records)"], ["duration", "345"], ["label", "Cree Records"], ["catno", "CRS 512"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11377288"], ["imgurl", "https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (8.91ms)
+Completed 200 OK in 22ms (Views: 9.0ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:53 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "label"=>"Cree Records", "catno"=>"CRS 512", "resource_url"=>"https://api.discogs.com/releases/11377288", "library_id"=>69, "title"=>"", "url"=>"https://www.youtube.com/watch?v=FYkDNYZO5zs", "description"=>"Barbara Hernandez - All Nite Tonight", "duration"=>451, "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Leston Paul", "release"=>"Let's Party Tonight", "url"=>"https://www.youtube.com/watch?v=FYkDNYZO5zs", "description"=>"Barbara Hernandez - All Nite Tonight", "duration"=>451, "label"=>"Cree Records", "catno"=>"CRS 512", "library_id"=>69, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11377288", "imgurl"=>"https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (6.3ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Leston Paul"], ["release", "Let's Party Tonight"], ["created_at", "2018-06-23 18:36:53.536869"], ["updated_at", "2018-06-23 18:36:53.536869"], ["url", "https://www.youtube.com/watch?v=FYkDNYZO5zs"], ["description", "Barbara Hernandez - All Nite Tonight"], ["duration", "451"], ["label", "Cree Records"], ["catno", "CRS 512"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11377288"], ["imgurl", "https://img.discogs.com/OiImILHBiJz3Cba5-RU-Hjr8zfM=/fit-in/600x594/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11377288-1519301201-9126.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (11.92ms)
+Completed 200 OK in 32ms (Views: 10.0ms | ActiveRecord: 11.8ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:36:59 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jeigo", "release"=>"Everywhere I Go", "label"=>"Shadow City Records", "catno"=>"SHDW004", "resource_url"=>"https://api.discogs.com/releases/11676919", "library_id"=>70, "title"=>"", "url"=>"https://www.youtube.com/watch?v=LC9IJ5LWEGs", "description"=>"Jeigo - Lordbuck Jazz", "duration"=>376, "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jeigo", "release"=>"Everywhere I Go", "url"=>"https://www.youtube.com/watch?v=LC9IJ5LWEGs", "description"=>"Jeigo - Lordbuck Jazz", "duration"=>376, "label"=>"Shadow City Records", "catno"=>"SHDW004", "library_id"=>70, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11676919", "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (16.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (6.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jeigo"], ["release", "Everywhere I Go"], ["created_at", "2018-06-23 18:36:59.201380"], ["updated_at", "2018-06-23 18:36:59.201380"], ["url", "https://www.youtube.com/watch?v=LC9IJ5LWEGs"], ["description", "Jeigo - Lordbuck Jazz"], ["duration", "376"], ["label", "Shadow City Records"], ["catno", "SHDW004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11676919"], ["imgurl", "https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.08ms)
+Completed 200 OK in 53ms (Views: 8.1ms | ActiveRecord: 29.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:00 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jeigo", "release"=>"Everywhere I Go", "label"=>"Shadow City Records", "catno"=>"SHDW004", "resource_url"=>"https://api.discogs.com/releases/11676919", "library_id"=>70, "title"=>"", "url"=>"https://www.youtube.com/watch?v=SAOIy5RZu6s", "description"=>"Jeigo - Not Used To Love", "duration"=>453, "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jeigo", "release"=>"Everywhere I Go", "url"=>"https://www.youtube.com/watch?v=SAOIy5RZu6s", "description"=>"Jeigo - Not Used To Love", "duration"=>453, "label"=>"Shadow City Records", "catno"=>"SHDW004", "library_id"=>70, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11676919", "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jeigo"], ["release", "Everywhere I Go"], ["created_at", "2018-06-23 18:37:00.693223"], ["updated_at", "2018-06-23 18:37:00.693223"], ["url", "https://www.youtube.com/watch?v=SAOIy5RZu6s"], ["description", "Jeigo - Not Used To Love"], ["duration", "453"], ["label", "Shadow City Records"], ["catno", "SHDW004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11676919"], ["imgurl", "https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (2.1ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (13.96ms)
+Completed 200 OK in 76ms (Views: 13.8ms | ActiveRecord: 12.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:02 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jeigo", "release"=>"Everywhere I Go", "label"=>"Shadow City Records", "catno"=>"SHDW004", "resource_url"=>"https://api.discogs.com/releases/11676919", "library_id"=>70, "title"=>"", "url"=>"https://www.youtube.com/watch?v=4nAGtzbWSm0", "description"=>"Jeigo - Lordbuck Jazz (Big Miz Remix)", "duration"=>360, "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jeigo", "release"=>"Everywhere I Go", "url"=>"https://www.youtube.com/watch?v=4nAGtzbWSm0", "description"=>"Jeigo - Lordbuck Jazz (Big Miz Remix)", "duration"=>360, "label"=>"Shadow City Records", "catno"=>"SHDW004", "library_id"=>70, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11676919", "imgurl"=>"https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (3.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jeigo"], ["release", "Everywhere I Go"], ["created_at", "2018-06-23 18:37:02.416322"], ["updated_at", "2018-06-23 18:37:02.416322"], ["url", "https://www.youtube.com/watch?v=4nAGtzbWSm0"], ["description", "Jeigo - Lordbuck Jazz (Big Miz Remix)"], ["duration", "360"], ["label", "Shadow City Records"], ["catno", "SHDW004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11676919"], ["imgurl", "https://img.discogs.com/a7vLu1ZThLOWskEMa9SFlO1Nkms=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11676919-1520537022-4470.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.28ms)
+Completed 200 OK in 26ms (Views: 7.6ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:34 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Lipelis", "release"=>"I Only Did These For Myself, But Now It’s For Everyone", "label"=>"Animals Dancing", "catno"=>"ANIMALS004", "resource_url"=>"https://api.discogs.com/releases/11821238", "library_id"=>72, "title"=>"", "url"=>"https://www.youtube.com/watch?v=nHY5Bt4qD10", "description"=>"Lipelis - Children Song", "duration"=>319, "imgurl"=>"https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Lipelis", "release"=>"I Only Did These For Myself, But Now It’s For Everyone", "url"=>"https://www.youtube.com/watch?v=nHY5Bt4qD10", "description"=>"Lipelis - Children Song", "duration"=>319, "label"=>"Animals Dancing", "catno"=>"ANIMALS004", "library_id"=>72, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11821238", "imgurl"=>"https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Lipelis"], ["release", "I Only Did These For Myself, But Now It’s For Everyone"], ["created_at", "2018-06-23 18:37:34.819768"], ["updated_at", "2018-06-23 18:37:34.819768"], ["url", "https://www.youtube.com/watch?v=nHY5Bt4qD10"], ["description", "Lipelis - Children Song"], ["duration", "319"], ["label", "Animals Dancing"], ["catno", "ANIMALS004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11821238"], ["imgurl", "https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (8.23ms)
+Completed 200 OK in 24ms (Views: 8.1ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:36 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Lipelis", "release"=>"I Only Did These For Myself, But Now It’s For Everyone", "label"=>"Animals Dancing", "catno"=>"ANIMALS004", "resource_url"=>"https://api.discogs.com/releases/11821238", "library_id"=>72, "title"=>"", "url"=>"https://www.youtube.com/watch?v=XoMoiW2hP1o", "description"=>"Lipelis - Video Track", "duration"=>421, "imgurl"=>"https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Lipelis", "release"=>"I Only Did These For Myself, But Now It’s For Everyone", "url"=>"https://www.youtube.com/watch?v=XoMoiW2hP1o", "description"=>"Lipelis - Video Track", "duration"=>421, "label"=>"Animals Dancing", "catno"=>"ANIMALS004", "library_id"=>72, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11821238", "imgurl"=>"https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (6.2ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Lipelis"], ["release", "I Only Did These For Myself, But Now It’s For Everyone"], ["created_at", "2018-06-23 18:37:36.772266"], ["updated_at", "2018-06-23 18:37:36.772266"], ["url", "https://www.youtube.com/watch?v=XoMoiW2hP1o"], ["description", "Lipelis - Video Track"], ["duration", "421"], ["label", "Animals Dancing"], ["catno", "ANIMALS004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11821238"], ["imgurl", "https://img.discogs.com/vopV1OXYOyS2Us7An0jVZZR3Bh0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11821238-1522956603-3169.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (7.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (14.84ms)
+Completed 200 OK in 51ms (Views: 9.1ms | ActiveRecord: 27.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:40 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jex Opolis", "release"=>"First Stomp Remixes", "label"=>"Good Timin'", "catno"=>"GDTIMIN010", "resource_url"=>"https://api.discogs.com/releases/10749788", "library_id"=>73, "title"=>"", "url"=>"https://www.youtube.com/watch?v=8bf15vXhzps", "description"=>"JEX OPOLIS - First Stomp (NYC dub)", "duration"=>503, "imgurl"=>"https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jex Opolis", "release"=>"First Stomp Remixes", "url"=>"https://www.youtube.com/watch?v=8bf15vXhzps", "description"=>"JEX OPOLIS - First Stomp (NYC dub)", "duration"=>503, "label"=>"Good Timin'", "catno"=>"GDTIMIN010", "library_id"=>73, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10749788", "imgurl"=>"https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (12.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jex Opolis"], ["release", "First Stomp Remixes"], ["created_at", "2018-06-23 18:37:40.780806"], ["updated_at", "2018-06-23 18:37:40.780806"], ["url", "https://www.youtube.com/watch?v=8bf15vXhzps"], ["description", "JEX OPOLIS - First Stomp (NYC dub)"], ["duration", "503"], ["label", "Good Timin'"], ["catno", "GDTIMIN010"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10749788"], ["imgurl", "https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (8.27ms)
+Completed 200 OK in 39ms (Views: 8.8ms | ActiveRecord: 16.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:42 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jex Opolis", "release"=>"First Stomp Remixes", "label"=>"Good Timin'", "catno"=>"GDTIMIN010", "resource_url"=>"https://api.discogs.com/releases/10749788", "library_id"=>73, "title"=>"", "url"=>"https://www.youtube.com/watch?v=CieAHzY_1Fs", "description"=>"Jex Opolis - First Stomp (Vocal Up Mix)", "duration"=>349, "imgurl"=>"https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jex Opolis", "release"=>"First Stomp Remixes", "url"=>"https://www.youtube.com/watch?v=CieAHzY_1Fs", "description"=>"Jex Opolis - First Stomp (Vocal Up Mix)", "duration"=>349, "label"=>"Good Timin'", "catno"=>"GDTIMIN010", "library_id"=>73, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10749788", "imgurl"=>"https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jex Opolis"], ["release", "First Stomp Remixes"], ["created_at", "2018-06-23 18:37:42.677825"], ["updated_at", "2018-06-23 18:37:42.677825"], ["url", "https://www.youtube.com/watch?v=CieAHzY_1Fs"], ["description", "Jex Opolis - First Stomp (Vocal Up Mix)"], ["duration", "349"], ["label", "Good Timin'"], ["catno", "GDTIMIN010"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10749788"], ["imgurl", "https://img.discogs.com/pM-L-_QIYofSaLQD8hyLGFkIPZw=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10749788-1503617238-5057.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.18ms)
+Completed 200 OK in 53ms (Views: 6.2ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:46 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "label"=>"Freakout Cult", "catno"=>"CULT 09", "resource_url"=>"https://api.discogs.com/releases/11870204", "library_id"=>74, "title"=>"", "url"=>"https://www.youtube.com/watch?v=63waz7Cp6T4", "description"=>"JAYDA G & ALEXA DASH - DIVA BITCH (JAYDA G GET DOWN ON UR KNEES MIX)", "duration"=>385, "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "url"=>"https://www.youtube.com/watch?v=63waz7Cp6T4", "description"=>"JAYDA G & ALEXA DASH - DIVA BITCH (JAYDA G GET DOWN ON UR KNEES MIX)", "duration"=>385, "label"=>"Freakout Cult", "catno"=>"CULT 09", "library_id"=>74, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11870204", "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jayda G"], ["release", "Diva Bitch Remixes"], ["created_at", "2018-06-23 18:37:46.248226"], ["updated_at", "2018-06-23 18:37:46.248226"], ["url", "https://www.youtube.com/watch?v=63waz7Cp6T4"], ["description", "JAYDA G & ALEXA DASH - DIVA BITCH (JAYDA G GET DOWN ON UR KNEES MIX)"], ["duration", "385"], ["label", "Freakout Cult"], ["catno", "CULT 09"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11870204"], ["imgurl", "https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.14ms)
+Completed 200 OK in 17ms (Views: 7.8ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:47 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "label"=>"Freakout Cult", "catno"=>"CULT 09", "resource_url"=>"https://api.discogs.com/releases/11870204", "library_id"=>74, "title"=>"", "url"=>"https://www.youtube.com/watch?v=2ZKeG2IYjZ4", "description"=>"Jayda G & Alexa Dash- Diva Bitch (Dj Speckgürtel Remix)", "duration"=>441, "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "url"=>"https://www.youtube.com/watch?v=2ZKeG2IYjZ4", "description"=>"Jayda G & Alexa Dash- Diva Bitch (Dj Speckgürtel Remix)", "duration"=>441, "label"=>"Freakout Cult", "catno"=>"CULT 09", "library_id"=>74, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11870204", "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jayda G"], ["release", "Diva Bitch Remixes"], ["created_at", "2018-06-23 18:37:47.909300"], ["updated_at", "2018-06-23 18:37:47.909300"], ["url", "https://www.youtube.com/watch?v=2ZKeG2IYjZ4"], ["description", "Jayda G & Alexa Dash- Diva Bitch (Dj Speckgürtel Remix)"], ["duration", "441"], ["label", "Freakout Cult"], ["catno", "CULT 09"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11870204"], ["imgurl", "https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (7.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (17.47ms)
+Completed 200 OK in 52ms (Views: 12.9ms | ActiveRecord: 22.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:49 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "label"=>"Freakout Cult", "catno"=>"CULT 09", "resource_url"=>"https://api.discogs.com/releases/11870204", "library_id"=>74, "title"=>"", "url"=>"https://www.youtube.com/watch?v=7Uny0dEriaI", "description"=>"JAYDA G - Diva Bitch (DJ Speckgurtel Remix)", "duration"=>242, "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Jayda G", "release"=>"Diva Bitch Remixes", "url"=>"https://www.youtube.com/watch?v=7Uny0dEriaI", "description"=>"JAYDA G - Diva Bitch (DJ Speckgurtel Remix)", "duration"=>242, "label"=>"Freakout Cult", "catno"=>"CULT 09", "library_id"=>74, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11870204", "imgurl"=>"https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (4.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Jayda G"], ["release", "Diva Bitch Remixes"], ["created_at", "2018-06-23 18:37:49.444324"], ["updated_at", "2018-06-23 18:37:49.444324"], ["url", "https://www.youtube.com/watch?v=7Uny0dEriaI"], ["description", "JAYDA G - Diva Bitch (DJ Speckgurtel Remix)"], ["duration", "242"], ["label", "Freakout Cult"], ["catno", "CULT 09"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11870204"], ["imgurl", "https://img.discogs.com/dCDU5aRps8RL7g5rjW2VqnQGXic=/fit-in/600x605/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11870204-1523820814-3297.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (9.48ms)
+Completed 200 OK in 31ms (Views: 10.5ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:53 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Unknown Artist", "release"=>"Made In Thailand", "label"=>"Made In Thailand", "catno"=>"DS1", "resource_url"=>"https://api.discogs.com/releases/11883854", "library_id"=>75, "title"=>"", "url"=>"https://www.youtube.com/watch?v=PXTQO9RW85M", "description"=>"Unknown Artist - Made In Thailand A-side", "duration"=>426, "imgurl"=>"https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Unknown Artist", "release"=>"Made In Thailand", "url"=>"https://www.youtube.com/watch?v=PXTQO9RW85M", "description"=>"Unknown Artist - Made In Thailand A-side", "duration"=>426, "label"=>"Made In Thailand", "catno"=>"DS1", "library_id"=>75, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11883854", "imgurl"=>"https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.2ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Unknown Artist"], ["release", "Made In Thailand"], ["created_at", "2018-06-23 18:37:53.069210"], ["updated_at", "2018-06-23 18:37:53.069210"], ["url", "https://www.youtube.com/watch?v=PXTQO9RW85M"], ["description", "Unknown Artist - Made In Thailand A-side"], ["duration", "426"], ["label", "Made In Thailand"], ["catno", "DS1"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11883854"], ["imgurl", "https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.36ms)
+Completed 200 OK in 19ms (Views: 7.1ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:37:55 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Unknown Artist", "release"=>"Made In Thailand", "label"=>"Made In Thailand", "catno"=>"DS1", "resource_url"=>"https://api.discogs.com/releases/11883854", "library_id"=>75, "title"=>"", "url"=>"https://www.youtube.com/watch?v=mS_LhiEO-YU", "description"=>"Unknown Artist - Made In Thailand B-side", "duration"=>496, "imgurl"=>"https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Unknown Artist", "release"=>"Made In Thailand", "url"=>"https://www.youtube.com/watch?v=mS_LhiEO-YU", "description"=>"Unknown Artist - Made In Thailand B-side", "duration"=>496, "label"=>"Made In Thailand", "catno"=>"DS1", "library_id"=>75, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11883854", "imgurl"=>"https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (6.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Unknown Artist"], ["release", "Made In Thailand"], ["created_at", "2018-06-23 18:37:55.262296"], ["updated_at", "2018-06-23 18:37:55.262296"], ["url", "https://www.youtube.com/watch?v=mS_LhiEO-YU"], ["description", "Unknown Artist - Made In Thailand B-side"], ["duration", "496"], ["label", "Made In Thailand"], ["catno", "DS1"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11883854"], ["imgurl", "https://img.discogs.com/2ST0KQbMX7OAI6wN3y_zIhFB554=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11883854-1524164582-6730.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.6ms)
+Completed 200 OK in 23ms (Views: 6.4ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:04 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=8UlYSBDBKPI", "description"=>"Nuno Canavarro (c/ Carlos Maria Trindade) - Blu Terra", "duration"=>425, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=8UlYSBDBKPI", "description"=>"Nuno Canavarro (c/ Carlos Maria Trindade) - Blu Terra", "duration"=>425, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:04.177491"], ["updated_at", "2018-06-23 18:38:04.177491"], ["url", "https://www.youtube.com/watch?v=8UlYSBDBKPI"], ["description", "Nuno Canavarro (c/ Carlos Maria Trindade) - Blu Terra"], ["duration", "425"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.9ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (14.19ms)
+Completed 200 OK in 39ms (Views: 15.2ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:05 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=IMdL_MBpyAs", "description"=>"Michael Ozone's Liital Rhythm - Aby Ngana Diop", "duration"=>231, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=IMdL_MBpyAs", "description"=>"Michael Ozone's Liital Rhythm - Aby Ngana Diop", "duration"=>231, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (11.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (3.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:05.704998"], ["updated_at", "2018-06-23 18:38:05.704998"], ["url", "https://www.youtube.com/watch?v=IMdL_MBpyAs"], ["description", "Michael Ozone's Liital Rhythm - Aby Ngana Diop"], ["duration", "231"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (8.68ms)
+Completed 200 OK in 50ms (Views: 9.0ms | ActiveRecord: 28.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:07 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=YOsEzyM3rLM", "description"=>"Boncana Maïga: Koyma Hondo (Official)", "duration"=>242, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=YOsEzyM3rLM", "description"=>"Boncana Maïga: Koyma Hondo (Official)", "duration"=>242, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:07.715483"], ["updated_at", "2018-06-23 18:38:07.715483"], ["url", "https://www.youtube.com/watch?v=YOsEzyM3rLM"], ["description", "Boncana Maïga: Koyma Hondo (Official)"], ["duration", "242"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.8ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.53ms)
+Completed 200 OK in 19ms (Views: 7.8ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:09 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=Qo0qGO8OIL8", "description"=>"Tohon Stanislas - Owhaaou (Raphael Top Secret Edit)", "duration"=>326, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=Qo0qGO8OIL8", "description"=>"Tohon Stanislas - Owhaaou (Raphael Top Secret Edit)", "duration"=>326, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (3.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:09.454744"], ["updated_at", "2018-06-23 18:38:09.454744"], ["url", "https://www.youtube.com/watch?v=Qo0qGO8OIL8"], ["description", "Tohon Stanislas - Owhaaou (Raphael Top Secret Edit)"], ["duration", "326"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.32ms)
+Completed 200 OK in 30ms (Views: 10.3ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:10 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=nYUZzg3ud8k", "description"=>"Don Laka - Stages Of Love", "duration"=>361, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=nYUZzg3ud8k", "description"=>"Don Laka - Stages Of Love", "duration"=>361, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:11.000119"], ["updated_at", "2018-06-23 18:38:11.000119"], ["url", "https://www.youtube.com/watch?v=nYUZzg3ud8k"], ["description", "Don Laka - Stages Of Love"], ["duration", "361"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (10.47ms)
+Completed 200 OK in 25ms (Views: 12.8ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:12 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=2d8CShqv3a8", "description"=>"Blak Beat Niks - Ritual Of Love (Ron's Vocal Beat Down Mix) (1992)", "duration"=>375, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=2d8CShqv3a8", "description"=>"Blak Beat Niks - Ritual Of Love (Ron's Vocal Beat Down Mix) (1992)", "duration"=>375, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (18.1ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:12.822838"], ["updated_at", "2018-06-23 18:38:12.822838"], ["url", "https://www.youtube.com/watch?v=2d8CShqv3a8"], ["description", "Blak Beat Niks - Ritual Of Love (Ron's Vocal Beat Down Mix) (1992)"], ["duration", "375"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (11.44ms)
+Completed 200 OK in 51ms (Views: 12.1ms | ActiveRecord: 21.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:14 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=3wjAgE6CrpY", "description"=>"Larry Heard - Burning 4 Love", "duration"=>553, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=3wjAgE6CrpY", "description"=>"Larry Heard - Burning 4 Love", "duration"=>553, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (1.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:14.285662"], ["updated_at", "2018-06-23 18:38:14.285662"], ["url", "https://www.youtube.com/watch?v=3wjAgE6CrpY"], ["description", "Larry Heard - Burning 4 Love"], ["duration", "553"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (1.2ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (55.66ms)
+Completed 200 OK in 109ms (Views: 84.2ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:16 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=6nsY1IocDFA", "description"=>"Mappa Mundi - Trance Fusion (Hunee Tempo Edit)", "duration"=>456, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=6nsY1IocDFA", "description"=>"Mappa Mundi - Trance Fusion (Hunee Tempo Edit)", "duration"=>456, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (11.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:16.457843"], ["updated_at", "2018-06-23 18:38:16.457843"], ["url", "https://www.youtube.com/watch?v=6nsY1IocDFA"], ["description", "Mappa Mundi - Trance Fusion (Hunee Tempo Edit)"], ["duration", "456"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.19ms)
+Completed 200 OK in 27ms (Views: 5.7ms | ActiveRecord: 13.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:18 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=wWpuJ2cV7KM", "description"=>"Pat Thomas - Yesu San Bra (Disco High Life)", "duration"=>408, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=wWpuJ2cV7KM", "description"=>"Pat Thomas - Yesu San Bra (Disco High Life)", "duration"=>408, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.3ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:18.923818"], ["updated_at", "2018-06-23 18:38:18.923818"], ["url", "https://www.youtube.com/watch?v=wWpuJ2cV7KM"], ["description", "Pat Thomas - Yesu San Bra (Disco High Life)"], ["duration", "408"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.5ms)
+Completed 200 OK in 20ms (Views: 6.4ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:21 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Hunee", "release"=>"Hunchin' All Night", "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "resource_url"=>"https://api.discogs.com/releases/11743385", "library_id"=>77, "title"=>"", "url"=>"https://www.youtube.com/watch?v=5dUJc98fBiY", "description"=>"Dark Comedy - Without A Sound(Art Of Dance Records) 1992", "duration"=>596, "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Hunee", "release"=>"Hunchin' All Night", "url"=>"https://www.youtube.com/watch?v=5dUJc98fBiY", "description"=>"Dark Comedy - Without A Sound(Art Of Dance Records) 1992", "duration"=>596, "label"=>"Rush Hour Recordings", "catno"=>"RHMC 001", "library_id"=>77, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11743385", "imgurl"=>"https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Hunee"], ["release", "Hunchin' All Night"], ["created_at", "2018-06-23 18:38:21.156541"], ["updated_at", "2018-06-23 18:38:21.156541"], ["url", "https://www.youtube.com/watch?v=5dUJc98fBiY"], ["description", "Dark Comedy - Without A Sound(Art Of Dance Records) 1992"], ["duration", "596"], ["label", "Rush Hour Recordings"], ["catno", "RHMC 001"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11743385"], ["imgurl", "https://img.discogs.com/nmN2CIWeUAhJWupmFS0tYpZ1ZLs=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11743385-1521630747-2844.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (11.51ms)
+Completed 200 OK in 114ms (Views: 12.6ms | ActiveRecord: 10.6ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:35 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "label"=>"Silverning Dubs", "catno"=>"SvD006", "resource_url"=>"https://api.discogs.com/releases/11683398", "library_id"=>83, "title"=>"", "url"=>"https://www.youtube.com/watch?v=fq1h3oNpc_I", "description"=>"Nanoschnitzel - Silverlining | Silverlining Dubs [2018]", "duration"=>501, "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "url"=>"https://www.youtube.com/watch?v=fq1h3oNpc_I", "description"=>"Nanoschnitzel - Silverlining | Silverlining Dubs [2018]", "duration"=>501, "label"=>"Silverning Dubs", "catno"=>"SvD006", "library_id"=>83, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11683398", "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (2.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Silverlining"], ["release", "Silverlining Dubs (VI)"], ["created_at", "2018-06-23 18:38:35.567895"], ["updated_at", "2018-06-23 18:38:35.567895"], ["url", "https://www.youtube.com/watch?v=fq1h3oNpc_I"], ["description", "Nanoschnitzel - Silverlining | Silverlining Dubs [2018]"], ["duration", "501"], ["label", "Silverning Dubs"], ["catno", "SvD006"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11683398"], ["imgurl", "https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (5.4ms)
+Completed 200 OK in 22ms (Views: 6.4ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:37 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "label"=>"Silverning Dubs", "catno"=>"SvD006", "resource_url"=>"https://api.discogs.com/releases/11683398", "library_id"=>83, "title"=>"", "url"=>"https://www.youtube.com/watch?v=RHpjiYS053o", "description"=>"Eye in the Sky - Silverlining | Silverlining Dubs [2018]", "duration"=>385, "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "url"=>"https://www.youtube.com/watch?v=RHpjiYS053o", "description"=>"Eye in the Sky - Silverlining | Silverlining Dubs [2018]", "duration"=>385, "label"=>"Silverning Dubs", "catno"=>"SvD006", "library_id"=>83, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11683398", "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (4.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Silverlining"], ["release", "Silverlining Dubs (VI)"], ["created_at", "2018-06-23 18:38:37.290568"], ["updated_at", "2018-06-23 18:38:37.290568"], ["url", "https://www.youtube.com/watch?v=RHpjiYS053o"], ["description", "Eye in the Sky - Silverlining | Silverlining Dubs [2018]"], ["duration", "385"], ["label", "Silverning Dubs"], ["catno", "SvD006"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11683398"], ["imgurl", "https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (9.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.8ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (10.59ms)
+Completed 200 OK in 36ms (Views: 8.7ms | ActiveRecord: 18.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:38 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "label"=>"Silverning Dubs", "catno"=>"SvD006", "resource_url"=>"https://api.discogs.com/releases/11683398", "library_id"=>83, "title"=>"", "url"=>"https://www.youtube.com/watch?v=CUnKS6PKVt0", "description"=>"Munticles - Silverlining | Silverlining Dubs [2018]", "duration"=>433, "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Silverlining", "release"=>"Silverlining Dubs (VI)", "url"=>"https://www.youtube.com/watch?v=CUnKS6PKVt0", "description"=>"Munticles - Silverlining | Silverlining Dubs [2018]", "duration"=>433, "label"=>"Silverning Dubs", "catno"=>"SvD006", "library_id"=>83, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/11683398", "imgurl"=>"https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Silverlining"], ["release", "Silverlining Dubs (VI)"], ["created_at", "2018-06-23 18:38:38.908512"], ["updated_at", "2018-06-23 18:38:38.908512"], ["url", "https://www.youtube.com/watch?v=CUnKS6PKVt0"], ["description", "Munticles - Silverlining | Silverlining Dubs [2018]"], ["duration", "433"], ["label", "Silverning Dubs"], ["catno", "SvD006"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/11683398"], ["imgurl", "https://img.discogs.com/Hri3Zm2WbkmE19smgC2aEKiQFaw=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11683398-1521515141-8379.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (5.9ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (15.19ms)
+Completed 200 OK in 28ms (Views: 11.6ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:42 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"Zender's Atoll", "label"=>"Sounds Benefit", "catno"=>"SND004", "resource_url"=>"https://api.discogs.com/releases/10618680", "library_id"=>84, "title"=>"", "url"=>"https://www.youtube.com/watch?v=JDixZl0Z6SQ", "description"=>"Jordan Magee - Solidify [Sounds Benefit ‎– SND004]", "duration"=>341, "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"Zender's Atoll", "url"=>"https://www.youtube.com/watch?v=JDixZl0Z6SQ", "description"=>"Jordan Magee - Solidify [Sounds Benefit ‎– SND004]", "duration"=>341, "label"=>"Sounds Benefit", "catno"=>"SND004", "library_id"=>84, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10618680", "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "Zender's Atoll"], ["created_at", "2018-06-23 18:38:42.831229"], ["updated_at", "2018-06-23 18:38:42.831229"], ["url", "https://www.youtube.com/watch?v=JDixZl0Z6SQ"], ["description", "Jordan Magee - Solidify [Sounds Benefit ‎– SND004]"], ["duration", "341"], ["label", "Sounds Benefit"], ["catno", "SND004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10618680"], ["imgurl", "https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (2.0ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (6.51ms)
+Completed 200 OK in 15ms (Views: 5.6ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:44 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"Zender's Atoll", "label"=>"Sounds Benefit", "catno"=>"SND004", "resource_url"=>"https://api.discogs.com/releases/10618680", "library_id"=>84, "title"=>"", "url"=>"https://www.youtube.com/watch?v=53rcoXS3E4M", "description"=>"Tom Joyce - Zender [Sounds Benefit ‎– SND004]", "duration"=>366, "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"Zender's Atoll", "url"=>"https://www.youtube.com/watch?v=53rcoXS3E4M", "description"=>"Tom Joyce - Zender [Sounds Benefit ‎– SND004]", "duration"=>366, "label"=>"Sounds Benefit", "catno"=>"SND004", "library_id"=>84, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10618680", "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (12.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "Zender's Atoll"], ["created_at", "2018-06-23 18:38:44.161366"], ["updated_at", "2018-06-23 18:38:44.161366"], ["url", "https://www.youtube.com/watch?v=53rcoXS3E4M"], ["description", "Tom Joyce - Zender [Sounds Benefit ‎– SND004]"], ["duration", "366"], ["label", "Sounds Benefit"], ["catno", "SND004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10618680"], ["imgurl", "https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (22.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (3.9ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (13.89ms)
+Completed 200 OK in 81ms (Views: 14.1ms | ActiveRecord: 42.9ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:45 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"Zender's Atoll", "label"=>"Sounds Benefit", "catno"=>"SND004", "resource_url"=>"https://api.discogs.com/releases/10618680", "library_id"=>84, "title"=>"", "url"=>"https://www.youtube.com/watch?v=vp74oJsm808", "description"=>"S-Max - Comet Kohoutek  [Sounds Benefit ‎– SND004]", "duration"=>352, "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"Zender's Atoll", "url"=>"https://www.youtube.com/watch?v=vp74oJsm808", "description"=>"S-Max - Comet Kohoutek  [Sounds Benefit ‎– SND004]", "duration"=>352, "label"=>"Sounds Benefit", "catno"=>"SND004", "library_id"=>84, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10618680", "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (12.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "Zender's Atoll"], ["created_at", "2018-06-23 18:38:45.703633"], ["updated_at", "2018-06-23 18:38:45.703633"], ["url", "https://www.youtube.com/watch?v=vp74oJsm808"], ["description", "S-Max - Comet Kohoutek  [Sounds Benefit ‎– SND004]"], ["duration", "352"], ["label", "Sounds Benefit"], ["catno", "SND004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10618680"], ["imgurl", "https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (20.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (13.71ms)
+Completed 200 OK in 60ms (Views: 15.0ms | ActiveRecord: 33.3ms)
+
+
+Started POST "/api/v1/tracks" for 127.0.0.1 at 2018-06-23 14:38:47 -0400
+Processing by Api::V1::TracksController#create as */*
+  Parameters: {"artist"=>"Various", "release"=>"Zender's Atoll", "label"=>"Sounds Benefit", "catno"=>"SND004", "resource_url"=>"https://api.discogs.com/releases/10618680", "library_id"=>84, "title"=>"", "url"=>"https://www.youtube.com/watch?v=Z4PyHl2_5Po", "description"=>"S-Max - Comet Kohoutek (Alex Picone Remix)  [Sounds Benefit ‎– SND004]", "duration"=>396, "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg", "playlist_id"=>"44", "track"=>{"title"=>"", "artist"=>"Various", "release"=>"Zender's Atoll", "url"=>"https://www.youtube.com/watch?v=Z4PyHl2_5Po", "description"=>"S-Max - Comet Kohoutek (Alex Picone Remix)  [Sounds Benefit ‎– SND004]", "duration"=>396, "label"=>"Sounds Benefit", "catno"=>"SND004", "library_id"=>84, "playlist_id"=>"44", "resource_url"=>"https://api.discogs.com/releases/10618680", "imgurl"=>"https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"}}
+Unpermitted parameters: :library_id, :track
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[36mTrack Create (4.9ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist", "release", "created_at", "updated_at", "url", "description", "duration", "label", "catno", "playlist_id", "resource_url", "imgurl") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["title", ""], ["artist", "Various"], ["release", "Zender's Atoll"], ["created_at", "2018-06-23 18:38:47.987100"], ["updated_at", "2018-06-23 18:38:47.987100"], ["url", "https://www.youtube.com/watch?v=Z4PyHl2_5Po"], ["description", "S-Max - Comet Kohoutek (Alex Picone Remix)  [Sounds Benefit ‎– SND004]"], ["duration", "396"], ["label", "Sounds Benefit"], ["catno", "SND004"], ["playlist_id", 44], ["resource_url", "https://api.discogs.com/releases/10618680"], ["imgurl", "https://img.discogs.com/rfyCDOXBrBiDmTOQDFLHJmN_EzE=/fit-in/600x593/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10618680-1508450998-7504.jpeg.jpg"]]
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/tracks_controller.rb:10
+[active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/tracks_controller.rb:11
+[active_model_serializers] Rendered TrackSerializer with ActiveModelSerializers::Adapter::JsonApi (7.6ms)
+Completed 200 OK in 32ms (Views: 8.7ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/api/v1/playlists/44" for 127.0.0.1 at 2018-06-23 14:38:48 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:30
+[active_model_serializers]   [1m[36mTrack Load (1.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 44]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (49.59ms)
+Completed 200 OK in 52ms (Views: 49.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/playlists" for 127.0.0.1 at 2018-06-24 11:21:39 -0400
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/HarimChoi/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::PlaylistsController#index as */*
+  [1m[36mPlaylist Load (13.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists"[0m
+  ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.9ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 36]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 37]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 38]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 39]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.4ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 43]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers]   [1m[36mTrack Load (0.5ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 44]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (221.65ms)
+Completed 200 OK in 349ms (Views: 285.1ms | ActiveRecord: 43.0ms)
+
+
+Started GET "/api/v1/playlists/44" for 127.0.0.1 at 2018-06-24 11:21:54 -0400
+Processing by Api::V1::PlaylistsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/playlists_controller.rb:30
+[active_model_serializers]   [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks" WHERE "tracks"."playlist_id" = $1[0m  [["playlist_id", 44]]
+[active_model_serializers]   ↳ app/controllers/api/v1/playlists_controller.rb:17
+[active_model_serializers] Rendered PlaylistSerializer with ActiveModelSerializers::Adapter::JsonApi (38.44ms)
+Completed 200 OK in 43ms (Views: 38.3ms | ActiveRecord: 1.6ms)
+
+
