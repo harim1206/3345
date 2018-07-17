@@ -16,8 +16,8 @@ class Library extends Component{
           currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
           currentReleaseVideos = {this.props.currentRelease ? this.props.currentReleaseVideos : undefined}
           playlists = {this.props.playlists}
-          onClick = {this.props.onClick}
-          onTrackPlaylistChange = {this.props.onTrackPlaylistChange}
+          onReleaseClick = {this.props.onReleaseClick}
+          saveToPlaylist = {this.props.saveToPlaylist}
           onYoutubeClick = {this.props.onYoutubeClick}
         />
       )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TrackContainer from './TrackContainer.js'
+import ReleaseTracks from './ReleaseTracks.js'
 
 
 class Release extends Component{
@@ -8,19 +8,16 @@ class Release extends Component{
     const release = this.props.release
     const date = new Date(release.date_added)
 
-    // const playlistSelectOptions = this.props.playlists.map((playlist)=>{
-    //   return <option value={playlist.id}>{playlist.name}</option>
-    // })
+    let releaseTracks
 
-    let trackContainer
     if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0].id){
 
-      trackContainer = <TrackContainer
+      releaseTracks = <ReleaseTracks
       currentRelease = {this.props.currentRelease}
       currentReleaseTracks = {this.props.currentReleaseTracks}
       currentReleaseVideos = {this.props.currentReleaseVideos}
       playlists = {this.props.playlists}
-      onTrackPlaylistChange = {this.props.onTrackPlaylistChange}
+      saveToPlaylist = {this.props.saveToPlaylist}
       onYoutubeClick = {this.props.onYoutubeClick}
       />
     }
@@ -28,7 +25,7 @@ class Release extends Component{
     // debugger
     return(
       <React.Fragment>
-        <tr onClick={()=>this.props.onClick(release, release.id)}>
+        <tr onReleaseClick={()=>this.props.onReleaseClick(release, release.id)}>
           <td>{release.artist}</td>
           <td>{release.title}</td>
           <td>{release.label}</td>
@@ -37,7 +34,7 @@ class Release extends Component{
 
         </tr>
 
-        {trackContainer}
+        {releaseTracks}
 
       </React.Fragment>
 

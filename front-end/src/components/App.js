@@ -9,17 +9,19 @@ require('dotenv').config()
 
 class App extends Component {
   state={
-    // All Releases
+    // Raw Data, redundant - see if you can remove
     pagination: {},
     releases: [],
+    // Parsed Releases
     libraryReleases: [],
-    // Current Release
+    // Current Video/Image
     currentVideoURL: "",
+    currentReleaseImgUrl:"",
+    // Current Release
     currentRelease: {},
     nextRelease:{},
     currentReleaseTracks: [],
     currentReleaseVideos:[],
-    currentReleaseImgUrl:"",
     // Current Track
     currentTrack: {},
     nextTrack: {},
@@ -84,8 +86,8 @@ class App extends Component {
 
   }
 
-  // Play video on click of the release
-  onClick = (release, id) => {
+  // fetch tracks for the release
+  onReleaseClick = (release, id) => {
 
     let tracks = []
     let videos = []
@@ -97,10 +99,11 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
 
-      let randomVideo = {uri:""}
-      if(data.videos){
-        randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
-      }
+      // let randomVideo = {uri:""}
+      //
+      // if(data.videos){
+      //   randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
+      // }
 
       let tracksData = data.tracklist.map((track)=>{
         return ({
@@ -130,7 +133,7 @@ class App extends Component {
         nextRelease: this.state.libraryReleases[id+1],
         currentReleaseTracks: tracks,
         currentReleaseVideos: videos,
-        currentVideoURL: randomVideo.uri,
+        // currentVideoURL: randomVideo.uri,
         currentReleaseImgUrl: data.images[0].uri,
       },()=>console.log(`state onClick: `,this.state))
     })
@@ -347,7 +350,7 @@ class App extends Component {
   }
 
   // on playlist select menu change, add track to playlist
-  onTrackPlaylistChange = (video, release, event) =>{
+  saveToPlaylist = (video, release, event) =>{
 
     console.log(`this.state.currentReleaseImgUrl: `, this.state.currentReleaseImgUrl)
 
@@ -436,9 +439,9 @@ class App extends Component {
         currentReleaseTracks={this.state.currentReleaseTracks}
         currentReleaseVideos={this.state.currentReleaseVideos}
         playlists={this.state.playlists}
-        onClick={this.onClick}
+        onReleaseClick={this.onReleaseClick}
         onSort={this.onSort}
-        onTrackPlaylistChange={this.onTrackPlaylistChange}
+        saveToPlaylist={this.saveToPlaylist}
         onYoutubeClick={this.onYoutubeClick}
       />
     }else{
