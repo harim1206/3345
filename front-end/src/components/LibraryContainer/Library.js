@@ -6,11 +6,11 @@ class Library extends Component{
 
   render(){
     // Mapping props data to Release components
-    const shuffledReleases = this.props.shuffledReleases.map((release)=>{
+    const libraryReleases = this.props.libraryReleases.map((release)=>{
 
       return (
         <Release
-          id = {this.props.shuffledReleases.indexOf(release)}
+          id = {this.props.libraryReleases.indexOf(release)}
           release = {release}
           currentRelease = {this.props.currentRelease}
           currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
@@ -31,16 +31,16 @@ class Library extends Component{
 
 
     return(
-      <div className="library-wrapper-padding">
+      <div className="library-wrapper--padding">
         <div className="library-wrapper">
-          <table className="library-table">
+          <table className="library__table">
             <thead >
               <tr>
                 {columnHeaders}
               </tr>
             </thead>
             <tbody>
-              {shuffledReleases}
+              {libraryReleases}
             </tbody>
           </table>
         </div>

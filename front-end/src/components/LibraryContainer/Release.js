@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TrackContainer from '../container/TrackContainer.js'
+import TrackContainer from './TrackContainer.js'
 
 
 class Release extends Component{

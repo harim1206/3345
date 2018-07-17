@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Video from './Video.js'
-import Library from './Library.js'
-import PlaylistContainer from '../container/PlaylistContainer.js'
-import PlaylistDisplayContainer from '../container/PlaylistDisplayContainer'
+import Library from './LibraryContainer/Library.js'
+import PlaylistsTitlesContainer from './PlaylistTitlesContainer/PlaylistsTitlesContainer.js'
+import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer'
 
 import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 require('dotenv').config()
@@ -12,7 +12,7 @@ class App extends Component {
     // All Releases
     pagination: {},
     releases: [],
-    shuffledReleases: [],
+    libraryReleases: [],
     // Current Release
     currentVideoURL: "",
     currentRelease: {},
@@ -29,8 +29,8 @@ class App extends Component {
     // Playlist Display
     currentPlaylistTracks: [],
     // toggle
-    playlistDisplay: false,
-    playlistContainerDisplay: false
+    playlistTracksContainerDisplay: false,
+    playlistsTitlesContainerDisplay: false
   }
 
 
@@ -57,7 +57,7 @@ class App extends Component {
       this.setState({
         pagination: data.pagination,
         releases: data.releases,
-        shuffledReleases: parsedData,
+        libraryReleases: parsedData,
         currentRelease: parsedData[0],
         nextRelease: parsedData[1]
       } , ()=>{
@@ -127,7 +127,7 @@ class App extends Component {
 
       this.setState({
         currentRelease: release,
-        nextRelease: this.state.shuffledReleases[id+1],
+        nextRelease: this.state.libraryReleases[id+1],
         currentReleaseTracks: tracks,
         currentReleaseVideos: videos,
         currentVideoURL: randomVideo.uri,
@@ -162,7 +162,7 @@ class App extends Component {
 
   // on table column header sort
   onSort = (sortKey) =>{
-    let data = this.state.shuffledReleases
+    let data = this.state.libraryReleases
     console.log(`sortKey: `,sortKey)
 
     if(sortKey === 'id'){
@@ -183,19 +183,19 @@ class App extends Component {
 
 
 
-    this.setState({shuffledReleases: data})
+    this.setState({libraryReleases: data})
 
   }
 
   // play next video once it finishes
   onEnded = () =>{
 
-    if(!this.state.playlistDisplay){
-      const nextReleaseId = this.state.shuffledReleases.indexOf(this.state.nextRelease)
+    if(!this.state.playlistTracksContainerDisplay){
+      const nextReleaseId = this.state.libraryReleases.indexOf(this.state.nextRelease)
 
       this.setState({
         currentRelease: this.state.nextRelease,
-        nextRelease: this.state.shuffledReleases[nextReleaseId+1]
+        nextRelease: this.state.libraryReleases[nextReleaseId+1]
 
       }, ()=>{
         this.fetchReleaseURL(this.state.currentRelease)
@@ -278,7 +278,7 @@ class App extends Component {
   }
 
   // Toggle playlist on click
-  onPlaylistClick = (playlist) => {
+  onPlaylistTitleClick = (playlist) => {
 
     const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
 
@@ -288,16 +288,15 @@ class App extends Component {
       const tracks = data.data.attributes.tracks
 
       this.setState({
-        playlistDisplay: true,
+        playlistTracksContainerDisplay: true,
         currentPlaylistTracks: tracks
-
-      }/*, ()=>{console.log(`currentPlaylistTracks`,this.state.currentPlaylistTracks)}*/)
+      })
     })
 
   }
 
   // Delete playlist
-  onPlaylistDelete = (playlist) => {
+  onPlaylistTitleDelete = (playlist) => {
 
 
     const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
@@ -334,16 +333,16 @@ class App extends Component {
 
 
     this.setState({
-      playlistDisplay: false,
+      playlistTracksContainerDisplay: false,
     })
 
   }
 
   onPlaylistToggleClick = () =>{
     // debugger
-    const toggle = !this.state.playlistContainerDisplay
+    const toggle = !this.state.playlistsTitlesContainerDisplay
     this.setState({
-      playlistContainerDisplay: toggle
+      playlistsTitlesContainerDisplay: toggle
     })
   }
 
@@ -384,7 +383,7 @@ class App extends Component {
 
   render() {
     let library
-    let playlist
+    let playlistsTitlesContainer
     let bgUrl
     let bgSize
     let bgTop
@@ -393,7 +392,7 @@ class App extends Component {
 
     let libraryToggleButton
 
-    if(this.state.playlistDisplay===true){
+    if(this.state.playlistTracksContainerDisplay===true){
       libraryToggleButton = <div onClick={this.onLibraryToggleClick}>
         LIBRARY
       </div>
@@ -430,9 +429,9 @@ class App extends Component {
     let logo = <div id='logo'>33/45</div>
 
 
-    if(!this.state.playlistDisplay){
+    if(!this.state.playlistTracksContainerDisplay){
       library = <Library
-        shuffledReleases={this.state.shuffledReleases}
+        libraryReleases={this.state.libraryReleases}
         currentRelease={this.state.currentRelease}
         currentReleaseTracks={this.state.currentReleaseTracks}
         currentReleaseVideos={this.state.currentReleaseVideos}
@@ -443,18 +442,18 @@ class App extends Component {
         onYoutubeClick={this.onYoutubeClick}
       />
     }else{
-      library = <PlaylistDisplayContainer
+      library = <PlaylistTracksContainer
         currentPlaylistTracks={this.state.currentPlaylistTracks}
         onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
       />
     }
 
-    if(this.state.playlistContainerDisplay){
-      playlist =  <PlaylistContainer
+    if(this.state.playlistsTitlesContainerDisplay){
+      playlistsTitlesContainer =  <PlaylistsTitlesContainer
         onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
         onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
-        onPlaylistClick = {this.onPlaylistClick}
-        onPlaylistDelete = {this.onPlaylistDelete}
+        onPlaylistTitleClick = {this.onPlaylistTitleClick}
+        onPlaylistTitleDelete = {this.onPlaylistTitleDelete}
         newPlaylistInput = {this.state.newPlaylistInput}
         playlists = {this.state.playlists}
         onLibraryToggleClick = {this.onLibraryToggleClick}
@@ -464,26 +463,26 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div className="main-container-shadow">
+        <div className="main-container--shadow">
           <Video
             onEnded={this.onEnded}
             currentVideoURL={this.state.currentVideoURL}
             currentReleaseImageURL={this.state.currentReleaseImgUrl}
           />
 
-          <div className = "main-container-padding">
-          <div className="playlist-toggle-div">
-            <div onClick={this.onPlaylistToggleClick}>
-              PLAYLISTS
-            </div>
-            {libraryToggleButton}
-          </div>
+          <div className = "main-container--padding">
+            <nav className="navigation-bar">
+              <div onClick={this.onPlaylistToggleClick}>
+                PLAYLISTS
+              </div>
+              {libraryToggleButton}
+            </nav>
 
-          <div className={this.state.playlistContainerDisplay ? "main-container" : "main-container-playlisthidden"}>
-            {playlist}
-            {library}
+            <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
+              {playlistsTitlesContainer}
+              {library}
+            </div>
           </div>
-        </div>
         </div>
 
 

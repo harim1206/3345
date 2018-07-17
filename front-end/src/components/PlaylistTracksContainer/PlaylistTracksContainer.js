@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PlaylistTrack from '../components/PlaylistTrack'
+import PlaylistTrack from './PlaylistTrack'
 
-class PlaylistDisplayContainer extends Component{
+class PlyalistTracksContainer extends Component{
 
   render(){
     const tracks = this.props.currentPlaylistTracks.map((track)=>{
@@ -36,7 +36,7 @@ class PlaylistDisplayContainer extends Component{
   }
 }
 
-export default PlaylistDisplayContainer
+export default PlyalistTracksContainer
 // artist, description, release, label, catno, url
 //
 // artist

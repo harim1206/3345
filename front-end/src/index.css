@@ -50,23 +50,23 @@ body {
 
 }
 
-.playlist-toggle-div, .main-container, .main-container-playlisthidden, .playlistContainer-wrapper{
+.navigation-bar, .main-container, .main-container--playlisthidden, .playlistsTitlesContainer-wrapper{
   background-color: white;
   /* border: 0.5px solid rgb(201, 211, 226); */
 }
 
-.main-container-padding{
+.main-container--padding{
   padding: 10px;
   background-color: white;
 }
 
-.main-container-shadow{
+.main-container--shadow{
   width: 640px;
   margin: 8vh auto 0 auto;
   box-shadow: 13px 13px 20px rgb(56, 62, 71);
 }
 
-.playlist-toggle-div{
+.navigation-bar{
   /* width: 640px; */
   margin: auto;
   padding: 3px 0 3px 10px;
@@ -74,7 +74,7 @@ body {
 
 }
 
-.playlist-toggle-div div{
+.navigation-bar div{
   display: inline-block;
   margin-right: 225px;
 }
@@ -89,14 +89,14 @@ body {
 
 }
 
-.main-container-playlisthidden{
+.main-container--playlisthidden{
   /* width: 640px; */
   margin: auto;
 
 
 }
 
-.playlistContainer-wrapper{
+.playlistsTitlesContainer-wrapper{
 
   position: relative;
   padding: 10px;
@@ -122,7 +122,7 @@ body {
   margin-right: 5px;
 }
 
-.library-wrapper-padding, .playlistDisplay-wrapper{
+.library-wrapper--padding, .playlistDisplay-wrapper{
   overflow: auto;
   padding: 10px;
   padding-left: 15px;
@@ -134,18 +134,18 @@ body {
   overflow-y: auto;
 }
 
-.library-table{
+.library__table{
   width: 700px;
 
 }
 
 
 
-.library-table tr, .playlistDisplay-table tr{
+.library__table tr, .playlistDisplay-table tr{
   border-bottom: 1px solid rgb(232, 232, 232);
 }
 
-.library-table th, .library-table td, .playlistDisplay-table th, .playlistDisplay-table td{
+.library__table th, .library__table td, .playlistDisplay-table th, .playlistDisplay-table td{
   padding-left: 10px;
 
 }

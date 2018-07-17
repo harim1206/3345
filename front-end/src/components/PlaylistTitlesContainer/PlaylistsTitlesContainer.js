@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import Playlist from '../components/Playlist.js'
+import PlaylistTitle from './PlaylistTitle.js'
 
-class PlaylistContainer extends Component{
+class PlaylistsTitlesContainer extends Component{
 
   render(){
 
-    const playlists = this.props.playlists.map((playlist)=>{
-      return <Playlist
+    const playlistTitles = this.props.playlists.map((playlist)=>{
+      return <PlaylistTitle
         playlist={playlist}
-        onPlaylistClick={this.props.onPlaylistClick}
-        onPlaylistDelete={this.props.onPlaylistDelete}
+        onPlaylistTitleClick={this.props.onPlaylistTitleClick}
+        onPlaylistTitleDelete={this.props.onPlaylistTitleDelete}
       />
     })
 
     return(
-      <div className="playlistContainer-wrapper">
+      <div className="playlistsTitlesContainer-wrapper">
 
-        {playlists}
+        {playlistTitles}
 
         <div className="new-playlist-wrapper">
           <input
@@ -29,8 +29,6 @@ class PlaylistContainer extends Component{
           <i className="fas fa-plus" onClick={this.props.onNewPlaylistSubmit}></i>
 
         </div>
-
-
       </div>
     )
   }
@@ -50,4 +48,4 @@ class PlaylistContainer extends Component{
 // </form>
 
 
-export default PlaylistContainer
+export default PlaylistsTitlesContainer
