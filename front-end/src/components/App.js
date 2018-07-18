@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+
+//Redux
+import { Provider } from 'react-redux'
+import store from '../store.js'
+
+//Components
 import Video from './Video.js'
 import Library from './LibraryContainer/Library.js'
 import PlaylistsTitlesContainer from './PlaylistTitlesContainer/PlaylistsTitlesContainer.js'
 import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer'
 
+//Helper Functions
 import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 require('dotenv').config()
 
@@ -481,35 +488,40 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <Provider store={store}>
 
-        <div className="main-container--shadow">
-          <Video
-            onEnded={this.onEnded}
-            currentVideo={this.state.currentVideo}
-            currentReleaseImageURL={this.state.currentReleaseImgUrl}
-          />
+        <div className="App">
 
-          <div className = "main-container--padding">
-            <nav className="navigation-bar">
-              <div onClick={this.onPlaylistToggleClick}>
-                PLAYLISTS
+          <div className="main-container--shadow">
+            <Video
+              onEnded={this.onEnded}
+              currentVideo={this.state.currentVideo}
+              currentReleaseImageURL={this.state.currentReleaseImgUrl}
+            />
+
+            <div className = "main-container--padding">
+              <nav className="navigation-bar">
+                <div onClick={this.onPlaylistToggleClick}>
+                  PLAYLISTS
+                </div>
+                {libraryToggleButton}
+              </nav>
+
+              <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
+                {playlistsTitlesContainer}
+                {library}
               </div>
-              {libraryToggleButton}
-            </nav>
-
-            <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
-              {playlistsTitlesContainer}
-              {library}
             </div>
           </div>
+
+
+          {logo}
+          {bgDiv}
+
         </div>
+        
+      </Provider>
 
-
-        {logo}
-        {bgDiv}
-
-      </div>
     );
   }
 }
