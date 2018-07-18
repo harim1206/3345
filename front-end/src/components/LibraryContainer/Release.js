@@ -25,7 +25,7 @@ class Release extends Component{
     // debugger
     return(
       <React.Fragment>
-        <tr onReleaseClick={()=>this.props.onReleaseClick(release, release.id)}>
+        <tr onClick={()=>this.props.onReleaseClick(release, release.id)}>
           <td>{release.artist}</td>
           <td>{release.title}</td>
           <td>{release.label}</td>

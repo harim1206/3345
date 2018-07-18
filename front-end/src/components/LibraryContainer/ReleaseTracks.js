@@ -10,6 +10,7 @@ class ReleaseTracks extends Component{
   }
 
   render(){
+    // debugger
 
     // an array of table rows
     const tracks = this.props.currentReleaseTracks.map((track)=>{
@@ -30,8 +31,9 @@ class ReleaseTracks extends Component{
       return <option value={playlist.id}>{playlist.name}</option>
     })
 
-    // an array of table rows
+    // an array of table rows of youtube links
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
+      // debugger
       return (
         <tr className='track-container-row' onClick={(event)=>this.props.onYoutubeClick(video, event)}>
           <td></td>
@@ -50,30 +52,24 @@ class ReleaseTracks extends Component{
     return(
       <React.Fragment>
 
-        // Title row
         <tr className='track-container-row'>
-          <td colspan={5} style={{fontWeight: 'bold'}}>TRACKLIST</td>
+          <td colSpan={5} style={{fontWeight: 'bold'}}>TRACKLIST</td>
         </tr>
 
-        // Column headers row
         <tr className='track-container-row'>
           {this.createColumnHeaders(['','Title','Position','',''])}
         </tr>
 
-        // Track information rows
         {tracks}
 
-        // Title row
         <tr className='track-container-row'>
           <td colspan={5} style={{fontWeight: 'bold'}}>YOUTUBE LINKS</td>
         </tr>
 
-        // Column headers row
         <tr className='track-container-row'>
           {this.createColumnHeaders(['','Title','Playlist','URL',''])}
         </tr>
 
-        // Youtube link rows
         {youtubes}
 
       </React.Fragment>

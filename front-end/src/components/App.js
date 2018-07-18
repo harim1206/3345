@@ -9,13 +9,11 @@ require('dotenv').config()
 
 class App extends Component {
   state={
-    // Raw Data, redundant - see if you can remove
-    pagination: {},
-    releases: [],
     // Parsed Releases
     libraryReleases: [],
     // Current Video/Image
-    currentVideoURL: "",
+    currentVideo: "",
+    nextVideo: "",
     currentReleaseImgUrl:"",
     // Current Release
     currentRelease: {},
@@ -37,6 +35,11 @@ class App extends Component {
 
 
 
+
+
+  // LIFECYCLE METHODS
+  //
+  //
   componentDidMount(){
     const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
 
@@ -45,7 +48,7 @@ class App extends Component {
     .then(data => {
       let releases = data.releases.slice(0,500)
 
-      let releasesSortedByDateAdded = releases.sort((a,b)=>{
+      releases.sort((a,b)=>{
         let keyA = new Date(a.date_added),
             keyB = new Date(b.date_added);
 
@@ -57,14 +60,10 @@ class App extends Component {
       const parsedData = parseJSONtoData(releases)
 
       this.setState({
-        pagination: data.pagination,
-        releases: data.releases,
         libraryReleases: parsedData,
         currentRelease: parsedData[0],
-        nextRelease: parsedData[1]
-      } , ()=>{
-        console.log(`this.state:`, this.state)
-        this.fetchReleaseURL(this.state.currentRelease)
+        nextRelease: parsedData[1],
+        currentVideo: {url: "https://www.youtube.com/watch?v=rtXIdykj2QE"}
       })
     })
 
@@ -81,114 +80,18 @@ class App extends Component {
 
       this.setState({
         playlists: playlists
-      },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
-    })
-
-  }
-
-  // fetch tracks for the release
-  onReleaseClick = (release, id) => {
-
-    let tracks = []
-    let videos = []
-
-    const token = process.env.REACT_APP_API_TOKEN;
-    const url = release.resource_url + `?token=${token}`
-
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-
-      // let randomVideo = {uri:""}
-      //
-      // if(data.videos){
-      //   randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
-      // }
-
-      let tracksData = data.tracklist.map((track)=>{
-        return ({
-          id: id,
-          duration: track.duration,
-          position: track.position,
-          title: track.title
-        })
       })
-      tracks = tracksData
-
-      if(data.videos){
-        let videosData = data.videos.map((video)=>{
-          return({
-            description: video.description,
-            title: video.title,
-            uri: video.uri,
-            duration: video.duration
-          })
-        })
-
-        videos = videosData
-      }
-
-      this.setState({
-        currentRelease: release,
-        nextRelease: this.state.libraryReleases[id+1],
-        currentReleaseTracks: tracks,
-        currentReleaseVideos: videos,
-        // currentVideoURL: randomVideo.uri,
-        currentReleaseImgUrl: data.images[0].uri,
-      },()=>console.log(`state onClick: `,this.state))
     })
 
-
   }
 
-  onCurrentPlaylistTrackClick = (track) =>{
-    console.log(`this.state.currentPlaylistTracks`,this.state.currentPlaylistTracks)
-
-    const tracks = this.state.currentPlaylistTracks
-    const currentIndex = tracks.indexOf(track)
-    const nextTrack = tracks[currentIndex+1]
-
-
-    this.setState({
-      currentTrack: track,
-      nextTrack: nextTrack,
-      currentVideoURL: track.url,
-      currentReleaseImgUrl: track.imgurl
-    },()=>console.log(`on track click state`, this.state))
-  }
-
-  onYoutubeClick = (video, event) =>{
-    this.setState({
-      currentVideoURL: video.uri
-    })
-  }
-
-  // on table column header sort
-  onSort = (sortKey) =>{
-    let data = this.state.libraryReleases
-    console.log(`sortKey: `,sortKey)
-
-    if(sortKey === 'id'){
-      data.sort((a,b) => a[sortKey] - b[sortKey])
-    }else if(sortKey=== 'date added'){
-      data.sort((a,b)=>{
-        let keyA = new Date(a['date_added']),
-            keyB = new Date(b['date_added']);
-
-        if(keyA < keyB) return 1;
-        if(keyA > keyB) return -1;
-        return 0;
-      })
-
-    }else{
-      data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
-    }
 
 
 
-    this.setState({libraryReleases: data})
 
-  }
+  // APP/VIDEO COMPONENT EVENT HANDLERS
+  //
+  //
 
   // play next video once it finishes
   onEnded = () =>{
@@ -196,12 +99,18 @@ class App extends Component {
     if(!this.state.playlistTracksContainerDisplay){
       const nextReleaseId = this.state.libraryReleases.indexOf(this.state.nextRelease)
 
+
+      let arr = this.state.currentReleaseVideos
+
+      const nextVideo = arr[arr.indexOf(this.state.currentVideo)+1]
+
       this.setState({
+        currentVideo: this.state.nextVideo,
+        nextVideo: nextVideo,
+
         currentRelease: this.state.nextRelease,
         nextRelease: this.state.libraryReleases[nextReleaseId+1]
 
-      }, ()=>{
-        this.fetchReleaseURL(this.state.currentRelease)
       })
 
     }else{
@@ -210,124 +119,14 @@ class App extends Component {
       const nextTrack = tracks[currentIndex+2]
 
       this.setState({
-        currentVideoURL: this.state.nextTrack.url,
+        currentVideo: this.state.nextTrack,
+        nextVideo: nextTrack,
         currentTrack: this.state.nextTrack,
         nextTrack: nextTrack
 
       },()=>console.log(`this.state onEnded`,this.state))
 
     }
-
-
-
-  }
-
-  fetchReleaseURL = (release) => {
-
-    fetch(release.resource_url)
-    .then(res=>res.json())
-    .then(data=>{
-
-      let randomVideo = {uri:""}
-      if(data.videos){
-        randomVideo = data.videos[Math.floor(Math.random()*data.videos.length)]
-      }
-
-      this.setState({
-          currentVideoURL: randomVideo.uri
-        },()=>{
-          // console.log(`this.state after URL fetch, `,this.state)
-      })
-
-    })
-
-  }
-
-  // on new playlist submit
-  onNewPlaylistSubmit = () =>{
-    // e.preventDefault()
-
-    let postData = {
-      name: this.state.newPlaylistInput
-    }
-
-    fetch('http://localhost:3000/api/v1/playlists', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    })
-    .then(res =>res.json())
-    .then(data =>{
-      const playlist = {id: data.data.id, name: data.data.attributes.name}
-
-      this.setState({
-        playlists: [...this.state.playlists, playlist]
-      },()=>{
-        console.log(`this.state after new playlist submission: `,this.state.playlists)
-      })
-    })
-
-
-  }
-
-  // new playlist input change
-  onNewPlaylistInputchange = (e) =>{
-    this.setState({
-      newPlaylistInput: e.target.value
-    })
-
-  }
-
-  // Toggle playlist on click
-  onPlaylistTitleClick = (playlist) => {
-
-    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
-
-    fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-      const tracks = data.data.attributes.tracks
-
-      this.setState({
-        playlistTracksContainerDisplay: true,
-        currentPlaylistTracks: tracks
-      })
-    })
-
-  }
-
-  // Delete playlist
-  onPlaylistTitleDelete = (playlist) => {
-
-
-    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
-
-    fetch(url,{
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>{
-
-      const playlistUrl = '//localhost:3000/api/v1/playlists'
-      fetch(playlistUrl)
-      .then(res => res.json())
-      .then(data => {
-
-        const playlists = data.data.map((obj)=>{
-          return {id: obj.id, name: obj.attributes.name}
-        })
-
-        this.setState({
-          playlists: playlists
-        },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
-      })
-
-    })
-
 
   }
 
@@ -341,12 +140,110 @@ class App extends Component {
 
   }
 
+  // Toggle playlistTitles on click
   onPlaylistToggleClick = () =>{
     // debugger
     const toggle = !this.state.playlistsTitlesContainerDisplay
     this.setState({
       playlistsTitlesContainerDisplay: toggle
     })
+  }
+
+
+
+
+
+  // LIBRARY CONTAINER EVENT HANDLERS
+  //
+  //
+
+  // fetch tracks for the release on click
+  onReleaseClick = (release, id) => {
+
+    let tracks = []
+    let videos = []
+
+    const token = process.env.REACT_APP_API_TOKEN;
+    const url = release.resource_url + `?token=${token}`
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      tracks = data.tracklist.map((track)=>{
+        return ({
+          id: id,
+          duration: track.duration,
+          position: track.position,
+          title: track.title
+        })
+      })
+
+      if(data.videos){
+
+        videos = data.videos.map((video)=>{
+          return({
+            description: video.description,
+            title: video.title,
+            uri: video.uri,
+            duration: video.duration
+          })
+        })
+      }
+
+
+      this.setState({
+        currentRelease: release,
+        nextRelease: this.state.libraryReleases[id+1],
+        currentReleaseTracks: tracks,
+        currentReleaseVideos: videos,
+        currentReleaseImgUrl: data.images[0].uri,
+      },()=>{
+        console.log(`this.state on Release Click:`, this.state)
+      })
+
+    })
+  }
+
+  onYoutubeClick = (video, event) =>{
+
+    console.log(`this.state: `, this.state)
+    console.log(`this.state.currentReleaseVideos: `, this.state.currentReleaseVideos)
+
+    let arr = this.state.currentReleaseVideos
+
+    const nextVideo = arr[arr.indexOf(video)+1]
+
+    console.log(`nextVideo: `, nextVideo)
+
+    this.setState({
+      currentVideo: video,
+      nextVideo: nextVideo
+    })
+  }
+
+  // on table column header sort
+  onSort = (sortKey) =>{
+    let data = this.state.libraryReleases
+    console.log(`sortKey: `,sortKey)
+
+    if(sortKey === 'id'){
+      data.sort((a,b) => a[sortKey] - b[sortKey])
+    }else if(sortKey=== 'date added'){
+      data.sort((a,b)=>{
+        let keyA = new Date(a['date_added']),
+        keyB = new Date(b['date_added']);
+
+        if(keyA < keyB) return 1;
+        if(keyA > keyB) return -1;
+        return 0;
+      })
+
+    }else{
+      data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+    }
+    this.setState({libraryReleases: data})
+
   }
 
   // on playlist select menu change, add track to playlist
@@ -383,6 +280,125 @@ class App extends Component {
     })
 
   }
+
+
+
+
+  // PLAYLIST TITLE CONTAINER EVENT HANDLERS
+  //
+  //
+
+  // new playlist input change
+  onNewPlaylistInputchange = (e) =>{
+    this.setState({
+      newPlaylistInput: e.target.value
+    })
+
+  }
+
+  // Toggle playlist on click
+  onPlaylistTitleClick = (playlist) => {
+
+    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+      const tracks = data.data.attributes.tracks
+
+      this.setState({
+        playlistTracksContainerDisplay: true,
+        currentPlaylistTracks: tracks
+      })
+    })
+
+  }
+
+  // on new playlist submit
+  onNewPlaylistSubmit = () =>{
+    // e.preventDefault()
+
+    let postData = {
+      name: this.state.newPlaylistInput
+    }
+
+    fetch('http://localhost:3000/api/v1/playlists', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+    .then(res =>res.json())
+    .then(data =>{
+      const playlist = {id: data.data.id, name: data.data.attributes.name}
+
+      this.setState({
+        playlists: [...this.state.playlists, playlist]
+      },()=>{
+        console.log(`this.state after new playlist submission: `,this.state.playlists)
+      })
+    })
+
+
+  }
+
+  // Delete playlist
+  onPlaylistTitleDelete = (playlist) => {
+
+    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+
+    fetch(url,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res=>{
+      const playlistUrl = '//localhost:3000/api/v1/playlists'
+
+      fetch(playlistUrl)
+      .then(res => res.json())
+      .then(data => {
+
+        const playlists = data.data.map((obj)=>{
+          return {id: obj.id, name: obj.attributes.name}
+        })
+
+        this.setState({
+          playlists: playlists
+        },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
+      })
+    })
+
+  }
+
+
+
+
+  // PLAYLIST TRACKS CONTAINER EVENT HANDLERS
+  //
+  //
+
+  // play video on playlist track click
+  onCurrentPlaylistTrackClick = (track) =>{
+
+    const tracks = this.state.currentPlaylistTracks
+    const currentIndex = tracks.indexOf(track)
+    const nextTrack = tracks[currentIndex+1]
+
+    this.setState({
+      currentTrack: track,
+      nextTrack: nextTrack,
+      currentVideo: track,
+      nextVideo: nextTrack,
+      currentReleaseImgUrl: track.imgurl
+    },()=>console.log(`on track click state`, this.state))
+  }
+
+
+
+
 
   render() {
     let library
@@ -427,8 +443,6 @@ class App extends Component {
     }
 
     let  bgDiv = <div style={bgStyle}></div>
-
-
     let logo = <div id='logo'>33/45</div>
 
 
@@ -439,6 +453,8 @@ class App extends Component {
         currentReleaseTracks={this.state.currentReleaseTracks}
         currentReleaseVideos={this.state.currentReleaseVideos}
         playlists={this.state.playlists}
+
+
         onReleaseClick={this.onReleaseClick}
         onSort={this.onSort}
         saveToPlaylist={this.saveToPlaylist}
@@ -453,12 +469,13 @@ class App extends Component {
 
     if(this.state.playlistsTitlesContainerDisplay){
       playlistsTitlesContainer =  <PlaylistsTitlesContainer
+        newPlaylistInput = {this.state.newPlaylistInput}
+        playlists = {this.state.playlists}
+
         onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
         onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
         onPlaylistTitleClick = {this.onPlaylistTitleClick}
         onPlaylistTitleDelete = {this.onPlaylistTitleDelete}
-        newPlaylistInput = {this.state.newPlaylistInput}
-        playlists = {this.state.playlists}
         onLibraryToggleClick = {this.onLibraryToggleClick}
       />
     }
@@ -469,7 +486,7 @@ class App extends Component {
         <div className="main-container--shadow">
           <Video
             onEnded={this.onEnded}
-            currentVideoURL={this.state.currentVideoURL}
+            currentVideo={this.state.currentVideo}
             currentReleaseImageURL={this.state.currentReleaseImgUrl}
           />
 
