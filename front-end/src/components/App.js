@@ -414,7 +414,8 @@ class App extends Component {
 
 
   render() {
-    console.log(`this.props: `, this.props)
+    console.log(`this.props.currentRelease: `, this.props.currentRelease)
+    console.log(`this.props.nextRelease: `, this.props.nextRelease)
     console.log(`this.props.currentVideo: `, this.props.currentVideo)
 
     let library
@@ -464,8 +465,10 @@ class App extends Component {
 
     if(!this.state.playlistTracksContainerDisplay){
       library = <Library
-        libraryReleases={this.state.libraryReleases}
-        currentRelease={this.state.currentRelease}
+        libraryReleases={this.props.libraryReleases}
+        currentRelease={this.props.currentRelease}
+        // libraryReleases={this.state.libraryReleases}
+        // currentRelease={this.state.currentRelease}
         currentReleaseTracks={this.state.currentReleaseTracks}
         currentReleaseVideos={this.state.currentReleaseVideos}
         playlists={this.state.playlists}
@@ -503,7 +506,8 @@ class App extends Component {
         <div className="main-container--shadow">
           <Video
             onEnded={this.onEnded}
-            currentVideo={this.state.currentVideo}
+            currentVideo={this.props.currentVideo}
+            // currentVideo={this.state.currentVideo}
             currentReleaseImageURL={this.state.currentReleaseImgUrl}
           />
 

@@ -36,7 +36,7 @@ export function fetchCollection(){
 
       return dispatch({
         type: 'FETCH_COLLECTION',
-        payload: parsedData
+        parsedData: parsedData
       })
     })
 
