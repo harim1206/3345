@@ -9,6 +9,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action){
+  console.log('library reducer action: ', action)
   switch(action.type){
     case 'FETCH_COLLECTION':
     console.log(`reducer`)

@@ -1,3 +1,4 @@
+import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 // export function fetchPosts(){
 //   console.log('fetching')
 //   return function(dispatch){

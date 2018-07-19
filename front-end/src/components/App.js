@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 //Redux
-import { Provider } from 'react-redux'
-import store from '../store.js'
+import { connect } from 'react-redux'
+import { fetchCollection } from '../actions/libraryActions.js'
+
+
+
 
 //Components
 import Video from './Video.js'
@@ -48,31 +51,34 @@ class App extends Component {
   //
   //
   componentDidMount(){
-    const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
 
-    fetch(collectionUrl, {mode: 'cors'})
-    .then(res => res.json())
-    .then(data => {
-      let releases = data.releases.slice(0,500)
+    this.props.fetchCollection()
 
-      releases.sort((a,b)=>{
-        let keyA = new Date(a.date_added),
-            keyB = new Date(b.date_added);
-
-        if(keyA < keyB) return 1;
-        if(keyA > keyB) return -1;
-        return 0;
-      })
-
-      const parsedData = parseJSONtoData(releases)
-
-      this.setState({
-        libraryReleases: parsedData,
-        currentRelease: parsedData[0],
-        nextRelease: parsedData[1],
-        currentVideo: {url: "https://www.youtube.com/watch?v=rtXIdykj2QE"}
-      })
-    })
+    // const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
+    //
+    // fetch(collectionUrl, {mode: 'cors'})
+    // .then(res => res.json())
+    // .then(data => {
+    //   let releases = data.releases.slice(0,500)
+    //
+    //   releases.sort((a,b)=>{
+    //     let keyA = new Date(a.date_added),
+    //         keyB = new Date(b.date_added);
+    //
+    //     if(keyA < keyB) return 1;
+    //     if(keyA > keyB) return -1;
+    //     return 0;
+    //   })
+    //
+    //   const parsedData = parseJSONtoData(releases)
+    //
+    //   this.setState({
+    //     libraryReleases: parsedData,
+    //     currentRelease: parsedData[0],
+    //     nextRelease: parsedData[1],
+    //     currentVideo: {url: "https://www.youtube.com/watch?v=rtXIdykj2QE"}
+    //   })
+    // })
 
     // fetch playlists from server
     const playlistUrl = '//localhost:3000/api/v1/playlists'
@@ -408,6 +414,9 @@ class App extends Component {
 
 
   render() {
+    console.log(`this.props: `, this.props)
+    console.log(`this.props.currentVideo: `, this.props.currentVideo)
+
     let library
     let playlistsTitlesContainer
     let bgUrl
@@ -488,44 +497,53 @@ class App extends Component {
     }
 
     return (
-      <Provider store={store}>
 
-        <div className="App">
+      <div className="App">
 
-          <div className="main-container--shadow">
-            <Video
-              onEnded={this.onEnded}
-              currentVideo={this.state.currentVideo}
-              currentReleaseImageURL={this.state.currentReleaseImgUrl}
-            />
+        <div className="main-container--shadow">
+          <Video
+            onEnded={this.onEnded}
+            currentVideo={this.state.currentVideo}
+            currentReleaseImageURL={this.state.currentReleaseImgUrl}
+          />
 
-            <div className = "main-container--padding">
-              <nav className="navigation-bar">
-                <div onClick={this.onPlaylistToggleClick}>
-                  PLAYLISTS
-                </div>
-                {libraryToggleButton}
-              </nav>
-
-              <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
-                {playlistsTitlesContainer}
-                {library}
+          <div className = "main-container--padding">
+            <nav className="navigation-bar">
+              <div onClick={this.onPlaylistToggleClick}>
+                PLAYLISTS
               </div>
+              {libraryToggleButton}
+            </nav>
+
+            <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
+              {playlistsTitlesContainer}
+              {library}
             </div>
           </div>
-
-
-          {logo}
-          {bgDiv}
-
         </div>
-        
-      </Provider>
+
+
+        {logo}
+        {bgDiv}
+
+      </div>
+
 
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return (
+    {
+      libraryReleases: state.library.libraryReleases,
+      currentRelease: state.library.currentRelease,
+      nextRelease: state.library.nextRelease,
+      currentVideo: state.library.currentVideo
+    }
+  )
+}
 
 
-export default App;
+
+export default connect(mapStateToProps, { fetchCollection })(App);
