@@ -5,7 +5,6 @@ const initialState = {
 
 
 export default function(state = initialState, action){
-  console.log('navigation reducer action: ', action)
   switch(action.type){
 
     case 'TOGGLE_LIBRARY':

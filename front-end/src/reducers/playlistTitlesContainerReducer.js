@@ -5,11 +5,8 @@ const initialState = {
 
 
 export default function(state = initialState, action){
-  console.log('playlistTitlesContainer reducer action: ', action)
-  console.log('playlistTitlesContainer reducer state: ', state)
+  
   switch(action.type){
-
-
 
     case 'SHOW_PLAYLIST_TRACKS_CONTAINER':
       return {

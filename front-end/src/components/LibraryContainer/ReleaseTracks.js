@@ -35,7 +35,7 @@ class ReleaseTracks extends Component{
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
       // debugger
       return (
-        <tr className='track-container-row' onClick={(event)=>this.props.onYoutubeClick(video, event)}>
+        <tr className='track-container-row' onClick={(event)=>this.props.onVideoClick(video, event)}>
           <td></td>
           <td>{video.title}</td>
           <td>

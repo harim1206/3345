@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //Redux
 import { connect } from 'react-redux'
-import { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish } from '../actions/libraryActions.js'
+import { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onVideoClick, onSort, onCurrentPlaylistTrackClick, onNewPlaylistSubmit, onPlaylistTitleDelete } from '../actions/libraryActions.js'
 import { onPlaylistTitlesContainerToggleClick, onLibraryToggleClick } from '../actions/navActions.js'
 import { onPlaylistTitleClick } from '../actions/playlistTitlesContainerActions.js'
 
@@ -19,28 +19,8 @@ require('dotenv').config()
 
 class App extends Component {
   state={
-    // Parsed Releases
-    libraryReleases: [],
-    // Current Video/Image
-    currentVideo: "",
-    nextVideo: "",
-    currentReleaseImgUrl:"",
-    // Current Release
-    currentRelease: {},
-    nextRelease:{},
-    currentReleaseTracks: [],
-    currentReleaseVideos:[],
-    // Current Track
-    currentTrack: {},
-    nextTrack: {},
     // Playlists
     newPlaylistInput: "",
-    playlists: [],
-    // Playlist Display
-    currentPlaylistTracks: [],
-    // toggle
-    playlistTracksContainerDisplay: false,
-    playlistsTitlesContainerDisplay: false
   }
 
 
@@ -161,7 +141,6 @@ class App extends Component {
 
   // Toggle playlistTitles on click
   onPlaylistTitlesContainerToggleClick = () =>{
-    console.log(this.props.playlistTitlesContainerDisplay)
 
     const toggle = !this.props.playlistTitlesContainerDisplay
     this.props.onPlaylistTitlesContainerToggleClick(toggle)
@@ -232,26 +211,22 @@ class App extends Component {
     // })
   }
 
-  onYoutubeClick = (video, event) =>{
-
-    console.log(`this.state: `, this.state)
-    console.log(`this.state.currentReleaseVideos: `, this.state.currentReleaseVideos)
+  onVideoClick = (video, event) =>{
 
     let arr = this.props.currentReleaseVideos
-
     const nextVideo = arr[arr.indexOf(video)+1]
 
-    console.log(`nextVideo: `, nextVideo)
+    this.props.onVideoClick(video, nextVideo)
 
-    this.setState({
-      currentVideo: video,
-      nextVideo: nextVideo
-    })
+    // this.setState({
+    //   currentVideo: video,
+    //   nextVideo: nextVideo
+    // })
   }
 
   // on table column header sort
   onSort = (sortKey) =>{
-    let data = this.state.libraryReleases
+    let data = this.props.libraryReleases
     console.log(`sortKey: `,sortKey)
 
     if(sortKey === 'id'){
@@ -269,7 +244,12 @@ class App extends Component {
     }else{
       data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
     }
-    this.setState({libraryReleases: data})
+
+
+    this.props.onSort(data)
+    // *** not working
+
+    // this.setState({libraryReleases: data})
 
   }
 
@@ -351,23 +331,25 @@ class App extends Component {
       name: this.state.newPlaylistInput
     }
 
-    fetch('http://localhost:3000/api/v1/playlists', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    })
-    .then(res =>res.json())
-    .then(data =>{
-      const playlist = {id: data.data.id, name: data.data.attributes.name}
+    this.props.onNewPlaylistSubmit(postData)
 
-      this.setState({
-        playlists: [...this.state.playlists, playlist]
-      },()=>{
-        console.log(`this.state after new playlist submission: `,this.state.playlists)
-      })
-    })
+    // fetch('http://localhost:3000/api/v1/playlists', {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(postData)
+    // })
+    // .then(res =>res.json())
+    // .then(data =>{
+    //   const playlist = {id: data.data.id, name: data.data.attributes.name}
+    //
+    //   this.setState({
+    //     playlists: [...this.state.playlists, playlist]
+    //   },()=>{
+    //     console.log(`this.state after new playlist submission: `,this.state.playlists)
+    //   })
+    // })
 
 
   }
@@ -375,30 +357,32 @@ class App extends Component {
   // Delete playlist
   onPlaylistTitleDelete = (playlist) => {
 
-    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+    const playlistUrl = `//localhost:3000/api/v1/playlists/${playlist.id}`
 
-    fetch(url,{
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>{
-      const playlistUrl = '//localhost:3000/api/v1/playlists'
+    this.props.onPlaylistTitleDelete(playlistUrl)
 
-      fetch(playlistUrl)
-      .then(res => res.json())
-      .then(data => {
-
-        const playlists = data.data.map((obj)=>{
-          return {id: obj.id, name: obj.attributes.name}
-        })
-
-        this.setState({
-          playlists: playlists
-        },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
-      })
-    })
+    // fetch(url,{
+    //   method: 'DELETE',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(res=>{
+    //   const playlistUrl = '//localhost:3000/api/v1/playlists'
+    //
+    //   fetch(playlistUrl)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //
+    //     const playlists = data.data.map((obj)=>{
+    //       return {id: obj.id, name: obj.attributes.name}
+    //     })
+    //
+    //     this.setState({
+    //       playlists: playlists
+    //     },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
+    //   })
+    // })
 
   }
 
@@ -416,13 +400,15 @@ class App extends Component {
     const currentIndex = tracks.indexOf(track)
     const nextTrack = tracks[currentIndex+1]
 
-    this.setState({
-      currentTrack: track,
-      nextTrack: nextTrack,
-      currentVideo: track,
-      nextVideo: nextTrack,
-      currentReleaseImgUrl: track.imgurl
-    },()=>console.log(`on track click state`, this.state))
+    this.props.onCurrentPlaylistTrackClick(track, nextTrack)
+
+    // this.setState({
+    //   currentTrack: track,
+    //   nextTrack: nextTrack,
+    //   currentVideo: track,
+    //   nextVideo: nextTrack,
+    //   currentReleaseImgUrl: track.imgurl
+    // },()=>console.log(`on track click state`, this.state))
   }
 
 
@@ -430,9 +416,6 @@ class App extends Component {
 
 
   render() {
-
-    console.log(`this.props: `, this.props)
-
 
     let library
     let playlistTitlesContainer
@@ -494,7 +477,7 @@ class App extends Component {
         onReleaseClick={this.onReleaseClick}
         onSort={this.onSort}
         saveToPlaylist={this.saveToPlaylist}
-        onYoutubeClick={this.onYoutubeClick}
+        onVideoClick={this.onVideoClick}
       />
     }else{
 
@@ -525,7 +508,7 @@ class App extends Component {
           <Video
             onEnded={this.onEnded}
             currentVideo={this.props.currentVideo}
-            currentReleaseImageURL={this.state.currentReleaseImgUrl}
+            currentReleaseImageURL={this.props.currentReleaseImgUrl}
           />
 
           <div className = "main-container--padding">
@@ -559,14 +542,23 @@ const mapStateToProps = (state) => {
 
   return (
     {
-      currentVideo: state.library.currentVideo,
+
       libraryReleases: state.library.libraryReleases,
+
+      currentVideo: state.library.currentVideo,
+      nextVideo: state.library.nextVideo,
+      currentReleaseImgUrl: state.library.currentReleaseImgUrl,
+
       currentRelease: state.library.currentRelease,
       nextRelease: state.library.nextRelease,
-      playlists: state.library.playlists,
       currentReleaseTracks: state.library.currentReleaseTracks,
       currentReleaseVideos: state.library.currentReleaseVideos,
-      currentReleaseImgUrl: state.library.currentReleaseImgUrl,
+
+      currentTrack: state.library.currentTrack,
+      nextTrack: state.library.nextTrack,
+
+      playlists: state.library.playlists,
+
       currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
       playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
@@ -577,4 +569,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onPlaylistTitlesContainerToggleClick, onLibraryToggleClick, onPlaylistTitleClick})(App);
+export default connect(mapStateToProps, { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onVideoClick, onSort, onCurrentPlaylistTrackClick, onNewPlaylistSubmit, onPlaylistTitleDelete, onPlaylistTitlesContainerToggleClick, onLibraryToggleClick, onPlaylistTitleClick})(App);

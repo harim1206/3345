@@ -19,7 +19,7 @@ class Release extends Component{
       currentReleaseVideos = {this.props.currentReleaseVideos}
       playlists = {this.props.playlists}
       saveToPlaylist = {this.props.saveToPlaylist}
-      onYoutubeClick = {this.props.onYoutubeClick}
+      onVideoClick = {this.props.onVideoClick}
       />
     }
 

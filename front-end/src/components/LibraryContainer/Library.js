@@ -7,8 +7,8 @@ class Library extends Component{
   render(){
     // Mapping props data to Release components
 
-    console.log(`this.props.currentReleaseTracks: `, this.props.currentReleaseTracks)
     console.log(`this.props.libraryReleases: `, this.props.libraryReleases)
+
 
     const libraryReleases = this.props.libraryReleases.map((release)=>{
 
@@ -22,7 +22,7 @@ class Library extends Component{
           playlists = {this.props.playlists}
           onReleaseClick = {this.props.onReleaseClick}
           saveToPlaylist = {this.props.saveToPlaylist}
-          onYoutubeClick = {this.props.onYoutubeClick}
+          onVideoClick = {this.props.onVideoClick}
         />
       )
     })

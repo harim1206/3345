@@ -5,6 +5,7 @@ class Video extends Component {
 
 
   render(){
+    
     return (
       <div className="video-component-wrapper">
         <div className="react-player">
