@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlaylistTitle from './PlaylistTitle.js'
 
-class PlaylistsTitlesContainer extends Component{
+class PlaylistTitlesContainer extends Component{
 
   render(){
 
@@ -14,7 +14,7 @@ class PlaylistsTitlesContainer extends Component{
     })
 
     return(
-      <div className="playlistsTitlesContainer-wrapper">
+      <div className="playlistTitlesContainer-wrapper">
 
         {playlistTitles}
 
@@ -48,4 +48,4 @@ class PlaylistsTitlesContainer extends Component{
 // </form>
 
 
-export default PlaylistsTitlesContainer
+export default PlaylistTitlesContainer

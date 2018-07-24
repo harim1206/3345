@@ -10,7 +10,8 @@ class Release extends Component{
 
     let releaseTracks
 
-    if(this.props.currentReleaseTracks.length > 0 && this.props.release.id === this.props.currentReleaseTracks[0].id){
+    if(this.props.currentReleaseTracks.length > 0 && this.props.id === this.props.currentReleaseTracks[0].id){
+
 
       releaseTracks = <ReleaseTracks
       currentRelease = {this.props.currentRelease}

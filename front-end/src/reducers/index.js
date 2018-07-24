@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
-import postReducer from './postReducer'
 import libraryReducer from './libraryReducer'
+import navReducer from './navReducer'
+import playlistTitlesContainerReducer from './playlistTitlesContainerReducer'
+
+
 
 export default combineReducers({
   library: libraryReducer,
-  posts: postReducer
+  nav: navReducer,
+  playlistTitlesContainer: playlistTitlesContainerReducer
+
 })

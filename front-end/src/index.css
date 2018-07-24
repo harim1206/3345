@@ -50,7 +50,7 @@ body {
 
 }
 
-.navigation-bar, .main-container, .main-container--playlisthidden, .playlistsTitlesContainer-wrapper{
+.navigation-bar, .main-container, .main-container--playlisthidden, .playlistTitlesContainer-wrapper{
   background-color: white;
   /* border: 0.5px solid rgb(201, 211, 226); */
 }
@@ -96,7 +96,7 @@ body {
 
 }
 
-.playlistsTitlesContainer-wrapper{
+.playlistTitlesContainer-wrapper{
 
   position: relative;
   padding: 10px;

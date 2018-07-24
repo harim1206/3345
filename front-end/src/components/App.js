@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 //Redux
 import { connect } from 'react-redux'
-import { fetchCollection } from '../actions/libraryActions.js'
-
-
+import { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish } from '../actions/libraryActions.js'
+import { onPlaylistTitlesContainerToggleClick, onLibraryToggleClick } from '../actions/navActions.js'
+import { onPlaylistTitleClick } from '../actions/playlistTitlesContainerActions.js'
 
 
 //Components
 import Video from './Video.js'
 import Library from './LibraryContainer/Library.js'
-import PlaylistsTitlesContainer from './PlaylistTitlesContainer/PlaylistsTitlesContainer.js'
+import PlaylistTitlesContainer from './PlaylistTitlesContainer/PlaylistTitlesContainer.js'
 import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer'
 
 //Helper Functions
@@ -53,6 +53,7 @@ class App extends Component {
   componentDidMount(){
 
     this.props.fetchCollection()
+    this.props.fetchPlaylists()
 
     // const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
     //
@@ -80,21 +81,22 @@ class App extends Component {
     //   })
     // })
 
-    // fetch playlists from server
-    const playlistUrl = '//localhost:3000/api/v1/playlists'
 
-    fetch(playlistUrl)
-    .then(res => res.json())
-    .then(data => {
-
-      const playlists = data.data.map((obj)=>{
-        return {id: obj.id, name: obj.attributes.name}
-      })
-
-      this.setState({
-        playlists: playlists
-      })
-    })
+    // // fetch playlists from server
+    // const playlistUrl = '//localhost:3000/api/v1/playlists'
+    //
+    // fetch(playlistUrl)
+    // .then(res => res.json())
+    // .then(data => {
+    //
+    //   const playlists = data.data.map((obj)=>{
+    //     return {id: obj.id, name: obj.attributes.name}
+    //   })
+    //
+    //   this.setState({
+    //     playlists: playlists
+    //   })
+    // })
 
   }
 
@@ -109,35 +111,38 @@ class App extends Component {
   // play next video once it finishes
   onEnded = () =>{
 
-    if(!this.state.playlistTracksContainerDisplay){
-      const nextReleaseId = this.state.libraryReleases.indexOf(this.state.nextRelease)
+    if(!this.props.playlistTracksContainerDisplay){
+      const nextReleaseId = this.props.libraryReleases.indexOf(this.props.nextRelease)
 
+      let arr = this.props.currentReleaseVideos
+      const nextVideo = arr[arr.indexOf(this.props.currentVideo)+1]
 
-      let arr = this.state.currentReleaseVideos
+      this.props.onLibraryVideoFinish(this.props.nextVideo, nextVideo, this.props.nextRelease, this.props.libraryReleases[nextReleaseId+1])
 
-      const nextVideo = arr[arr.indexOf(this.state.currentVideo)+1]
-
-      this.setState({
-        currentVideo: this.state.nextVideo,
-        nextVideo: nextVideo,
-
-        currentRelease: this.state.nextRelease,
-        nextRelease: this.state.libraryReleases[nextReleaseId+1]
-
-      })
+      // this.setState({
+      //   currentVideo: this.props.nextVideo,
+      //   nextVideo: nextVideo,
+      //
+      //   currentRelease: this.props.nextRelease,
+      //   nextRelease: this.props.libraryReleases[nextReleaseId+1]
+      //
+      // })
 
     }else{
-      const tracks = this.state.currentPlaylistTracks
-      const currentIndex = tracks.indexOf(this.state.currentTrack)
+      const tracks = this.props.currentPlaylistTracks
+      const currentIndex = tracks.indexOf(this.props.currentTrack)
       const nextTrack = tracks[currentIndex+2]
 
-      this.setState({
-        currentVideo: this.state.nextTrack,
-        nextVideo: nextTrack,
-        currentTrack: this.state.nextTrack,
-        nextTrack: nextTrack
 
-      },()=>console.log(`this.state onEnded`,this.state))
+      this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, nextTrack)
+
+      // this.setState({
+      //   currentVideo: this.state.nextTrack,
+      //   nextVideo: nextTrack,
+      //   currentTrack: this.state.nextTrack,
+      //   nextTrack: nextTrack
+      //
+      // },()=>console.log(`this.state onEnded`,this.state))
 
     }
 
@@ -146,20 +151,25 @@ class App extends Component {
   // Toggle library on click
   onLibraryToggleClick = () =>{
 
+    this.props.onLibraryToggleClick()
 
-    this.setState({
-      playlistTracksContainerDisplay: false,
-    })
+    // this.setState({
+    //   playlistTracksContainerDisplay: false,
+    // })
 
   }
 
   // Toggle playlistTitles on click
-  onPlaylistToggleClick = () =>{
-    // debugger
-    const toggle = !this.state.playlistsTitlesContainerDisplay
-    this.setState({
-      playlistsTitlesContainerDisplay: toggle
-    })
+  onPlaylistTitlesContainerToggleClick = () =>{
+    console.log(this.props.playlistTitlesContainerDisplay)
+
+    const toggle = !this.props.playlistTitlesContainerDisplay
+    this.props.onPlaylistTitlesContainerToggleClick(toggle)
+
+    // const toggle = !this.state.playlistsTitlesContainerDisplay
+    // this.setState({
+    //   playlistsTitlesContainerDisplay: toggle
+    // })
   }
 
 
@@ -173,49 +183,53 @@ class App extends Component {
   // fetch tracks for the release on click
   onReleaseClick = (release, id) => {
 
-    let tracks = []
-    let videos = []
+    const nextRelease = this.props.libraryReleases[id+1]
 
-    const token = process.env.REACT_APP_API_TOKEN;
-    const url = release.resource_url + `?token=${token}`
+    this.props.onReleaseClick(release, nextRelease, id)
 
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-
-      tracks = data.tracklist.map((track)=>{
-        return ({
-          id: id,
-          duration: track.duration,
-          position: track.position,
-          title: track.title
-        })
-      })
-
-      if(data.videos){
-
-        videos = data.videos.map((video)=>{
-          return({
-            description: video.description,
-            title: video.title,
-            uri: video.uri,
-            duration: video.duration
-          })
-        })
-      }
-
-
-      this.setState({
-        currentRelease: release,
-        nextRelease: this.state.libraryReleases[id+1],
-        currentReleaseTracks: tracks,
-        currentReleaseVideos: videos,
-        currentReleaseImgUrl: data.images[0].uri,
-      },()=>{
-        console.log(`this.state on Release Click:`, this.state)
-      })
-
-    })
+    // let tracks = []
+    // let videos = []
+    //
+    // const token = process.env.REACT_APP_API_TOKEN;
+    // const url = release.resource_url + `?token=${token}`
+    //
+    // fetch(url)
+    // .then(res => res.json())
+    // .then(data => {
+    //
+    //   tracks = data.tracklist.map((track)=>{
+    //     return ({
+    //       id: id,
+    //       duration: track.duration,
+    //       position: track.position,
+    //       title: track.title
+    //     })
+    //   })
+    //
+    //   if(data.videos){
+    //
+    //     videos = data.videos.map((video)=>{
+    //       return({
+    //         description: video.description,
+    //         title: video.title,
+    //         uri: video.uri,
+    //         duration: video.duration
+    //       })
+    //     })
+    //   }
+    //
+    //
+    //   this.setState({
+    //     currentRelease: release,
+    //     nextRelease: this.state.libraryReleases[id+1],
+    //     currentReleaseTracks: tracks,
+    //     currentReleaseVideos: videos,
+    //     currentReleaseImgUrl: data.images[0].uri,
+    //   },()=>{
+    //     console.log(`this.state on Release Click:`, this.state)
+    //   })
+    //
+    // })
   }
 
   onYoutubeClick = (video, event) =>{
@@ -223,7 +237,7 @@ class App extends Component {
     console.log(`this.state: `, this.state)
     console.log(`this.state.currentReleaseVideos: `, this.state.currentReleaseVideos)
 
-    let arr = this.state.currentReleaseVideos
+    let arr = this.props.currentReleaseVideos
 
     const nextVideo = arr[arr.indexOf(video)+1]
 
@@ -301,28 +315,30 @@ class App extends Component {
   //
   //
 
+  // Toggle playlist on click
+  onPlaylistTitleClick = (playlist) => {
+
+    this.props.onPlaylistTitleClick(playlist)
+
+    // const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
+    //
+    // fetch(url)
+    // .then(res=>res.json())
+    // .then(data=>{
+    //   const tracks = data.data.attributes.tracks
+    //
+    //   this.setState({
+    //     playlistTracksContainerDisplay: true,
+    //     currentPlaylistTracks: tracks
+    //   })
+    // })
+
+  }
+
   // new playlist input change
   onNewPlaylistInputchange = (e) =>{
     this.setState({
       newPlaylistInput: e.target.value
-    })
-
-  }
-
-  // Toggle playlist on click
-  onPlaylistTitleClick = (playlist) => {
-
-    const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
-
-    fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-      const tracks = data.data.attributes.tracks
-
-      this.setState({
-        playlistTracksContainerDisplay: true,
-        currentPlaylistTracks: tracks
-      })
     })
 
   }
@@ -396,7 +412,7 @@ class App extends Component {
   // play video on playlist track click
   onCurrentPlaylistTrackClick = (track) =>{
 
-    const tracks = this.state.currentPlaylistTracks
+    const tracks = this.props.currentPlaylistTracks
     const currentIndex = tracks.indexOf(track)
     const nextTrack = tracks[currentIndex+1]
 
@@ -414,12 +430,12 @@ class App extends Component {
 
 
   render() {
-    console.log(`this.props.currentRelease: `, this.props.currentRelease)
-    console.log(`this.props.nextRelease: `, this.props.nextRelease)
-    console.log(`this.props.currentVideo: `, this.props.currentVideo)
+
+    console.log(`this.props: `, this.props)
+
 
     let library
-    let playlistsTitlesContainer
+    let playlistTitlesContainer
     let bgUrl
     let bgSize
     let bgTop
@@ -428,8 +444,9 @@ class App extends Component {
 
     let libraryToggleButton
 
-    if(this.state.playlistTracksContainerDisplay===true){
-      libraryToggleButton = <div onClick={this.onLibraryToggleClick}>
+    if(this.props.playlistTracksContainerDisplay===true){
+
+      libraryToggleButton = <div onClick={this.props.onLibraryToggleClick}>
         LIBRARY
       </div>
     }
@@ -463,15 +480,15 @@ class App extends Component {
     let logo = <div id='logo'>33/45</div>
 
 
-    if(!this.state.playlistTracksContainerDisplay){
+    if(!this.props.playlistTracksContainerDisplay){
+
       library = <Library
         libraryReleases={this.props.libraryReleases}
         currentRelease={this.props.currentRelease}
-        // libraryReleases={this.state.libraryReleases}
-        // currentRelease={this.state.currentRelease}
-        currentReleaseTracks={this.state.currentReleaseTracks}
-        currentReleaseVideos={this.state.currentReleaseVideos}
-        playlists={this.state.playlists}
+        currentReleaseTracks={this.props.currentReleaseTracks}
+        currentReleaseVideos={this.props.currentReleaseVideos}
+        playlists={this.props.playlists}
+
 
 
         onReleaseClick={this.onReleaseClick}
@@ -480,16 +497,17 @@ class App extends Component {
         onYoutubeClick={this.onYoutubeClick}
       />
     }else{
+
       library = <PlaylistTracksContainer
-        currentPlaylistTracks={this.state.currentPlaylistTracks}
+        currentPlaylistTracks={this.props.currentPlaylistTracks}
         onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
       />
     }
 
-    if(this.state.playlistsTitlesContainerDisplay){
-      playlistsTitlesContainer =  <PlaylistsTitlesContainer
+    if(this.props.playlistTitlesContainerDisplay){
+      playlistTitlesContainer =  <PlaylistTitlesContainer
         newPlaylistInput = {this.state.newPlaylistInput}
-        playlists = {this.state.playlists}
+        playlists = {this.props.playlists}
 
         onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
         onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
@@ -507,20 +525,19 @@ class App extends Component {
           <Video
             onEnded={this.onEnded}
             currentVideo={this.props.currentVideo}
-            // currentVideo={this.state.currentVideo}
             currentReleaseImageURL={this.state.currentReleaseImgUrl}
           />
 
           <div className = "main-container--padding">
             <nav className="navigation-bar">
-              <div onClick={this.onPlaylistToggleClick}>
+              <div onClick={this.onPlaylistTitlesContainerToggleClick}>
                 PLAYLISTS
               </div>
               {libraryToggleButton}
             </nav>
 
-            <div className={this.state.playlistsTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
-              {playlistsTitlesContainer}
+            <div className={this.props.playlistTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
+              {playlistTitlesContainer}
               {library}
             </div>
           </div>
@@ -538,16 +555,26 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(`redux state: `,state)
+
   return (
     {
+      currentVideo: state.library.currentVideo,
       libraryReleases: state.library.libraryReleases,
       currentRelease: state.library.currentRelease,
       nextRelease: state.library.nextRelease,
-      currentVideo: state.library.currentVideo
+      playlists: state.library.playlists,
+      currentReleaseTracks: state.library.currentReleaseTracks,
+      currentReleaseVideos: state.library.currentReleaseVideos,
+      currentReleaseImgUrl: state.library.currentReleaseImgUrl,
+      currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
+      playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
+      playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
+
     }
   )
 }
 
 
 
-export default connect(mapStateToProps, { fetchCollection })(App);
+export default connect(mapStateToProps, { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onPlaylistTitlesContainerToggleClick, onLibraryToggleClick, onPlaylistTitleClick})(App);
