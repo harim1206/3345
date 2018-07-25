@@ -31,53 +31,8 @@ class App extends Component {
   //
   //
   componentDidMount(){
-
     this.props.fetchCollection()
     this.props.fetchPlaylists()
-
-    // const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
-    //
-    // fetch(collectionUrl, {mode: 'cors'})
-    // .then(res => res.json())
-    // .then(data => {
-    //   let releases = data.releases.slice(0,500)
-    //
-    //   releases.sort((a,b)=>{
-    //     let keyA = new Date(a.date_added),
-    //         keyB = new Date(b.date_added);
-    //
-    //     if(keyA < keyB) return 1;
-    //     if(keyA > keyB) return -1;
-    //     return 0;
-    //   })
-    //
-    //   const parsedData = parseJSONtoData(releases)
-    //
-    //   this.setState({
-    //     libraryReleases: parsedData,
-    //     currentRelease: parsedData[0],
-    //     nextRelease: parsedData[1],
-    //     currentVideo: {url: "https://www.youtube.com/watch?v=rtXIdykj2QE"}
-    //   })
-    // })
-
-
-    // // fetch playlists from server
-    // const playlistUrl = '//localhost:3000/api/v1/playlists'
-    //
-    // fetch(playlistUrl)
-    // .then(res => res.json())
-    // .then(data => {
-    //
-    //   const playlists = data.data.map((obj)=>{
-    //     return {id: obj.id, name: obj.attributes.name}
-    //   })
-    //
-    //   this.setState({
-    //     playlists: playlists
-    //   })
-    // })
-
   }
 
 
@@ -98,16 +53,6 @@ class App extends Component {
       const nextVideo = arr[arr.indexOf(this.props.currentVideo)+1]
 
       this.props.onLibraryVideoFinish(this.props.nextVideo, nextVideo, this.props.nextRelease, this.props.libraryReleases[nextReleaseId+1])
-
-      // this.setState({
-      //   currentVideo: this.props.nextVideo,
-      //   nextVideo: nextVideo,
-      //
-      //   currentRelease: this.props.nextRelease,
-      //   nextRelease: this.props.libraryReleases[nextReleaseId+1]
-      //
-      // })
-
     }else{
       const tracks = this.props.currentPlaylistTracks
       const currentIndex = tracks.indexOf(this.props.currentTrack)
@@ -115,40 +60,19 @@ class App extends Component {
 
 
       this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, nextTrack)
-
-      // this.setState({
-      //   currentVideo: this.state.nextTrack,
-      //   nextVideo: nextTrack,
-      //   currentTrack: this.state.nextTrack,
-      //   nextTrack: nextTrack
-      //
-      // },()=>console.log(`this.state onEnded`,this.state))
-
     }
 
   }
 
   // Toggle library on click
   onLibraryToggleClick = () =>{
-
     this.props.onLibraryToggleClick()
-
-    // this.setState({
-    //   playlistTracksContainerDisplay: false,
-    // })
-
   }
 
   // Toggle playlistTitles on click
   onPlaylistTitlesContainerToggleClick = () =>{
-
     const toggle = !this.props.playlistTitlesContainerDisplay
     this.props.onPlaylistTitlesContainerToggleClick(toggle)
-
-    // const toggle = !this.state.playlistsTitlesContainerDisplay
-    // this.setState({
-    //   playlistsTitlesContainerDisplay: toggle
-    // })
   }
 
 
@@ -161,67 +85,15 @@ class App extends Component {
 
   // fetch tracks for the release on click
   onReleaseClick = (release, id) => {
-
     const nextRelease = this.props.libraryReleases[id+1]
-
     this.props.onReleaseClick(release, nextRelease, id)
-
-    // let tracks = []
-    // let videos = []
-    //
-    // const token = process.env.REACT_APP_API_TOKEN;
-    // const url = release.resource_url + `?token=${token}`
-    //
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => {
-    //
-    //   tracks = data.tracklist.map((track)=>{
-    //     return ({
-    //       id: id,
-    //       duration: track.duration,
-    //       position: track.position,
-    //       title: track.title
-    //     })
-    //   })
-    //
-    //   if(data.videos){
-    //
-    //     videos = data.videos.map((video)=>{
-    //       return({
-    //         description: video.description,
-    //         title: video.title,
-    //         uri: video.uri,
-    //         duration: video.duration
-    //       })
-    //     })
-    //   }
-    //
-    //
-    //   this.setState({
-    //     currentRelease: release,
-    //     nextRelease: this.state.libraryReleases[id+1],
-    //     currentReleaseTracks: tracks,
-    //     currentReleaseVideos: videos,
-    //     currentReleaseImgUrl: data.images[0].uri,
-    //   },()=>{
-    //     console.log(`this.state on Release Click:`, this.state)
-    //   })
-    //
-    // })
   }
 
   onVideoClick = (video, event) =>{
-
     let arr = this.props.currentReleaseVideos
     const nextVideo = arr[arr.indexOf(video)+1]
 
     this.props.onVideoClick(video, nextVideo)
-
-    // this.setState({
-    //   currentVideo: video,
-    //   nextVideo: nextVideo
-    // })
   }
 
   // on table column header sort
@@ -248,9 +120,6 @@ class App extends Component {
 
     this.props.onSort(data)
     // *** not working
-
-    // this.setState({libraryReleases: data})
-
   }
 
   // on playlist select menu change, add track to playlist
@@ -269,7 +138,7 @@ class App extends Component {
       url: video.uri,
       description: video.description,
       duration: video.duration,
-      imgurl: this.state.currentReleaseImgUrl,
+      imgurl: this.props.currentReleaseImgUrl,
       playlist_id: event.target.value
     }
 
@@ -297,22 +166,7 @@ class App extends Component {
 
   // Toggle playlist on click
   onPlaylistTitleClick = (playlist) => {
-
     this.props.onPlaylistTitleClick(playlist)
-
-    // const url = `//localhost:3000/api/v1/playlists/${playlist.id}`
-    //
-    // fetch(url)
-    // .then(res=>res.json())
-    // .then(data=>{
-    //   const tracks = data.data.attributes.tracks
-    //
-    //   this.setState({
-    //     playlistTracksContainerDisplay: true,
-    //     currentPlaylistTracks: tracks
-    //   })
-    // })
-
   }
 
   // new playlist input change
@@ -320,7 +174,6 @@ class App extends Component {
     this.setState({
       newPlaylistInput: e.target.value
     })
-
   }
 
   // on new playlist submit
@@ -332,26 +185,6 @@ class App extends Component {
     }
 
     this.props.onNewPlaylistSubmit(postData)
-
-    // fetch('http://localhost:3000/api/v1/playlists', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(postData)
-    // })
-    // .then(res =>res.json())
-    // .then(data =>{
-    //   const playlist = {id: data.data.id, name: data.data.attributes.name}
-    //
-    //   this.setState({
-    //     playlists: [...this.state.playlists, playlist]
-    //   },()=>{
-    //     console.log(`this.state after new playlist submission: `,this.state.playlists)
-    //   })
-    // })
-
-
   }
 
   // Delete playlist
@@ -360,30 +193,6 @@ class App extends Component {
     const playlistUrl = `//localhost:3000/api/v1/playlists/${playlist.id}`
 
     this.props.onPlaylistTitleDelete(playlistUrl)
-
-    // fetch(url,{
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    // .then(res=>{
-    //   const playlistUrl = '//localhost:3000/api/v1/playlists'
-    //
-    //   fetch(playlistUrl)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //
-    //     const playlists = data.data.map((obj)=>{
-    //       return {id: obj.id, name: obj.attributes.name}
-    //     })
-    //
-    //     this.setState({
-    //       playlists: playlists
-    //     },()=>console.log(`this.state.playlists after playlist fetch`, this.state.playlists))
-    //   })
-    // })
-
   }
 
 
@@ -414,29 +223,16 @@ class App extends Component {
 
 
 
-
-  render() {
-
-    let library
-    let playlistTitlesContainer
+  //function for creating a bg div element
+  createBackgroundDiv = () => {
     let bgUrl
     let bgSize
     let bgTop
     let bgLeft
     let bgRepeat
 
-    let libraryToggleButton
-
-    if(this.props.playlistTracksContainerDisplay===true){
-
-      libraryToggleButton = <div onClick={this.props.onLibraryToggleClick}>
-        LIBRARY
-      </div>
-    }
-
-
-    if(this.state.currentReleaseImgUrl){
-      bgUrl = this.state.currentReleaseImgUrl
+    if(this.props.currentReleaseImgUrl){
+      bgUrl = this.props.currentReleaseImgUrl
       bgSize = '450px 450px'
       bgTop = '0'
       bgLeft = '0'
@@ -460,6 +256,62 @@ class App extends Component {
     }
 
     let  bgDiv = <div style={bgStyle}></div>
+
+    return bgDiv
+
+
+
+
+  }
+
+
+  render() {
+
+    let library
+    let playlistTitlesContainer
+    // let bgUrl
+    // let bgSize
+    // let bgTop
+    // let bgLeft
+    // let bgRepeat
+
+    let libraryToggleButton
+
+    if(this.props.playlistTracksContainerDisplay===true){
+
+      libraryToggleButton = <div onClick={this.props.onLibraryToggleClick}>
+        LIBRARY
+      </div>
+    }
+
+
+    // if(this.props.currentReleaseImgUrl){
+    //   bgUrl = this.props.currentReleaseImgUrl
+    //   bgSize = '450px 450px'
+    //   bgTop = '0'
+    //   bgLeft = '0'
+    //   bgRepeat = 'repeat'
+    // }else{
+    //   bgUrl = 'https://78.media.tumblr.com/a7f02d7176d50f610b7f544b28c92e5a/tumblr_ohtrc8hT9n1sm5cgbo1_640.jpg'
+    //   bgTop = '0'
+    //   bgLeft = '0'
+    // }
+    //
+    // let bgStyle = {
+    //   backgroundImage: `url('${bgUrl}')`,
+    //   backgroundSize: bgSize,
+    //   width: '2500px',
+    //   height: '2000px',
+    //   backgroundRepeat: bgRepeat,
+    //   position: 'fixed',
+    //   top: bgTop,
+    //   left: bgLeft,
+    //   zIndex: '-5'
+    // }
+
+    let bgDiv = this.createBackgroundDiv()
+    console.log(`bgDiv: `, bgDiv)
+    // let  bgDiv = <div style={bgStyle}></div>
     let logo = <div id='logo'>33/45</div>
 
 
