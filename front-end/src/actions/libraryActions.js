@@ -116,15 +116,6 @@ export function onLibraryVideoFinish(newCurrentVideo, newNextVideo, newCurrentRe
 
 }
 
-export function onPlaylistTracksVideoFinish(newCurrentTrack, newNextTrack){
-
-  return {
-    type: 'ON_PLAYLIST_TRACKS_VIDEO_FINISH',
-    newCurrentTrack: newCurrentTrack,
-    newNextTrack: newNextTrack
-  }
-
-}
 
 export function onVideoClick(newCurrentVideo, newNextVideo){
 
@@ -143,70 +134,4 @@ export function onSort(sortedData){
     sortedData: sortedData
   }
 
-}
-
-export function onCurrentPlaylistTrackClick(newCurrentTrack, newNextTrack){
-
-  return {
-    type: 'ON_CURRENT_PLAYLIST_TRACK_CLICK',
-    newCurrentTrack: newCurrentTrack,
-    newNextTrack: newNextTrack
-  }
-
-}
-
-export function onNewPlaylistSubmit(postData){
-
-  return function(dispatch){
-
-    fetch('http://localhost:3000/api/v1/playlists', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    })
-    .then(res =>res.json())
-    .then(data =>{
-      const playlist = {id: data.data.id, name: data.data.attributes.name}
-
-      return dispatch({
-        type: 'ON_NEW_PLAYLIST_SUBMIT',
-        playlist: playlist
-      })
-    })
-
-  }
-
-}
-
-export function onPlaylistTitleDelete(playlistUrl){
-
-  return function(dispatch){
-
-    fetch(playlistUrl,{
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res=>{
-      const playlistUrl = '//localhost:3000/api/v1/playlists'
-
-      fetch(playlistUrl)
-      .then(res => res.json())
-      .then(data => {
-
-        const newPlaylists = data.data.map((obj)=>{
-          return {id: obj.id, name: obj.attributes.name}
-        })
-
-        return dispatch({
-          type: 'ON_PLAYLIST_TITLE_DELETE',
-          newPlaylists: newPlaylists
-        })
-      })
-    })
-
-  }
 }

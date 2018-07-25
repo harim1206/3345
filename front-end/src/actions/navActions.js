@@ -1,8 +1,5 @@
-
-
-
 export function onLibraryToggleClick(){
-  
+
   return {
     type: 'TOGGLE_LIBRARY',
     toggle: false

@@ -2,10 +2,25 @@ import React, { Component } from 'react';
 
 //Redux
 import { connect } from 'react-redux'
-import { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onVideoClick, onSort, onCurrentPlaylistTrackClick, onNewPlaylistSubmit, onPlaylistTitleDelete } from '../actions/libraryActions.js'
-import { onPlaylistTitlesContainerToggleClick, onLibraryToggleClick } from '../actions/navActions.js'
-import { onPlaylistTitleClick } from '../actions/playlistTitlesContainerActions.js'
-
+import {
+  fetchCollection,
+  fetchPlaylists,
+  onReleaseClick,
+  onLibraryVideoFinish,
+  onVideoClick,
+  onSort} from '../actions/libraryActions.js'
+import {
+  onPlaylistTitlesContainerToggleClick,
+  onLibraryToggleClick } from '../actions/navActions.js'
+import {
+  onPlaylistTitleClick,
+  onNewPlaylistInputChange,
+  onNewPlaylistSubmit,
+  onPlaylistTitleDelete } from '../actions/playlistTitlesContainerActions.js'
+import{
+  onPlaylistTracksVideoFinish,
+  onCurrentPlaylistTrackClick
+} from '../actions/playlistTracksContainerActions.js'
 
 //Components
 import Video from './Video.js'
@@ -18,17 +33,9 @@ import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 require('dotenv').config()
 
 class App extends Component {
-  state={
-    // Playlists
-    newPlaylistInput: "",
-  }
 
-
-
-
-
-  // LIFECYCLE METHODS
   //
+  // LIFECYCLE METHODS
   //
   componentDidMount(){
     this.props.fetchCollection()
@@ -36,33 +43,32 @@ class App extends Component {
   }
 
 
-
-
-
+  //
   // APP/VIDEO COMPONENT EVENT HANDLERS
   //
+
+  // play next video on finish
+  // onEnded = () =>{
   //
-
-  // play next video once it finishes
-  onEnded = () =>{
-
-    if(!this.props.playlistTracksContainerDisplay){
-      const nextReleaseId = this.props.libraryReleases.indexOf(this.props.nextRelease)
-
-      let arr = this.props.currentReleaseVideos
-      const nextVideo = arr[arr.indexOf(this.props.currentVideo)+1]
-
-      this.props.onLibraryVideoFinish(this.props.nextVideo, nextVideo, this.props.nextRelease, this.props.libraryReleases[nextReleaseId+1])
-    }else{
-      const tracks = this.props.currentPlaylistTracks
-      const currentIndex = tracks.indexOf(this.props.currentTrack)
-      const nextTrack = tracks[currentIndex+2]
-
-
-      this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, nextTrack)
-    }
-
-  }
+  //   if(!this.props.playlistTracksContainerDisplay){
+  //
+  //     const newCurrentVideo = this.props.nextVideo
+  //     let currVideos = this.props.currentReleaseVideos
+  //     const newNextVideo = currVideos[currVideos.indexOf(this.props.currentVideo)+1]
+  //
+  //     const newCurrentRelease = this.props.nextRelease
+  //     const newNextRelease = this.props.libraryReleases[this.props.nextRelease.id+1]
+  //
+  //     this.props.onLibraryVideoFinish(newCurrentVideo, newNextVideo, newCurrentRelease, newNextRelease)
+  //   }else{
+  //     const currTracks = this.props.currentPlaylistTracks
+  //
+  //     const newNextTrack = currTracks[currTracks.indexOf(this.props.nextTrack)+1]
+  //
+  //     this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, newNextTrack)
+  //   }
+  //
+  // }
 
   // Toggle library on click
   onLibraryToggleClick = () =>{
@@ -74,7 +80,6 @@ class App extends Component {
     const toggle = !this.props.playlistTitlesContainerDisplay
     this.props.onPlaylistTitlesContainerToggleClick(toggle)
   }
-
 
 
 
@@ -125,8 +130,6 @@ class App extends Component {
   // on playlist select menu change, add track to playlist
   saveToPlaylist = (video, release, event) =>{
 
-    console.log(`this.state.currentReleaseImgUrl: `, this.state.currentReleaseImgUrl)
-
     let postData = {
       artist: release.artist,
       release: release.title,
@@ -142,17 +145,12 @@ class App extends Component {
       playlist_id: event.target.value
     }
 
-
     fetch('http://localhost:3000/api/v1/tracks', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
-    })
-    .then(res =>res.json())
-    .then(data =>{
-
     })
 
   }
@@ -171,17 +169,15 @@ class App extends Component {
 
   // new playlist input change
   onNewPlaylistInputchange = (e) =>{
-    this.setState({
-      newPlaylistInput: e.target.value
-    })
+    let input = e.target.value
+    this.props.onNewPlaylistInputChange(input)
+
   }
 
   // on new playlist submit
   onNewPlaylistSubmit = () =>{
-    // e.preventDefault()
-
     let postData = {
-      name: this.state.newPlaylistInput
+      name: this.props.newPlaylistInput
     }
 
     this.props.onNewPlaylistSubmit(postData)
@@ -210,20 +206,14 @@ class App extends Component {
     const nextTrack = tracks[currentIndex+1]
 
     this.props.onCurrentPlaylistTrackClick(track, nextTrack)
-
-    // this.setState({
-    //   currentTrack: track,
-    //   nextTrack: nextTrack,
-    //   currentVideo: track,
-    //   nextVideo: nextTrack,
-    //   currentReleaseImgUrl: track.imgurl
-    // },()=>console.log(`on track click state`, this.state))
   }
 
 
+  //
+  // ELEMENT CREATORS
+  //
 
-
-  //function for creating a bg div element
+  // create background div element
   createBackgroundDiv = () => {
     let bgUrl
     let bgSize
@@ -234,13 +224,10 @@ class App extends Component {
     if(this.props.currentReleaseImgUrl){
       bgUrl = this.props.currentReleaseImgUrl
       bgSize = '450px 450px'
-      bgTop = '0'
-      bgLeft = '0'
       bgRepeat = 'repeat'
     }else{
       bgUrl = 'https://78.media.tumblr.com/a7f02d7176d50f610b7f544b28c92e5a/tumblr_ohtrc8hT9n1sm5cgbo1_640.jpg'
-      bgTop = '0'
-      bgLeft = '0'
+
     }
 
     let bgStyle = {
@@ -250,18 +237,19 @@ class App extends Component {
       height: '2000px',
       backgroundRepeat: bgRepeat,
       position: 'fixed',
-      top: bgTop,
-      left: bgLeft,
+      top: '0',
+      left: '0',
       zIndex: '-5'
     }
 
-    let  bgDiv = <div style={bgStyle}></div>
+    return <div style={bgStyle}></div>
+  }
 
-    return bgDiv
-
-
-
-
+  // create a button for toggling library
+  createLibraryToggleButton = () => {
+    if(this.props.playlistTracksContainerDisplay===true){
+      return <div onClick={this.props.onLibraryToggleClick}>LIBRARY</div>
+    }
   }
 
 
@@ -269,49 +257,9 @@ class App extends Component {
 
     let library
     let playlistTitlesContainer
-    // let bgUrl
-    // let bgSize
-    // let bgTop
-    // let bgLeft
-    // let bgRepeat
 
-    let libraryToggleButton
-
-    if(this.props.playlistTracksContainerDisplay===true){
-
-      libraryToggleButton = <div onClick={this.props.onLibraryToggleClick}>
-        LIBRARY
-      </div>
-    }
-
-
-    // if(this.props.currentReleaseImgUrl){
-    //   bgUrl = this.props.currentReleaseImgUrl
-    //   bgSize = '450px 450px'
-    //   bgTop = '0'
-    //   bgLeft = '0'
-    //   bgRepeat = 'repeat'
-    // }else{
-    //   bgUrl = 'https://78.media.tumblr.com/a7f02d7176d50f610b7f544b28c92e5a/tumblr_ohtrc8hT9n1sm5cgbo1_640.jpg'
-    //   bgTop = '0'
-    //   bgLeft = '0'
-    // }
-    //
-    // let bgStyle = {
-    //   backgroundImage: `url('${bgUrl}')`,
-    //   backgroundSize: bgSize,
-    //   width: '2500px',
-    //   height: '2000px',
-    //   backgroundRepeat: bgRepeat,
-    //   position: 'fixed',
-    //   top: bgTop,
-    //   left: bgLeft,
-    //   zIndex: '-5'
-    // }
-
+    let libraryToggleButton = this.createLibraryToggleButton()
     let bgDiv = this.createBackgroundDiv()
-    console.log(`bgDiv: `, bgDiv)
-    // let  bgDiv = <div style={bgStyle}></div>
     let logo = <div id='logo'>33/45</div>
 
 
@@ -323,8 +271,6 @@ class App extends Component {
         currentReleaseTracks={this.props.currentReleaseTracks}
         currentReleaseVideos={this.props.currentReleaseVideos}
         playlists={this.props.playlists}
-
-
 
         onReleaseClick={this.onReleaseClick}
         onSort={this.onSort}
@@ -341,7 +287,7 @@ class App extends Component {
 
     if(this.props.playlistTitlesContainerDisplay){
       playlistTitlesContainer =  <PlaylistTitlesContainer
-        newPlaylistInput = {this.state.newPlaylistInput}
+        newPlaylistInput = {this.props.newPlaylistInput}
         playlists = {this.props.playlists}
 
         onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
@@ -375,6 +321,7 @@ class App extends Component {
               {playlistTitlesContainer}
               {library}
             </div>
+
           </div>
         </div>
 
@@ -394,24 +341,25 @@ const mapStateToProps = (state) => {
 
   return (
     {
-
+      //library
       libraryReleases: state.library.libraryReleases,
-
-      currentVideo: state.library.currentVideo,
-      nextVideo: state.library.nextVideo,
-      currentReleaseImgUrl: state.library.currentReleaseImgUrl,
-
+      //video
+      currentVideo: state.video.currentVideo,
+      nextVideo: state.video.nextVideo,
+      currentReleaseImgUrl: state.video.currentReleaseImgUrl,
+      //library
       currentRelease: state.library.currentRelease,
       nextRelease: state.library.nextRelease,
       currentReleaseTracks: state.library.currentReleaseTracks,
       currentReleaseVideos: state.library.currentReleaseVideos,
-
-      currentTrack: state.library.currentTrack,
-      nextTrack: state.library.nextTrack,
-
       playlists: state.library.playlists,
-
+      //playlist tracks container
+      currentTrack: state.playlistTracksContainer.currentTrack,
+      nextTrack: state.playlistTracksContainer.nextTrack,
+      //playlist titles container
       currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
+      newPlaylistInput: state.playlistTitlesContainer.newPlaylistInput,
+      // navigation bar
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
       playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
 
@@ -421,4 +369,21 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { fetchCollection, fetchPlaylists, onReleaseClick, onLibraryVideoFinish, onPlaylistTracksVideoFinish, onVideoClick, onSort, onCurrentPlaylistTrackClick, onNewPlaylistSubmit, onPlaylistTitleDelete, onPlaylistTitlesContainerToggleClick, onLibraryToggleClick, onPlaylistTitleClick})(App);
+export default connect(mapStateToProps,
+  {
+    fetchCollection,
+    fetchPlaylists,
+    onReleaseClick,
+    onLibraryVideoFinish,
+    onPlaylistTracksVideoFinish,
+    onVideoClick,
+    onSort,
+    onCurrentPlaylistTrackClick,
+    onNewPlaylistSubmit,
+    onPlaylistTitleDelete,
+    onPlaylistTitlesContainerToggleClick,
+    onLibraryToggleClick,
+    onPlaylistTitleClick,
+    onNewPlaylistInputChange
+  }
+)(App);
