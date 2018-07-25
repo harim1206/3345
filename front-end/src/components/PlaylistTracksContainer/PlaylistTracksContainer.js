@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import PlaylistTrack from './PlaylistTrack'
 
-class PlyalistTracksContainer extends Component{
+import { connect } from 'react-redux'
+
+
+class PlaylistTracksContainer extends Component{
+
 
   render(){
+    debugger
+
+
     const tracks = this.props.currentPlaylistTracks.map((track)=>{
-      return (<PlaylistTrack track={track} onCurrentPlaylistTrackClick={this.props.onCurrentPlaylistTrackClick}/>)
+      return (<PlaylistTrack track={track}/>)
     })
 
     const columnHeaders = ['DESCRIPTION','ARTIST','RELEASE','URL','LABEL','CATNO'].map((cat)=>{
@@ -36,24 +43,14 @@ class PlyalistTracksContainer extends Component{
   }
 }
 
-export default PlyalistTracksContainer
-// artist, description, release, label, catno, url
-//
-// artist
-// :
-// "Mass Production"
-// catno
-// :
-// "SD 9910"
-// description
-// :
-// "Mass Production - Magic"
-// label
-// :
-// "Cotillion"
-// release
-// :
-// "Welcome To Our World"
-// url
-// :
-// "https://www.youtube.com/watch?v=TZv26FljO9U"
+const mapStateToProps = (state) => {
+  console.log(`redux statexxx: `, state)
+  // debugger
+  console.log(`redux state currentPlaylistTracks: `, state.playlistTitlesContainer)
+  return {
+    state
+    // currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks
+  }
+}
+
+export default (mapStateToProps)(PlaylistTracksContainer)

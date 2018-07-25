@@ -41,24 +41,23 @@ class Video extends Component {
   }
 }
 
-const mapStateToProps = (state) =>{
-  return (
-    {
-      libraryReleases: state.library.libraryReleases,
-      // video
-      currentVideo: state.video.currentVideo,
-      nextVideo: state.video.nextVideo,
-      // library
-      nextRelease: state.library.nextRelease,
-      currentReleaseVideos: state.library.currentReleaseVideos,
-      // playlist tracks container
-      nextTrack: state.playlistTracksContainer.nextTrack,
-      // playlist titles container
-      currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
-      // navigation bar
-      playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
-    }
-  )
+const mapStateToProps = (state) => {
+  return {
+    libraryReleases: state.library.libraryReleases,
+    // video
+    currentVideo: state.video.currentVideo,
+    nextVideo: state.video.nextVideo,
+    // library
+    nextRelease: state.library.nextRelease,
+    currentReleaseVideos: state.library.currentReleaseVideos,
+    // playlist tracks container
+    nextTrack: state.playlistTracksContainer.nextTrack,
+    // playlist titles container
+    currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
+    // navigation bar
+    playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
+  }
+
 }
 
 export default connect(mapStateToProps,

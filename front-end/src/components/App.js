@@ -6,7 +6,6 @@ import {
   fetchCollection,
   fetchPlaylists,
   onReleaseClick,
-  onLibraryVideoFinish,
   onVideoClick,
   onSort} from '../actions/libraryActions.js'
 import {
@@ -17,16 +16,15 @@ import {
   onNewPlaylistInputChange,
   onNewPlaylistSubmit,
   onPlaylistTitleDelete } from '../actions/playlistTitlesContainerActions.js'
-import{
-  onPlaylistTracksVideoFinish,
-  onCurrentPlaylistTrackClick
-} from '../actions/playlistTracksContainerActions.js'
+// import{
+//   onCurrentPlaylistTrackClick
+// } from '../actions/playlistTracksContainerActions.js'
 
 //Components
 import Video from './Video.js'
 import Library from './LibraryContainer/Library.js'
 import PlaylistTitlesContainer from './PlaylistTitlesContainer/PlaylistTitlesContainer.js'
-import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer'
+import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer.js'
 
 //Helper Functions
 import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
@@ -41,34 +39,6 @@ class App extends Component {
     this.props.fetchCollection()
     this.props.fetchPlaylists()
   }
-
-
-  //
-  // APP/VIDEO COMPONENT EVENT HANDLERS
-  //
-
-  // play next video on finish
-  // onEnded = () =>{
-  //
-  //   if(!this.props.playlistTracksContainerDisplay){
-  //
-  //     const newCurrentVideo = this.props.nextVideo
-  //     let currVideos = this.props.currentReleaseVideos
-  //     const newNextVideo = currVideos[currVideos.indexOf(this.props.currentVideo)+1]
-  //
-  //     const newCurrentRelease = this.props.nextRelease
-  //     const newNextRelease = this.props.libraryReleases[this.props.nextRelease.id+1]
-  //
-  //     this.props.onLibraryVideoFinish(newCurrentVideo, newNextVideo, newCurrentRelease, newNextRelease)
-  //   }else{
-  //     const currTracks = this.props.currentPlaylistTracks
-  //
-  //     const newNextTrack = currTracks[currTracks.indexOf(this.props.nextTrack)+1]
-  //
-  //     this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, newNextTrack)
-  //   }
-  //
-  // }
 
   // Toggle library on click
   onLibraryToggleClick = () =>{
@@ -199,14 +169,14 @@ class App extends Component {
   //
 
   // play video on playlist track click
-  onCurrentPlaylistTrackClick = (track) =>{
-
-    const tracks = this.props.currentPlaylistTracks
-    const currentIndex = tracks.indexOf(track)
-    const nextTrack = tracks[currentIndex+1]
-
-    this.props.onCurrentPlaylistTrackClick(track, nextTrack)
-  }
+  // onCurrentPlaylistTrackClick = (track) =>{
+  //
+  //   const tracks = this.props.currentPlaylistTracks
+  //   const currentIndex = tracks.indexOf(track)
+  //   const nextTrack = tracks[currentIndex+1]
+  //
+  //   this.props.onCurrentPlaylistTrackClick(track, nextTrack)
+  // }
 
 
   //
@@ -279,10 +249,10 @@ class App extends Component {
       />
     }else{
 
-      library = <PlaylistTracksContainer
-        currentPlaylistTracks={this.props.currentPlaylistTracks}
-        onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
-      />
+      library = <PlaylistTracksContainer/>
+        // currentPlaylistTracks={this.props.currentPlaylistTracks}
+        // onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
+      // />
     }
 
     if(this.props.playlistTitlesContainerDisplay){
@@ -303,11 +273,7 @@ class App extends Component {
       <div className="App">
 
         <div className="main-container--shadow">
-          <Video
-            onEnded={this.onEnded}
-            currentVideo={this.props.currentVideo}
-            currentReleaseImageURL={this.props.currentReleaseImgUrl}
-          />
+          <Video/>
 
           <div className = "main-container--padding">
             <nav className="navigation-bar">
@@ -337,7 +303,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(`redux state: `,state)
+  // console.log(`redux state: `,state)
 
   return (
     {
@@ -374,11 +340,9 @@ export default connect(mapStateToProps,
     fetchCollection,
     fetchPlaylists,
     onReleaseClick,
-    onLibraryVideoFinish,
-    onPlaylistTracksVideoFinish,
     onVideoClick,
     onSort,
-    onCurrentPlaylistTrackClick,
+    // onCurrentPlaylistTrackClick,
     onNewPlaylistSubmit,
     onPlaylistTitleDelete,
     onPlaylistTitlesContainerToggleClick,
