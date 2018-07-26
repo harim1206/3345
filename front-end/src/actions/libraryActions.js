@@ -9,7 +9,7 @@ export function fetchCollection(){
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let releases = data.releases.slice(0,500)
+      let releases = data.releases.slice(0,5)
 
       releases.sort((a,b)=>{
         let keyA = new Date(a.date_added),

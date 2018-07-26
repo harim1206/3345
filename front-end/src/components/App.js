@@ -5,20 +5,16 @@ import { connect } from 'react-redux'
 import {
   fetchCollection,
   fetchPlaylists,
-  onReleaseClick,
   onVideoClick,
   onSort} from '../actions/libraryActions.js'
 import {
   onPlaylistTitlesContainerToggleClick,
   onLibraryToggleClick } from '../actions/navActions.js'
-import {
-  onPlaylistTitleClick,
-  onNewPlaylistInputChange,
-  onNewPlaylistSubmit,
-  onPlaylistTitleDelete } from '../actions/playlistTitlesContainerActions.js'
-// import{
-//   onCurrentPlaylistTrackClick
-// } from '../actions/playlistTracksContainerActions.js'
+// import {
+//   onPlaylistTitleClick,
+//   onNewPlaylistInputChange,
+//   onNewPlaylistSubmit,
+//   onPlaylistTitleDelete } from '../actions/playlistTitlesContainerActions.js'
 
 //Components
 import Video from './Video.js'
@@ -40,11 +36,6 @@ class App extends Component {
     this.props.fetchPlaylists()
   }
 
-  // Toggle library on click
-  onLibraryToggleClick = () =>{
-    this.props.onLibraryToggleClick()
-  }
-
   // Toggle playlistTitles on click
   onPlaylistTitlesContainerToggleClick = () =>{
     const toggle = !this.props.playlistTitlesContainerDisplay
@@ -53,16 +44,11 @@ class App extends Component {
 
 
 
-
   // LIBRARY CONTAINER EVENT HANDLERS
   //
   //
 
-  // fetch tracks for the release on click
-  onReleaseClick = (release, id) => {
-    const nextRelease = this.props.libraryReleases[id+1]
-    this.props.onReleaseClick(release, nextRelease, id)
-  }
+
 
   onVideoClick = (video, event) =>{
     let arr = this.props.currentReleaseVideos
@@ -124,59 +110,6 @@ class App extends Component {
     })
 
   }
-
-
-
-
-  // PLAYLIST TITLE CONTAINER EVENT HANDLERS
-  //
-  //
-
-  // Toggle playlist on click
-  onPlaylistTitleClick = (playlist) => {
-    this.props.onPlaylistTitleClick(playlist)
-  }
-
-  // new playlist input change
-  onNewPlaylistInputchange = (e) =>{
-    let input = e.target.value
-    this.props.onNewPlaylistInputChange(input)
-
-  }
-
-  // on new playlist submit
-  onNewPlaylistSubmit = () =>{
-    let postData = {
-      name: this.props.newPlaylistInput
-    }
-
-    this.props.onNewPlaylistSubmit(postData)
-  }
-
-  // Delete playlist
-  onPlaylistTitleDelete = (playlist) => {
-
-    const playlistUrl = `//localhost:3000/api/v1/playlists/${playlist.id}`
-
-    this.props.onPlaylistTitleDelete(playlistUrl)
-  }
-
-
-
-
-  // PLAYLIST TRACKS CONTAINER EVENT HANDLERS
-  //
-  //
-
-  // play video on playlist track click
-  // onCurrentPlaylistTrackClick = (track) =>{
-  //
-  //   const tracks = this.props.currentPlaylistTracks
-  //   const currentIndex = tracks.indexOf(track)
-  //   const nextTrack = tracks[currentIndex+1]
-  //
-  //   this.props.onCurrentPlaylistTrackClick(track, nextTrack)
-  // }
 
 
   //
@@ -250,21 +183,12 @@ class App extends Component {
     }else{
 
       library = <PlaylistTracksContainer/>
-        // currentPlaylistTracks={this.props.currentPlaylistTracks}
-        // onCurrentPlaylistTrackClick={this.onCurrentPlaylistTrackClick}
-      // />
+
     }
 
     if(this.props.playlistTitlesContainerDisplay){
       playlistTitlesContainer =  <PlaylistTitlesContainer
-        newPlaylistInput = {this.props.newPlaylistInput}
         playlists = {this.props.playlists}
-
-        onNewPlaylistSubmit = {this.onNewPlaylistSubmit}
-        onNewPlaylistInputchange = {this.onNewPlaylistInputchange}
-        onPlaylistTitleClick = {this.onPlaylistTitleClick}
-        onPlaylistTitleDelete = {this.onPlaylistTitleDelete}
-        onLibraryToggleClick = {this.onLibraryToggleClick}
       />
     }
 
@@ -322,9 +246,6 @@ const mapStateToProps = (state) => {
       //playlist tracks container
       currentTrack: state.playlistTracksContainer.currentTrack,
       nextTrack: state.playlistTracksContainer.nextTrack,
-      //playlist titles container
-      currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
-      newPlaylistInput: state.playlistTitlesContainer.newPlaylistInput,
       // navigation bar
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
       playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
@@ -339,15 +260,9 @@ export default connect(mapStateToProps,
   {
     fetchCollection,
     fetchPlaylists,
-    onReleaseClick,
     onVideoClick,
     onSort,
-    // onCurrentPlaylistTrackClick,
-    onNewPlaylistSubmit,
-    onPlaylistTitleDelete,
     onPlaylistTitlesContainerToggleClick,
-    onLibraryToggleClick,
-    onPlaylistTitleClick,
-    onNewPlaylistInputChange
+    onLibraryToggleClick
   }
 )(App);

@@ -57,7 +57,9 @@ export function onNewPlaylistSubmit(postData){
 
 }
 
-export function onPlaylistTitleDelete(playlistUrl){
+export function onPlaylistTitleDelete(playlist){
+  
+  const playlistUrl = `//localhost:3000/api/v1/playlists/${playlist.id}`
 
   return function(dispatch){
 

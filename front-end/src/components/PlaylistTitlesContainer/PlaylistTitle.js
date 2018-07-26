@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux'
+import {
+  onPlaylistTitleClick,
+  onPlaylistTitleDelete
+} from '../../actions/playlistTitlesContainerActions.js'
+
 class PlaylistTitle extends Component{
 
   render(){
@@ -14,4 +20,9 @@ class PlaylistTitle extends Component{
   }
 }
 
-export default PlaylistTitle
+const mapStateToProps = (state) =>{
+  return {}
+}
+
+export default connect(mapStateToProps,{ onPlaylistTitleClick,
+onPlaylistTitleDelete })(PlaylistTitle)

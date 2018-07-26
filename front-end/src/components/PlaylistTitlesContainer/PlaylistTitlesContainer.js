@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import {
+  onNewPlaylistInputChange,
+  onNewPlaylistSubmit } from '../../actions/playlistTitlesContainerActions.js'
+
+
 import PlaylistTitle from './PlaylistTitle.js'
 
+
 class PlaylistTitlesContainer extends Component{
+
+  // new playlist input change
+  onNewPlaylistInputchange = (e) =>{
+    let input = e.target.value
+    this.props.onNewPlaylistInputChange(input)
+
+  }
+
+  // on new playlist submit
+  onNewPlaylistSubmit = () =>{
+    let postData = {
+      name: this.props.newPlaylistInput
+    }
+    this.props.onNewPlaylistSubmit(postData)
+  }
+
 
   render(){
 
     const playlistTitles = this.props.playlists.map((playlist)=>{
       return <PlaylistTitle
         playlist={playlist}
-        onPlaylistTitleClick={this.props.onPlaylistTitleClick}
-        onPlaylistTitleDelete={this.props.onPlaylistTitleDelete}
       />
     })
 
@@ -23,10 +45,10 @@ class PlaylistTitlesContainer extends Component{
             type="text"
             value={this.props.newPlaylistInput}
             placeholder="new playlist"
-            onChange={(e)=>this.props.onNewPlaylistInputchange(e)}
+            onChange={(e)=>this.onNewPlaylistInputchange(e)}
           />
 
-          <i className="fas fa-plus" onClick={this.props.onNewPlaylistSubmit}></i>
+          <i className="fas fa-plus" onClick={this.onNewPlaylistSubmit}></i>
 
         </div>
       </div>
@@ -35,17 +57,13 @@ class PlaylistTitlesContainer extends Component{
 
 }
 
-// <form onSubmit={(e)=>this.props.onNewPlaylistSubmit(e)}>
-//   <input
-//     type="text"
-//     value={this.props.newPlaylistInput}
-//     onChange={(e)=>this.props.onNewPlaylistInputchange(e)}
-//   />
-//   <input type="submit"/>
-//
-//
-//
-// </form>
+const mapStateToProps = (state) =>{
+  return {
+    newPlaylistInput: state.playlistTitlesContainer.newPlaylistInput
+  }
 
+}
 
-export default PlaylistTitlesContainer
+export default connect(mapStateToProps, { onNewPlaylistInputChange,
+onNewPlaylistSubmit
+ })(PlaylistTitlesContainer)

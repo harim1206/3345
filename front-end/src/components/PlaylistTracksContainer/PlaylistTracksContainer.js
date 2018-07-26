@@ -8,8 +8,6 @@ class PlaylistTracksContainer extends Component{
 
 
   render(){
-    debugger
-
 
     const tracks = this.props.currentPlaylistTracks.map((track)=>{
       return (<PlaylistTrack track={track}/>)
@@ -44,13 +42,9 @@ class PlaylistTracksContainer extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(`redux statexxx: `, state)
-  // debugger
-  console.log(`redux state currentPlaylistTracks: `, state.playlistTitlesContainer)
   return {
-    state
-    // currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks
+    currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks
   }
 }
 
-export default (mapStateToProps)(PlaylistTracksContainer)
+export default connect(mapStateToProps)(PlaylistTracksContainer)
