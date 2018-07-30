@@ -59,6 +59,7 @@ class PlaylistTitlesContainer extends Component{
 
 const mapStateToProps = (state) =>{
   return {
+    playlists: state.library.playlists,
     newPlaylistInput: state.playlistTitlesContainer.newPlaylistInput
   }
 

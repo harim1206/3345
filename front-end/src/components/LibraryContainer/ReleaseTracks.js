@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { onVideoClick } from '../../actions/libraryActions.js'
 
 class ReleaseTracks extends Component{
 
@@ -7,6 +9,41 @@ class ReleaseTracks extends Component{
       columnTitles.map((title)=><td className='track-column-header'>{title}</td>
       )
     )
+  }
+
+  onVideoClick = (video, event) =>{
+    let arr = this.props.currentReleaseVideos
+    const nextVideo = arr[arr.indexOf(video)+1]
+
+    this.props.onVideoClick(video, nextVideo)
+  }
+
+  // on playlist select menu change, add track to playlist
+  saveToPlaylist = (video, release, event) =>{
+
+    let postData = {
+      artist: release.artist,
+      release: release.title,
+      label: release.label,
+      catno: release.catno,
+      resource_url: release.resource_url,
+      library_id: release.id,
+      title: "",
+      url: video.uri,
+      description: video.description,
+      duration: video.duration,
+      imgurl: this.props.currentReleaseImgUrl,
+      playlist_id: event.target.value
+    }
+
+    fetch('http://localhost:3000/api/v1/tracks', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+
   }
 
   render(){
@@ -35,11 +72,11 @@ class ReleaseTracks extends Component{
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
       // debugger
       return (
-        <tr className='track-container-row' onClick={(event)=>this.props.onVideoClick(video, event)}>
+        <tr className='track-container-row' onClick={(event)=>this.onVideoClick(video, event)}>
           <td></td>
           <td>{video.title}</td>
           <td>
-            <select name="text" onChange={(event)=>this.props.saveToPlaylist(video, this.props.currentRelease, event)}>
+            <select name="text" onChange={(event)=>this.saveToPlaylist(video, this.props.currentRelease, event)}>
               {playlistSelectOptions}
             </select>
           </td>
@@ -78,4 +115,13 @@ class ReleaseTracks extends Component{
 
 }
 
-export default ReleaseTracks
+const mapStateToProps = (state) => {
+  return {
+    playlists: state.library.playlists,
+    currentRelease: state.library.currentRelease,
+    currentReleaseTracks: state.library.currentReleaseTracks,
+    currentReleaseVideos: state.library.currentReleaseVideos
+  }
+}
+
+export default connect(mapStateToProps,{ onVideoClick })(ReleaseTracks)

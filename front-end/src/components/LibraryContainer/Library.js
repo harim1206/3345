@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Release from './Release'
 
 
@@ -6,24 +7,9 @@ class Library extends Component{
 
   render(){
     // Mapping props data to Release components
-
-    console.log(`this.props.libraryReleases: `, this.props.libraryReleases)
-
-
     const libraryReleases = this.props.libraryReleases.map((release)=>{
-
       return (
-        <Release
-          id = {release.id}
-          release = {release}
-          currentRelease = {this.props.currentRelease}
-          currentReleaseTracks = {this.props.currentRelease ? this.props.currentReleaseTracks : undefined}
-          currentReleaseVideos = {this.props.currentRelease ? this.props.currentReleaseVideos : undefined}
-          playlists = {this.props.playlists}
-          onReleaseClick = {this.props.onReleaseClick}
-          saveToPlaylist = {this.props.saveToPlaylist}
-          onVideoClick = {this.props.onVideoClick}
-        />
+        <Release release={release}/>
       )
     })
 
@@ -54,6 +40,10 @@ class Library extends Component{
 
 }
 
+const mapStateToProps = (state) =>{
+  return {
+    libraryReleases: state.library.libraryReleases
+  }
+}
 
-
-export default Library
+export default connect(mapStateToProps)(Library)

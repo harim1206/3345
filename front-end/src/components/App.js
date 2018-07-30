@@ -5,16 +5,12 @@ import { connect } from 'react-redux'
 import {
   fetchCollection,
   fetchPlaylists,
-  onVideoClick,
-  onSort} from '../actions/libraryActions.js'
+  onSort
+} from '../actions/libraryActions.js'
 import {
   onPlaylistTitlesContainerToggleClick,
-  onLibraryToggleClick } from '../actions/navActions.js'
-// import {
-//   onPlaylistTitleClick,
-//   onNewPlaylistInputChange,
-//   onNewPlaylistSubmit,
-//   onPlaylistTitleDelete } from '../actions/playlistTitlesContainerActions.js'
+  onLibraryToggleClick
+} from '../actions/navActions.js'
 
 //Components
 import Video from './Video.js'
@@ -22,15 +18,8 @@ import Library from './LibraryContainer/Library.js'
 import PlaylistTitlesContainer from './PlaylistTitlesContainer/PlaylistTitlesContainer.js'
 import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer.js'
 
-//Helper Functions
-import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
-require('dotenv').config()
-
 class App extends Component {
 
-  //
-  // LIFECYCLE METHODS
-  //
   componentDidMount(){
     this.props.fetchCollection()
     this.props.fetchPlaylists()
@@ -42,20 +31,6 @@ class App extends Component {
     this.props.onPlaylistTitlesContainerToggleClick(toggle)
   }
 
-
-
-  // LIBRARY CONTAINER EVENT HANDLERS
-  //
-  //
-
-
-
-  onVideoClick = (video, event) =>{
-    let arr = this.props.currentReleaseVideos
-    const nextVideo = arr[arr.indexOf(video)+1]
-
-    this.props.onVideoClick(video, nextVideo)
-  }
 
   // on table column header sort
   onSort = (sortKey) =>{
@@ -83,45 +58,10 @@ class App extends Component {
     // *** not working
   }
 
-  // on playlist select menu change, add track to playlist
-  saveToPlaylist = (video, release, event) =>{
-
-    let postData = {
-      artist: release.artist,
-      release: release.title,
-      label: release.label,
-      catno: release.catno,
-      resource_url: release.resource_url,
-      library_id: release.id,
-      title: "",
-      url: video.uri,
-      description: video.description,
-      duration: video.duration,
-      imgurl: this.props.currentReleaseImgUrl,
-      playlist_id: event.target.value
-    }
-
-    fetch('http://localhost:3000/api/v1/tracks', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    })
-
-  }
-
-
-  //
-  // ELEMENT CREATORS
-  //
-
   // create background div element
   createBackgroundDiv = () => {
     let bgUrl
     let bgSize
-    let bgTop
-    let bgLeft
     let bgRepeat
 
     if(this.props.currentReleaseImgUrl){
@@ -155,41 +95,23 @@ class App extends Component {
     }
   }
 
-
   render() {
-
-    let library
-    let playlistTitlesContainer
 
     let libraryToggleButton = this.createLibraryToggleButton()
     let bgDiv = this.createBackgroundDiv()
     let logo = <div id='logo'>33/45</div>
 
+    let library
+    let playlistTitlesContainer
 
     if(!this.props.playlistTracksContainerDisplay){
-
-      library = <Library
-        libraryReleases={this.props.libraryReleases}
-        currentRelease={this.props.currentRelease}
-        currentReleaseTracks={this.props.currentReleaseTracks}
-        currentReleaseVideos={this.props.currentReleaseVideos}
-        playlists={this.props.playlists}
-
-        onReleaseClick={this.onReleaseClick}
-        onSort={this.onSort}
-        saveToPlaylist={this.saveToPlaylist}
-        onVideoClick={this.onVideoClick}
-      />
+      library = <Library onSort={this.onSort}/>
     }else{
-
       library = <PlaylistTracksContainer/>
-
     }
 
     if(this.props.playlistTitlesContainerDisplay){
-      playlistTitlesContainer =  <PlaylistTitlesContainer
-        playlists = {this.props.playlists}
-      />
+      playlistTitlesContainer =  <PlaylistTitlesContainer/>
     }
 
     return (
@@ -211,56 +133,32 @@ class App extends Component {
               {playlistTitlesContainer}
               {library}
             </div>
-
           </div>
         </div>
-
 
         {logo}
         {bgDiv}
 
       </div>
-
-
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  // console.log(`redux state: `,state)
-
   return (
     {
-      //library
       libraryReleases: state.library.libraryReleases,
-      //video
-      currentVideo: state.video.currentVideo,
-      nextVideo: state.video.nextVideo,
       currentReleaseImgUrl: state.video.currentReleaseImgUrl,
-      //library
-      currentRelease: state.library.currentRelease,
-      nextRelease: state.library.nextRelease,
-      currentReleaseTracks: state.library.currentReleaseTracks,
-      currentReleaseVideos: state.library.currentReleaseVideos,
-      playlists: state.library.playlists,
-      //playlist tracks container
-      currentTrack: state.playlistTracksContainer.currentTrack,
-      nextTrack: state.playlistTracksContainer.nextTrack,
-      // navigation bar
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
       playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
-
     }
   )
 }
-
-
 
 export default connect(mapStateToProps,
   {
     fetchCollection,
     fetchPlaylists,
-    onVideoClick,
     onSort,
     onPlaylistTitlesContainerToggleClick,
     onLibraryToggleClick

@@ -21,7 +21,6 @@ class Video extends Component {
       this.props.onLibraryVideoFinish(newCurrentVideo, newNextVideo, newCurrentRelease, newNextRelease)
     }else{
       const currTracks = this.props.currentPlaylistTracks
-
       const newNextTrack = currTracks[currTracks.indexOf(this.props.nextTrack)+1]
 
       this.props.onPlaylistTracksVideoFinish(this.props.nextTrack, newNextTrack)

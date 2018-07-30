@@ -21,17 +21,8 @@ class Release extends Component{
 
     let releaseTracks
 
-    if(this.props.currentReleaseTracks.length > 0 && this.props.id === this.props.currentReleaseTracks[0].id){
-
-
-      releaseTracks = <ReleaseTracks
-      currentRelease = {this.props.currentRelease}
-      currentReleaseTracks = {this.props.currentReleaseTracks}
-      currentReleaseVideos = {this.props.currentReleaseVideos}
-      playlists = {this.props.playlists}
-      saveToPlaylist = {this.props.saveToPlaylist}
-      onVideoClick = {this.props.onVideoClick}
-      />
+    if(this.props.currentReleaseTracks.length > 0 && release.id === this.props.currentReleaseTracks[0].id){
+      releaseTracks = <ReleaseTracks/>
     }
 
     // debugger
@@ -57,7 +48,8 @@ class Release extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    libraryReleases: state.library.libraryReleases
+    libraryReleases: state.library.libraryReleases,
+    currentReleaseTracks: state.library.currentReleaseTracks
   }
 }
 

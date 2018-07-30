@@ -1,4 +1,3 @@
-import { shuffleArr, parseJSONtoData } from '../helpers/helper.js'
 require('dotenv').config()
 
 export function fetchCollection(){
@@ -9,17 +8,7 @@ export function fetchCollection(){
     fetch(collectionUrl, {mode: 'cors'})
     .then(res => res.json())
     .then(data => {
-      let releases = data.releases.slice(0,5)
-
-      releases.sort((a,b)=>{
-        let keyA = new Date(a.date_added),
-            keyB = new Date(b.date_added);
-
-        if(keyA < keyB) return 1;
-        if(keyA > keyB) return -1;
-        return 0;
-      })
-
+      const releases = sortByDateAdded(data.releases.slice(0,500))
       const parsedData = parseJSONtoData(releases)
 
       return dispatch({
@@ -29,6 +18,37 @@ export function fetchCollection(){
     })
 
   }
+}
+
+// fetchCollection helper method
+const parseJSONtoData = (releases) => {
+  return releases.map((release)=>{
+    let data = release.basic_information
+
+    return(
+      {
+        id: releases.indexOf(release),
+        artist : data.artists[0].name,
+        title : data.title,
+        label : data.labels[0].name,
+        catno : data.labels[0].catno,
+        resource_url: data.resource_url,
+        date_added: release.date_added
+      }
+    )
+  })
+}
+
+// fetchCollection helper method
+const sortByDateAdded = (releases) => {
+  return releases.sort((a,b)=>{
+    let keyA = new Date(a.date_added),
+        keyB = new Date(b.date_added);
+
+    if(keyA < keyB) return 1;
+    if(keyA > keyB) return -1;
+    return 0;
+  })
 }
 
 export function fetchPlaylists(){
