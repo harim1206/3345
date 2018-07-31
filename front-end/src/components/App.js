@@ -101,13 +101,13 @@ class App extends Component {
     let bgDiv = this.createBackgroundDiv()
     let logo = <div id='logo'>33/45</div>
 
-    let library
+    let mainContainer
     let playlistTitlesContainer
 
     if(!this.props.playlistTracksContainerDisplay){
-      library = <Library onSort={this.onSort}/>
+      mainContainer = <Library onSort={this.onSort}/>
     }else{
-      library = <PlaylistTracksContainer/>
+      mainContainer = <PlaylistTracksContainer/>
     }
 
     if(this.props.playlistTitlesContainerDisplay){
@@ -131,7 +131,7 @@ class App extends Component {
 
             <div className={this.props.playlistTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
               {playlistTitlesContainer}
-              {library}
+              {mainContainer}
             </div>
           </div>
         </div>
