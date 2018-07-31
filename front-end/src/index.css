@@ -62,7 +62,7 @@ body {
 
 .main-container--shadow{
   width: 640px;
-  margin: 8vh auto 0 auto;
+  margin: 4vh auto 4vh auto;
   box-shadow: 13px 13px 20px rgb(56, 62, 71);
 }
 
@@ -103,6 +103,13 @@ body {
   overflow: auto;
   border-right: 1px solid rgb(232, 232, 232);
 
+}
+
+.playlistTitles-wrapper{
+  max-height: 280px;
+  width: 200px;
+  padding-bottom: 20px;
+  overflow-x: scroll;
 }
 
 .new-playlist-wrapper{

@@ -38,7 +38,11 @@ class PlaylistTitlesContainer extends Component{
     return(
       <div className="playlistTitlesContainer-wrapper">
 
-        {playlistTitles}
+        <div className="playlistTitles-wrapper">
+
+          {playlistTitles}
+        </div>
+
 
         <div className="new-playlist-wrapper">
           <input
