@@ -25,7 +25,7 @@ class UsernameInput extends Component{
 
   render(){
     return(
-      <div>
+      <div class="usernameInput-container">
         <input type="text"
           value={this.props.usernameInput}
           onChange={(e)=>this.onUsernameInputChange(e)}

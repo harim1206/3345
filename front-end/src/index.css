@@ -68,6 +68,9 @@ body {
 
 .navigation-bar{
   /* width: 640px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: auto;
   padding: 3px 0 3px 10px;
   border-bottom: solid 1px rgb(232, 232, 232);
@@ -75,8 +78,8 @@ body {
 }
 
 .navigation-bar div{
-  display: inline-block;
-  margin-right: 25px;
+  /* display: inline-block;
+  margin-right: 25px; */
 }
 
 .main-container{
@@ -94,6 +97,13 @@ body {
   margin: auto;
 
 
+}
+
+.usernameInput-container{
+  display:flex;
+  justify-content: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .playlistTitlesContainer-wrapper{

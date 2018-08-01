@@ -14,6 +14,7 @@ import {
 
 //Components
 import Video from './Video.js'
+import NavBar from './NavBar.js'
 import UsernameInput from './UsernameInput.js'
 import SearchInput from './SearchInput.js'
 import Library from './LibraryContainer/Library.js'
@@ -23,41 +24,7 @@ import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksCon
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchCollection()
     this.props.fetchPlaylists()
-  }
-
-  // Toggle playlistTitles on click
-  onPlaylistTitlesContainerToggleClick = () =>{
-    const toggle = !this.props.playlistTitlesContainerDisplay
-    this.props.onPlaylistTitlesContainerToggleClick(toggle)
-  }
-
-
-  // on table column header sort
-  onSort = (sortKey) =>{
-    let data = this.props.libraryReleases
-    console.log(`sortKey: `,sortKey)
-
-    if(sortKey === 'id'){
-      data.sort((a,b) => a[sortKey] - b[sortKey])
-    }else if(sortKey=== 'date added'){
-      data.sort((a,b)=>{
-        let keyA = new Date(a['date_added']),
-        keyB = new Date(b['date_added']);
-
-        if(keyA < keyB) return 1;
-        if(keyA > keyB) return -1;
-        return 0;
-      })
-
-    }else{
-      data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
-    }
-
-
-    this.props.onSort(data)
-    // *** not working
   }
 
   // create background div element
@@ -90,32 +57,34 @@ class App extends Component {
     return <div style={bgStyle}></div>
   }
 
-  // create a button for toggling library
-  createLibraryToggleButton = () => {
-    if(this.props.playlistTracksContainerDisplay===true){
-      return <div onClick={this.props.onLibraryToggleClick}>LIBRARY</div>
-    }
-  }
-
   render() {
 
-    let libraryToggleButton = this.createLibraryToggleButton()
+    // Background image
     let bgDiv = this.createBackgroundDiv()
+    // Top left 33/45 logo
     let logo = <div id='logo'>33/45</div>
 
     let mainContainer
+    let navBar
     let playlistTitlesContainer
 
-    // if(this.props.enterUsernameDisplay){
-    //   mainContainer = <UsernameInput/>
-    // }else
-    if(!this.props.playlistTracksContainerDisplay){
+    if(this.props.enterUsernameDisplay){
+      // 1. main container on load
+      mainContainer = <UsernameInput/>
+    }else if(!this.props.playlistTracksContainerDisplay){
+      // 2. main container on username input
       mainContainer = <Library onSort={this.onSort}/>
     }else{
+      // 3. main container on a playlist click
       mainContainer = <PlaylistTracksContainer/>
     }
 
+    if(!this.props.enterUsernameDisplay){
+      navBar = <NavBar/>
+    }
+
     if(this.props.playlistTitlesContainerDisplay){
+      // load playlist titles container on "playlist" button click in nav bar
       playlistTitlesContainer =  <PlaylistTitlesContainer/>
     }
 
@@ -124,23 +93,18 @@ class App extends Component {
       <div className="App">
 
         <div className="main-container--shadow">
+
           <Video/>
-
           <div className = "main-container--padding">
-            <nav className="navigation-bar">
-              <div onClick={this.onPlaylistTitlesContainerToggleClick}>
-                PLAYLISTS
-              </div>
-              {libraryToggleButton}
 
-              <SearchInput/>
-            </nav>
-
+            {navBar}
             <div className={this.props.playlistTitlesContainerDisplay ? "main-container" : "main-container--playlisthidden"}>
               {playlistTitlesContainer}
               {mainContainer}
             </div>
+
           </div>
+
         </div>
 
         {logo}
@@ -172,3 +136,30 @@ export default connect(mapStateToProps,
     onLibraryToggleClick
   }
 )(App);
+
+
+// on table column header sort
+// onSort = (sortKey) =>{
+//   let data = this.props.libraryReleases
+//   console.log(`sortKey: `,sortKey)
+//
+//   if(sortKey === 'id'){
+//     data.sort((a,b) => a[sortKey] - b[sortKey])
+//   }else if(sortKey=== 'date added'){
+//     data.sort((a,b)=>{
+//       let keyA = new Date(a['date_added']),
+//       keyB = new Date(b['date_added']);
+//
+//       if(keyA < keyB) return 1;
+//       if(keyA > keyB) return -1;
+//       return 0;
+//     })
+//
+//   }else{
+//     data.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+//   }
+//
+//
+//   this.props.onSort(data)
+//   // *** not working
+// }
