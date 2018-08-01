@@ -1,7 +1,8 @@
 # 33/45
 
+Video Walkthrough
 
-[![VIDEO SCREENCAST](https://img.youtube.com/vi/eUfrS3I5nzc/0.jpg)](https://www.youtube.com/watch?v=eUfrS3I5nzc)
+[![VIDEO Walkthrough](https://img.youtube.com/vi/eUfrS3I5nzc/0.jpg)](https://www.youtube.com/watch?v=eUfrS3I5nzc)
 
 ## Description
 
