@@ -1,6 +1,7 @@
 # 33/45
 
-[Video Screencast](https://youtu.be/eUfrS3I5nzc)
+
+[![VIDEO SCREENCAST](https://img.youtube.com/vi/eUfrS3I5nzc/0.jpg)](https://www.youtube.com/watch?v=eUfrS3I5nzc)
 
 ## Description
 
