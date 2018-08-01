@@ -34,7 +34,12 @@ class Video extends Component {
     return (
       <div className="video-component-wrapper">
         <div className="react-player">
-          <ReactPlayer url={this.props.currentVideo.uri || this.props.currentVideo.url} controls={true} playing={false} onEnded={this.onEnded}/>
+          <ReactPlayer
+            playing={true}
+            controls={true}
+            onEnded={this.onEnded}
+            url={this.props.currentVideo.uri || this.props.currentVideo.url}
+          />
         </div>
       </div>
     )

@@ -102,8 +102,6 @@ body {
 .usernameInput-container{
   display:flex;
   justify-content: center;
-  padding-top: 150px;
-  padding-bottom: 150px;
 }
 
 .playlistTitlesContainer-wrapper{
