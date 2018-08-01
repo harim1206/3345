@@ -6,12 +6,30 @@ import { connect } from 'react-redux'
 
 class PlaylistTracksContainer extends Component{
 
+  // return a filtered array of releases when search input exists
+  onSearch = (search, tracks) =>(
+    tracks.filter((track) =>{
+        return (track.description.toLowerCase().indexOf(search) !== -1 ||
+        track.artist.toLowerCase().indexOf(search) !== -1 ||
+        track.release.toLowerCase().indexOf(search) !== -1 ||
+        track.label.toLowerCase().indexOf(search) !== -1 ||
+        track.catno.toLowerCase().indexOf(search) !== -1)
+      }
+    )
+  )
+
 
   render(){
 
-    const tracks = this.props.currentPlaylistTracks.map((track)=>{
-      return (<PlaylistTrack track={track}/>)
-    })
+    let search = this.props.searchInput.toLowerCase()
+    let currentPlaylistTracks = this.props.currentPlaylistTracks
+
+    if(search.length > 0 && this.props.playlistTracksContainerDisplay){
+      currentPlaylistTracks = this.onSearch(search, currentPlaylistTracks)
+    }
+
+    const tracks = currentPlaylistTracks.map((track)=><PlaylistTrack track={track}/>)
+
 
     const columnHeaders = ['DESCRIPTION','ARTIST','RELEASE','URL','LABEL','CATNO'].map((cat)=>{
       if(cat==='DESCRIPTION'){
@@ -43,7 +61,9 @@ class PlaylistTracksContainer extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks
+    currentPlaylistTracks: state.playlistTitlesContainer.currentPlaylistTracks,
+    searchInput: state.nav.searchInput,
+    playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
   }
 }
 

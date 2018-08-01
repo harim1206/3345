@@ -2,7 +2,8 @@ const initialState = {
   playlistTitlesContainerDisplay: false,
   playlistTracksContainerDisplay: false,
   enterUsernameDisplay: true,
-  usernameInput: ''
+  usernameInput: '',
+  searchInput: ''
 }
 
 
@@ -31,6 +32,12 @@ export default function(state = initialState, action){
       return {
         ...state,
         usernameInput: action.input
+      }
+
+    case 'ON_SEARCH_INPUT_CHANGE':
+      return {
+        ...state,
+        searchInput: action.input
       }
 
     default:

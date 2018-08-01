@@ -5,13 +5,28 @@ import Release from './Release'
 
 class Library extends Component{
 
+  // return a filtered array of releases when search input exists
+  onSearch = (search, releases) =>(
+    releases.filter((release) =>{
+        return (release.artist.toLowerCase().indexOf(search) !== -1 ||
+        release.title.toLowerCase().indexOf(search) !== -1 ||
+        release.label.toLowerCase().indexOf(search) !== -1 ||
+        release.catno.toLowerCase().indexOf(search) !== -1)
+      }
+    )
+  )
+
   render(){
     // Mapping props data to Release components
-    const libraryReleases = this.props.libraryReleases.map((release)=>{
-      return (
-        <Release release={release}/>
-      )
-    })
+    let search = this.props.searchInput.toLowerCase()
+    let libraryReleases = this.props.libraryReleases
+
+    if(search.length > 0 && !this.props.playlistTracksContainerDisplay){
+      libraryReleases = this.onSearch(search, libraryReleases)
+    }
+
+    let releases = libraryReleases.map((release)=><Release release={release}/>)
+
 
     const columnHeaders = ['ARTIST','TITLE','LABEL','CATNO','DATE'].map((cat)=>{
       return(
@@ -30,7 +45,7 @@ class Library extends Component{
               </tr>
             </thead>
             <tbody>
-              {libraryReleases}
+              {releases}
             </tbody>
           </table>
         </div>
@@ -42,7 +57,9 @@ class Library extends Component{
 
 const mapStateToProps = (state) =>{
   return {
-    libraryReleases: state.library.libraryReleases
+    libraryReleases: state.library.libraryReleases,
+    searchInput: state.nav.searchInput,
+    playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
   }
 }
 

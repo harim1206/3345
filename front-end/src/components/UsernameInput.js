@@ -18,7 +18,6 @@ class UsernameInput extends Component{
   }
 
   onUsernameSubmit = () => {
-    console.log(`this.props.usernameInput: `, this.props.usernameInput)
     this.props.onUsernameSubmit()
     this.props.fetchCollection(this.props.usernameInput)
 
@@ -40,15 +39,6 @@ class UsernameInput extends Component{
     )
   }
 }
-
-// <input
-//   type="text"
-//   value={this.props.newPlaylistInput}
-//   placeholder="new playlist"
-//   onChange={(e)=>this.onNewPlaylistInputchange(e)}
-// />
-//
-// <i className="fas fa-plus" onClick={this.onNewPlaylistSubmit}></i>
 
 const mapStateToProps = (state) =>{
   return {

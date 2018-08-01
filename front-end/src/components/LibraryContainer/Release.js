@@ -50,6 +50,7 @@ const mapStateToProps = (state) => {
   return {
     libraryReleases: state.library.libraryReleases,
     currentReleaseTracks: state.library.currentReleaseTracks
+
   }
 }
 

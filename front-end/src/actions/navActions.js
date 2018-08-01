@@ -29,3 +29,10 @@ export function onUsernameInputChange(input){
     input: input
   }
 }
+
+export function onSearchInputChange(input){
+  return {
+    type: 'ON_SEARCH_INPUT_CHANGE',
+    input: input
+  }
+}
