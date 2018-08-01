@@ -40,4 +40,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,{ onCurrentPlaylistTrackClick })(PlaylistTrack)
-// ['id','artist','description','release','label','catno','url']

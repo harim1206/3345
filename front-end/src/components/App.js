@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 
 //Redux
 import { connect } from 'react-redux'
-import {
-  fetchCollection,
-  fetchPlaylists,
-  onSort
-} from '../actions/libraryActions.js'
-import {
-  onPlaylistTitlesContainerToggleClick,
-  onLibraryToggleClick
-} from '../actions/navActions.js'
+import { fetchPlaylists } from '../actions/libraryActions.js'
 
 //Components
 import Video from './Video.js'
 import NavBar from './NavBar.js'
 import UsernameInput from './UsernameInput.js'
-import SearchInput from './SearchInput.js'
 import Library from './LibraryContainer/Library.js'
 import PlaylistTitlesContainer from './PlaylistTitlesContainer/PlaylistTitlesContainer.js'
 import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer.js'
@@ -118,7 +109,6 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return (
     {
-      libraryReleases: state.library.libraryReleases,
       currentReleaseImgUrl: state.video.currentReleaseImgUrl,
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
       playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay,
@@ -127,15 +117,7 @@ const mapStateToProps = (state) => {
   )
 }
 
-export default connect(mapStateToProps,
-  {
-    fetchCollection,
-    fetchPlaylists,
-    onSort,
-    onPlaylistTitlesContainerToggleClick,
-    onLibraryToggleClick
-  }
-)(App);
+export default connect(mapStateToProps, { fetchPlaylists })(App);
 
 
 // on table column header sort

@@ -24,5 +24,7 @@ const mapStateToProps = (state) =>{
   return {}
 }
 
-export default connect(mapStateToProps,{ onPlaylistTitleClick,
-onPlaylistTitleDelete })(PlaylistTitle)
+export default connect(mapStateToProps,{
+  onPlaylistTitleClick,
+  onPlaylistTitleDelete
+})(PlaylistTitle)

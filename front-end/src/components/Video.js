@@ -10,7 +10,7 @@ class Video extends Component {
   onEnded = () =>{
 
     if(!this.props.playlistTracksContainerDisplay){
-
+      // Video logic on main library
       const newCurrentVideo = this.props.nextVideo
       let currVideos = this.props.currentReleaseVideos
       const newNextVideo = currVideos[currVideos.indexOf(this.props.currentVideo)+1]
@@ -20,6 +20,7 @@ class Video extends Component {
 
       this.props.onLibraryVideoFinish(newCurrentVideo, newNextVideo, newCurrentRelease, newNextRelease)
     }else{
+      // Video logic on playlists
       const currTracks = this.props.currentPlaylistTracks
       const newNextTrack = currTracks[currTracks.indexOf(this.props.nextTrack)+1]
 

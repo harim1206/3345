@@ -8,20 +8,15 @@ import SearchInput from './SearchInput.js'
 
 class NavBar extends Component{
 
-  // create a button for toggling library
-  createLibraryToggleButton = () => {
-    if(this.props.playlistTracksContainerDisplay === true){
-      return <div onClick={this.props.onLibraryToggleClick}>LIBRARY</div>
-    }
-  }
-
+  // toggling playlist titles container
   onPlaylistTitlesContainerToggleClick = () =>{
     const toggle = !this.props.playlistTitlesContainerDisplay
     this.props.onPlaylistTitlesContainerToggleClick(toggle)
   }
 
   render(){
-    let libraryToggleButton = this.createLibraryToggleButton()
+    let libraryToggleButton = this.props.playlistTracksContainerDisplay === true ? <div onClick={this.props.onLibraryToggleClick}>LIBRARY</div> : null
+
     return(
       <nav className="navigation-bar">
         <div onClick={this.onPlaylistTitlesContainerToggleClick}>

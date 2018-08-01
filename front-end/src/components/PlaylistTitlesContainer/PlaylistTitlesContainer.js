@@ -5,9 +5,7 @@ import {
   onNewPlaylistInputChange,
   onNewPlaylistSubmit } from '../../actions/playlistTitlesContainerActions.js'
 
-
 import PlaylistTitle from './PlaylistTitle.js'
-
 
 class PlaylistTitlesContainer extends Component{
 
@@ -15,7 +13,6 @@ class PlaylistTitlesContainer extends Component{
   onNewPlaylistInputchange = (e) =>{
     let input = e.target.value
     this.props.onNewPlaylistInputChange(input)
-
   }
 
   // on new playlist submit
@@ -29,17 +26,12 @@ class PlaylistTitlesContainer extends Component{
 
   render(){
 
-    const playlistTitles = this.props.playlists.map((playlist)=>{
-      return <PlaylistTitle
-        playlist={playlist}
-      />
-    })
+    const playlistTitles = this.props.playlists.map((playlist)=><PlaylistTitle playlist={playlist} />)
 
     return(
       <div className="playlistTitlesContainer-wrapper">
 
         <div className="playlistTitles-wrapper">
-
           {playlistTitles}
         </div>
 
@@ -53,7 +45,6 @@ class PlaylistTitlesContainer extends Component{
           />
 
           <i className="fas fa-plus" onClick={this.onNewPlaylistSubmit}></i>
-
         </div>
       </div>
     )
@@ -66,9 +57,9 @@ const mapStateToProps = (state) =>{
     playlists: state.library.playlists,
     newPlaylistInput: state.playlistTitlesContainer.newPlaylistInput
   }
-
 }
 
-export default connect(mapStateToProps, { onNewPlaylistInputChange,
-onNewPlaylistSubmit
+export default connect(mapStateToProps, {
+  onNewPlaylistInputChange,
+  onNewPlaylistSubmit
  })(PlaylistTitlesContainer)

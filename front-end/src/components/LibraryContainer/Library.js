@@ -17,10 +17,10 @@ class Library extends Component{
   )
 
   render(){
-    // Mapping props data to Release components
     let search = this.props.searchInput.toLowerCase()
     let libraryReleases = this.props.libraryReleases
 
+    // Filter releases on search
     if(search.length > 0 && !this.props.playlistTracksContainerDisplay){
       libraryReleases = this.onSearch(search, libraryReleases)
     }

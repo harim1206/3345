@@ -5,7 +5,6 @@ import { onReleaseClick } from '../../actions/libraryActions.js'
 import ReleaseTracks from './ReleaseTracks.js'
 
 
-
 class Release extends Component{
 
   // fetch tracks for the release on click
@@ -25,7 +24,6 @@ class Release extends Component{
       releaseTracks = <ReleaseTracks/>
     }
 
-    // debugger
     return(
       <React.Fragment>
         <tr onClick={()=>this.onReleaseClick(release, release.id)}>

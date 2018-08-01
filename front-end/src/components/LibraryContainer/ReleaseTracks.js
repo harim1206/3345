@@ -4,20 +4,6 @@ import { onVideoClick } from '../../actions/libraryActions.js'
 
 class ReleaseTracks extends Component{
 
-  createColumnHeaders = (columnTitles) =>{
-    return(
-      columnTitles.map((title)=><td className='track-column-header'>{title}</td>
-      )
-    )
-  }
-
-  onVideoClick = (video, event) =>{
-    let arr = this.props.currentReleaseVideos
-    const nextVideo = arr[arr.indexOf(video)+1]
-
-    this.props.onVideoClick(video, nextVideo)
-  }
-
   // on playlist select menu change, add track to playlist
   saveToPlaylist = (video, release, event) =>{
 
@@ -46,10 +32,25 @@ class ReleaseTracks extends Component{
 
   }
 
-  render(){
-    // debugger
+  onVideoClick = (video, event) =>{
+    let arr = this.props.currentReleaseVideos
+    const nextVideo = arr[arr.indexOf(video)+1]
 
-    // an array of table rows
+    this.props.onVideoClick(video, nextVideo)
+  }
+
+  createColumnHeaders = (columnTitles) => (
+    columnTitles.map((title)=><td className='track-column-header'>{title}</td>)
+  )
+
+  render(){
+
+    // an array of select options
+    const playlistSelectOptions = this.props.playlists.map((playlist)=>{
+      return <option value={playlist.id}>{playlist.name}</option>
+    })
+
+    // an array of table rows of tracks
     const tracks = this.props.currentReleaseTracks.map((track)=>{
       return (
         <tr className='track-container-row'>
@@ -63,20 +64,21 @@ class ReleaseTracks extends Component{
       )
     })
 
-    // an array of select options
-    const playlistSelectOptions = this.props.playlists.map((playlist)=>{
-      return <option value={playlist.id}>{playlist.name}</option>
-    })
-
     // an array of table rows of youtube links
     const youtubes = this.props.currentReleaseVideos.map((video)=>{
       // debugger
       return (
-        <tr className='track-container-row' onClick={(event)=>this.onVideoClick(video, event)}>
+        <tr
+          className='track-container-row'
+          onClick={(event)=>this.onVideoClick(video, event)}
+        >
           <td></td>
           <td>{video.title}</td>
           <td>
-            <select name="text" onChange={(event)=>this.saveToPlaylist(video, this.props.currentRelease, event)}>
+            <select
+              name="text"
+              onChange={(event)=>this.saveToPlaylist(video, this.props.currentRelease, event)}
+            >
               {playlistSelectOptions}
             </select>
           </td>
