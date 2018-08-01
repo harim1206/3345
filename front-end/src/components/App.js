@@ -14,6 +14,7 @@ import {
 
 //Components
 import Video from './Video.js'
+import UsernameInput from './UsernameInput.js'
 import Library from './LibraryContainer/Library.js'
 import PlaylistTitlesContainer from './PlaylistTitlesContainer/PlaylistTitlesContainer.js'
 import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksContainer.js'
@@ -21,7 +22,7 @@ import PlaylistTracksContainer from './PlaylistTracksContainer/PlaylistTracksCon
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchCollection()
+    // this.props.fetchCollection()
     this.props.fetchPlaylists()
   }
 
@@ -96,6 +97,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(`app this.props:`,this.props)
 
     let libraryToggleButton = this.createLibraryToggleButton()
     let bgDiv = this.createBackgroundDiv()
@@ -104,7 +106,9 @@ class App extends Component {
     let mainContainer
     let playlistTitlesContainer
 
-    if(!this.props.playlistTracksContainerDisplay){
+    if(this.props.enterUsernameDisplay){
+      mainContainer = <UsernameInput/>
+    }else if(!this.props.playlistTracksContainerDisplay){
       mainContainer = <Library onSort={this.onSort}/>
     }else{
       mainContainer = <PlaylistTracksContainer/>
@@ -150,7 +154,8 @@ const mapStateToProps = (state) => {
       libraryReleases: state.library.libraryReleases,
       currentReleaseImgUrl: state.video.currentReleaseImgUrl,
       playlistTitlesContainerDisplay: state.nav.playlistTitlesContainerDisplay,
-      playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay
+      playlistTracksContainerDisplay: state.nav.playlistTracksContainerDisplay,
+      enterUsernameDisplay: state.nav.enterUsernameDisplay
     }
   )
 }

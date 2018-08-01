@@ -14,3 +14,18 @@ export function onPlaylistTitlesContainerToggleClick(toggle){
   }
 
 }
+
+export function onUsernameSubmit(){
+  return {
+    type: 'ON_USERNAME_SUBMIT',
+    toggle: false
+  }
+}
+
+
+export function onUsernameInputChange(input){
+  return {
+    type: 'ON_USERNAME_INPUT_CHANGE',
+    input: input
+  }
+}

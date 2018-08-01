@@ -1,8 +1,11 @@
 require('dotenv').config()
 
-export function fetchCollection(){
+export function fetchCollection(username){
 
-  const collectionUrl = 'https://api.discogs.com/users/harim1206/collection/folders/0/releases?per_page=300&page=1&f=json'
+  const collectionUrl = `https://api.discogs.com/users/${username}/collection/folders/0/releases?per_page=300&page=1&f=json`
+
+  console.log(`collectionUrl: `, collectionUrl)
+  // debugger
 
   return function(dispatch){
     fetch(collectionUrl, {mode: 'cors'})
