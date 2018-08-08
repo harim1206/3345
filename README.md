@@ -31,7 +31,7 @@ Examples:
 - Studebakerhawk
 - ghood
 
-It will take a moment for the discogs collection to load. Once loaded, try clicking a release (a table row), which will expand to show its track details, and available youtube links. The youtube links can be clicked to load.
+It will take a moment for the discogs collection to load. Once loaded, click a release (a table row), which will display its track details, and available youtube links. Click a youtube link to switch video.
 
 You can save a youtube link to a playlist by using the playlist dropdown next to it.
 
